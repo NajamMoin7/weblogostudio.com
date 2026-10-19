@@ -11,8 +11,19 @@ import { Pause, Play } from "lucide-react";
  * - Edge fade via a CSS mask; the wrapper clips overflow, so the page never scrolls sideways.
  * - Reduced motion: no animation; the row becomes a static, scrollable list without the duplicate.
  */
-export default function Marquee({ children, label, duration = 40, direction = "left", className = "", itemClassName = "" }) {
-  const [paused, setPaused] = useState(false);
+export default function Marquee({
+  children,
+  label,
+  duration = 40,
+  direction = "left",
+  className = "",
+  itemClassName = "",
+  paused: pausedProp,
+  showControl = true,
+}) {
+  const [pausedState, setPaused] = useState(false);
+  // Controlled when a parent (e.g. a group of rows) owns the pause state.
+  const paused = pausedProp ?? pausedState;
   const items = Children.toArray(children);
 
   const copy = (hidden) => (
@@ -42,6 +53,7 @@ export default function Marquee({ children, label, duration = 40, direction = "l
           {copy(true)}
         </div>
       </div>
+      {showControl && (
       <button
         type="button"
         onClick={() => setPaused((p) => !p)}
@@ -51,6 +63,7 @@ export default function Marquee({ children, label, duration = 40, direction = "l
       >
         {paused ? <Play aria-hidden="true" className="size-3.5" /> : <Pause aria-hidden="true" className="size-3.5" />}
       </button>
+      )}
     </div>
   );
 }

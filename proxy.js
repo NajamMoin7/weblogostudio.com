@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { services } from "@/data/services";
-import { projects } from "@/data/portfolio";
+import { work } from "@/data/work";
 
 /**
  * Returns a genuine 404 status for unknown service and portfolio slugs.
@@ -13,7 +13,7 @@ import { projects } from "@/data/portfolio";
  */
 const known = {
   services: new Set(services.map((s) => s.slug)),
-  portfolio: new Set(projects.map((p) => p.slug)),
+  portfolio: new Set(work.map((p) => p.slug)),
 };
 
 export function proxy(request) {

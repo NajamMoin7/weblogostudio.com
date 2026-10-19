@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "images:generate": "node --no-warnings scripts/higgsfield-generate.mjs",
-    "images:stock": "node --no-warnings scripts/fetch-stock-images.mjs"
+    "images:stock": "node --no-warnings scripts/fetch-stock-images.mjs",
+    "portfolio:migrate": "node --no-warnings scripts/migrate-portfolio.mjs",
+    "portfolio:verify": "node --no-warnings scripts/verify-portfolio.mjs"
   },
   "dependencies": {
     "embla-carousel-react": "^8.6.0",

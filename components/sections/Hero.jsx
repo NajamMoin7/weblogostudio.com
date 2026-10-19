@@ -7,7 +7,7 @@ import AnimatedHeadline from "@/components/motion/AnimatedHeadline";
 import ProjectVisual from "@/components/visuals/ProjectVisual";
 import StockImage from "@/components/visuals/StockImage";
 import Mark from "@/components/visuals/Mark";
-import { getProject } from "@/data/portfolio";
+import { getProject } from "@/data/concepts";
 
 const pillars = [
   { n: "01", title: "Websites", text: "Designed and built to earn trust in the first few seconds.", href: "/services/website-design" },

@@ -8,16 +8,19 @@ import Button from "@/components/ui/Button";
 import JsonLd from "@/components/ui/JsonLd";
 import ServiceVisual from "@/components/visuals/ServiceVisual";
 import ServiceCard from "@/components/services/ServiceCard";
-import ProjectCard from "@/components/portfolio/ProjectCard";
+import WorkCard from "@/components/work/WorkCard";
 import LogoShowcase from "@/components/portfolio/LogoShowcase";
 import { getService } from "@/data/services";
-import { getProjectsForService } from "@/data/portfolio";
+import { workForService, workIndex } from "@/data/work";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
 /** Reusable landing-page template driven entirely by a service entry in data/services.js. */
 export default function ServiceDetail({ service }) {
   const related = service.related.map(getService).filter(Boolean);
-  const projects = getProjectsForService(service, 3);
+  const exampleSlugs = workForService(service.slug, 8).map((w) => w.slug);
+  const projects = workIndex()
+    .filter((w) => exampleSlugs.includes(w.slug))
+    .sort((a, b) => exampleSlugs.indexOf(a.slug) - exampleSlugs.indexOf(b.slug));
   const path = `/services/${service.slug}`;
 
   return (
@@ -136,28 +139,26 @@ export default function ServiceDetail({ service }) {
               <SectionHeading
                 id="examples-title"
                 eyebrow="Related work"
-                title="Examples of our approach"
-                intro="Concept projects that show how we would tackle similar briefs."
+                title="Examples from our portfolio"
+                intro="Real work from our portfolio in this discipline."
               />
               <Button href="/portfolio" variant="secondary" arrow className="shrink-0 self-start md:self-auto">
-                Full Portfolio
+                View All Projects
               </Button>
             </div>
-            <div className="mt-14 grid gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-14 columns-2 gap-5 md:columns-3 xl:columns-4">
               {projects.map((p) => (
-                <ProjectCard key={p.slug} project={p} aspect="aspect-[4/3.2]" showServices={false} />
+                <li key={p.slug} className="reveal-card mb-6 break-inside-avoid">
+                  <WorkCard item={p} />
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
       )}
 
       {["logo-design", "brand-identity"].includes(service.slug) && (
-        <LogoShowcase
-          eyebrow="Identity studies"
-          title="Marks from our concept work"
-          filter={(p) => p.categories.includes("logo-design") || p.categories.includes("branding")}
-        />
+        <LogoShowcase eyebrow="From the portfolio" title="Logos we have designed" />
       )}
 
       <section aria-labelledby="related-title" className="border-t border-line bg-surface py-20 lg:py-28">

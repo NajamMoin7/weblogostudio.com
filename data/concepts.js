@@ -1,15 +1,7 @@
 /**
- * Portfolio projects.
- *
- * IMPORTANT: every project below is a CONCEPT project created to demonstrate
- * Web Logo Studio's approach. The businesses are fictional, and no client
- * results are claimed. Keep `concept: true` on these entries. When you add real
- * client work, set `concept: false`, use the client's approved details and only
- * add an `outcome` that has been verified.
- *
- * Visuals are rendered in code by components/visuals/ProjectVisual.jsx from
- * each project's `palette` and `brand` settings, so no external images are
- * needed. Real projects can provide `images` instead (see ProjectVisual).
+ * CONCEPT illustrations (fictional businesses), used only for decorative coded mockups in the
+ * home hero, the Why us section and service illustrations. They are labelled "Concept work"
+ * where shown and are NOT part of the portfolio. The real portfolio lives in data/work.js.
  */
 
 export const portfolioCategories = [

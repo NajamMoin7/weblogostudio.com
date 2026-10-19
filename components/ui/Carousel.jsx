@@ -62,8 +62,18 @@ export default function Carousel({ label, children, slideClassName = "basis-[85%
 
   function onFocusSlide(index) {
     if (!api) return;
-    // Keep focused content visible when tabbing through slides.
-    if (!api.slidesInView().includes(index)) api.scrollTo(index);
+    // Keep focused content visible when tabbing through slides. scrollTo() takes a snap index,
+    // and with trimmed snaps several slides can share one snap, so map slide -> snap first.
+    // Focusing inside an overflow-hidden viewport makes the browser scroll it natively, which
+    // offsets Embla's transform; undo that first (Embla does the same for Tab-key focus).
+    api.rootNode().scrollLeft = 0;
+    // Scroll unless the focused slide is fully visible (slidesInView() also counts partial slides).
+    const root = api.rootNode().getBoundingClientRect();
+    const slide = api.slideNodes()[index]?.getBoundingClientRect();
+    if (slide && slide.left >= root.left - 1 && slide.right <= root.right + 1) return;
+    const registry = api.internalEngine().slideRegistry;
+    const snap = registry.findIndex((group) => group.includes(index));
+    api.scrollTo(snap >= 0 ? snap : index);
   }
 
   const controls = (

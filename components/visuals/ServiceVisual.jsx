@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 import ProjectVisual from "./ProjectVisual";
 import Mark from "./Mark";
-import { getProject } from "@/data/portfolio";
+import { getProject } from "@/data/concepts";
 import { getAsset } from "@/lib/assets";
 import SmartImage from "./SmartImage";
 import BeforeAfter from "./BeforeAfter";

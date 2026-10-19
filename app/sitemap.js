@@ -1,5 +1,5 @@
 import { services } from "@/data/services";
-import { projects } from "@/data/portfolio";
+import { work } from "@/data/work";
 import { absoluteUrl } from "@/lib/site";
 
 export default function sitemap() {
@@ -27,10 +27,11 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: 0.8,
     })),
-    ...projects.map((p) => ({
+    ...work.map((p) => ({
       url: absoluteUrl(`/portfolio/${p.slug}`),
       changeFrequency: "yearly",
-      priority: 0.5,
+      // Named client projects rank above numbered, untitled pieces.
+      priority: p.titleSource === "source" ? 0.6 : 0.4,
     })),
   ];
 }

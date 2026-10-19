@@ -1,6 +1,7 @@
 import StockImage from "@/components/visuals/StockImage";
-import ProjectVisual from "@/components/visuals/ProjectVisual";
-import { getProject } from "@/data/portfolio";
+import Image from "next/image";
+import Link from "next/link";
+import { getWork } from "@/data/work";
 
 const rows = [
   ["Pages assembled from a template", "Every page designed around your identity"],
@@ -11,6 +12,8 @@ const rows = [
 
 /** Asymmetric image + text composition contrasting "just a website" with a cohesive brand. */
 export default function WhyUs() {
+  // A real brand identity project from the migrated portfolio.
+  const brand = getWork("w12-garage-brand-identity-branding") ?? getWork("duro-athletics-brand-identity-branding");
   return (
     <section aria-labelledby="why-title" className="overflow-hidden py-24 lg:py-36">
       <div className="container-page grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
@@ -21,14 +24,24 @@ export default function WhyUs() {
             </div>
             <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_top,rgb(5_6_8/0.6),transparent_50%)]" />
           </div>
-          <div className="parallax-lift absolute -bottom-10 -right-4 w-[62%] overflow-hidden rounded-xl border border-line-strong shadow-[0_30px_70px_-25px_rgb(0_0_0/0.9)] sm:-right-10">
-            <ProjectVisual
-              project={getProject("halden-architects")}
-              kind="brand"
-              aspect="aspect-[4/3]"
-              label="Concept identity for an architecture studio"
-            />
-          </div>
+          {brand && (
+            <Link
+              href={`/portfolio/${brand.slug}`}
+              className="parallax-lift group absolute -bottom-10 -right-4 block w-[62%] overflow-hidden rounded-xl border border-line-strong shadow-[0_30px_70px_-25px_rgb(0_0_0/0.9)] sm:-right-10"
+            >
+              <Image
+                src={brand.thumbnail.src}
+                alt={`${brand.displayTitle}, brand identity by Web Logo Studio`}
+                width={brand.thumbnail.width}
+                height={brand.thumbnail.height}
+                sizes="(min-width: 1024px) 26vw, 60vw"
+                className="h-auto w-full transition-transform duration-[900ms] ease-out group-hover:scale-[1.05]"
+              />
+              <span className="absolute left-3 top-3 rounded-sm bg-ink/80 px-2 py-1 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-fg backdrop-blur-sm">
+                From the portfolio
+              </span>
+            </Link>
+          )}
         </div>
 
         <div className="lg:col-span-7">

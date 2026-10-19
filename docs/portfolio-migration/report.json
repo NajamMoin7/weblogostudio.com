@@ -1,0 +1,101 @@
+{
+ "started": "2026-10-19T15:23:42.678Z",
+ "categories": {
+  "logos": {
+   "sourceCount": 501,
+   "migrated": 501,
+   "failed": 0,
+   "withClientName": 73,
+   "withDescription": 8,
+   "multiImage": 0,
+   "industries": {
+    "Abstract": 12,
+    "Automotive": 18,
+    "Accounting & Financial": 27,
+    "Agriculture": 10,
+    "App Icons": 10,
+    "Architectural": 10,
+    "Arts & Entertainment": 26,
+    "Badges, Crest & Anniversary": 11,
+    "Beauty, Skin Care & Cosmetics": 16,
+    "Cleaning Services": 16,
+    "Landscaping": 17,
+    "Construction, Roofing & Interior Design": 16,
+    "E-Commerce & Retail Shops": 15,
+    "Education & E-Learning": 15,
+    "Fashion & Athletic Apparel": 16,
+    "Logistics & Transport": 3,
+    "Font + Meaning": 14,
+    "Health & Wellness": 16,
+    "HVAC & Plumbing": 16,
+    "Initials": 12,
+    "IT & Tech": 16,
+    "Legal & Law": 15,
+    "Mascots": 11,
+    "Npo, Charity & Fundraising": 16,
+    "Pet Care & Veterinary": 23,
+    "Photography": 16,
+    "Pool": 10,
+    "Recruitment & Staffing Solutions": 12,
+    "Religious": 10,
+    "Restaurant & Food Truck": 15,
+    "Sports": 17,
+    "Telecommunications": 12,
+    "Textbased": 16,
+    "Travel & Tours": 16
+   }
+  },
+  "graphic-design": {
+   "sourceCount": 101,
+   "migrated": 101,
+   "failed": 0,
+   "withClientName": 95,
+   "withDescription": 14,
+   "multiImage": 0,
+   "industries": {}
+  },
+  "web-design": {
+   "sourceCount": 60,
+   "migrated": 60,
+   "failed": 0,
+   "withClientName": 60,
+   "withDescription": 6,
+   "multiImage": 60,
+   "industries": {}
+  },
+  "branding": {
+   "sourceCount": 18,
+   "migrated": 18,
+   "failed": 0,
+   "withClientName": 8,
+   "withDescription": 2,
+   "multiImage": 0,
+   "industries": {}
+  },
+  "ui-ux": {
+   "sourceCount": 8,
+   "migrated": 8,
+   "failed": 0,
+   "withClientName": 6,
+   "withDescription": 0,
+   "multiImage": 0,
+   "industries": {}
+  },
+  "social-media": {
+   "sourceCount": 8,
+   "migrated": 8,
+   "failed": 0,
+   "withClientName": 7,
+   "withDescription": 1,
+   "multiImage": 0,
+   "industries": {}
+  }
+ },
+ "failures": [],
+ "notes": [],
+ "mainSiteItems": 170,
+ "mainSiteUnmapped": [],
+ "totalSource": 696,
+ "totalMigrated": 696,
+ "assets": 756
+}
