@@ -6,9 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "images:generate": "node --no-warnings scripts/higgsfield-generate.mjs",
+    "images:stock": "node --no-warnings scripts/fetch-stock-images.mjs"
   },
   "dependencies": {
+    "embla-carousel-react": "^8.6.0",
+    "lucide-react": "^1.59.0",
+    "motion": "^14.3.0",
     "next": "16.4.2",
     "react": "19.3.0",
     "react-dom": "19.3.0"

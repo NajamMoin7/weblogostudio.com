@@ -1,0 +1,200 @@
+{
+  "abstract-waves": {
+    "src": "/images/stock/abstract-waves-107b79df.webp",
+    "width": 2200,
+    "height": 1375,
+    "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAgCdASoQAAoAA4BaJbACdADcptdzszIAAP7kQcMcg7y4lpHuF3beILhj8zJlX3P6s79gqLq568HN9fzv3LG54AA=",
+    "alt": "",
+    "decorative": true,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1617791160505-6f00504e3519",
+    "license": "https://unsplash.com/license"
+  },
+  "studio-swatches": {
+    "src": "/images/stock/studio-swatches-12e2d4a4.webp",
+    "width": 1600,
+    "height": 2000,
+    "blurDataURL": "data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAABQBACdASoQABQAPu1iqU2ppaOiMAgBMB2JbAC7BagR8oy4qTL4KMNESnQAAPqYt0Dqux33C+QvBfttcMJ5ynRVEqm+ArIoJwIcCR2h379DfR/EEEVJTYbcv2RYrqEnaXCq/Kzo5GS6ZU7NwPyZoVf+Ow6kw1CMA+dciSLVZiWy88f7qMMMZvfR4k6U7V72C6xO4yn1Wb/3H1vAjj05ajcfmDzV+9F+A03wUPn7QT3DEp+zjge93VHMzjuOrAwAAAA=",
+    "alt": "Colour swatches and printed design sketches spread across a desk",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1561070791-2526d30994b5",
+    "license": "https://unsplash.com/license"
+  },
+  "service-website-design": {
+    "src": "/images/stock/service-website-design-1746861e.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwAgCdASoQAAsAA4BaJYwCdIExFkRJMa0oAAD+0PAPCpLea62yftEplNrzFwcmV2o3aIeZKZhQyytklrsDcTk1j3+Et0qOuRWluj2DNvvQBhEqdRdnjRHMAAA=",
+    "alt": "A designer sketching website wireframes on paper",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e",
+    "license": "https://unsplash.com/license"
+  },
+  "service-website-development": {
+    "src": "/images/stock/service-website-development-452bf8e5.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoQAAsAA4BaJZQAAuhIeLmUFMAA/grbA1f8oxkXD1/rZFn+QWt22OFZNu7gFTXRLxE+BzyySJWeJy2ddlcTHMgHY2KyYjDVRzm59S7/YEAAAA==",
+    "alt": "A laptop showing code on a bright desk",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+    "license": "https://unsplash.com/license"
+  },
+  "service-ecommerce-development": {
+    "src": "/images/stock/service-ecommerce-development-9b032ced.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwAgCdASoQAAsAA4BaJYgCdAYtzq4AqkQAAAD+yrPfiiJ1EWOPEFFve17mV1DgOnugaIeydFAx/gaEjOQUWz4sdFahHC8CycJRczAfNsxG9qPGtAEAAAAA",
+    "alt": "Paying online with a card in front of a laptop",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1563013544-824ae1b704d3",
+    "license": "https://unsplash.com/license"
+  },
+  "service-wordpress-development": {
+    "src": "/images/stock/service-wordpress-development-388aad93.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAwAgCdASoQAAsAA4BaJYgCsAEK5ba0dJIZAAD+8J4Gp2jrGG8DSrO4mY6vlHKhtHbsrrd1atqqH4Y1VD1Y3zD/OvAyxxyHygdbnKo1vtFKDitd1BkVn5RRR6mTnEV/w4AAAA==",
+    "alt": "A tidy desk with a desktop monitor and laptop showing websites",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
+    "license": "https://unsplash.com/license"
+  },
+  "service-nextjs-development": {
+    "src": "/images/stock/service-nextjs-development-8d0d1090.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurDataURL": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADwAQCdASoQAAsAA4BaJQBOgCFsf1/WxwAA/ve5gFCWi7v3YY6QcetF3gkXVMyeW7eC11g8bAAAAA==",
+    "alt": "Code in a dark editor on a laptop screen",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
+    "license": "https://unsplash.com/license"
+  },
+  "service-landing-page-design": {
+    "src": "/images/stock/service-landing-page-design-cc43f47e.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABQAgCdASoQAAsAA4BaJbAC7AEVL4PTXuRGjgAA/uRr2atl7ER/TP+TUZWH3psSIuGTbsr25v/Mr2jhWVitkTeIfGRAk68k/nD4RvB8VpETvfMyOQpN/yG3ddhczLlAfDwpCdv1ovkowV+noYAAoSmpmuFrjAAA",
+    "alt": "A team arranging wireframes and sticky notes on a table",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1587440871875-191322ee64b0",
+    "license": "https://unsplash.com/license"
+  },
+  "service-website-redesign": {
+    "src": "/images/stock/service-website-redesign-cf1871b0.webp",
+    "width": 1600,
+    "height": 934,
+    "blurDataURL": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADwAQCdASoQAAkAA4BaJZgCdAEPh6ZDBAAA/tKAkblt+KRKHmcdR48GgFy6sS1o2vLIxmvwAAA=",
+    "alt": "Blueprint-style website wireframes drawn on dark paper",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1600132806370-bf17e65e942f",
+    "license": "https://unsplash.com/license"
+  },
+  "service-ui-ux-design": {
+    "src": "/images/stock/service-ui-ux-design-0fb7fd67.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAQCdASoQAAsAA4BaJZQAD5GrwT4rbAAA/t4ENrhUgt/o6d+cVrdzUyOGd4g19cjW3ZhvOe6lbd2nWO1F0ndjXlEqlOgp4WFG5pX2hXSPsCW+wHpABedHR3H+RKKnolqN4AAA",
+    "alt": "Sketching interface wireframes on a tablet with a stylus",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c",
+    "license": "https://unsplash.com/license"
+  },
+  "service-logo-design": {
+    "src": "/images/stock/service-logo-design-b26469d8.webp",
+    "width": 1600,
+    "height": 2400,
+    "blurDataURL": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABQBACdASoQABgAPu1iqU2ppaOiMAgBMB2JbACdMoABcLepQQcJoK3AYKSAAP7QI6LCsnNp6RpbbMv9h3nD8Wo3947Uqz7xDD9HT8SjQkRVKrJO+3w61G74F9/D6O1OHpdabTzqoerGzwiHtZQsE7ztVeyipm8sbHSb+g92Nx/h7z0J8duRCCHdLYkwAAAA",
+    "alt": "A letter A drawn on a tablet beside a red sketchbook",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3",
+    "license": "https://unsplash.com/license"
+  },
+  "service-brand-identity": {
+    "src": "/images/stock/service-brand-identity-12e2d4a4.webp",
+    "width": 1600,
+    "height": 2000,
+    "blurDataURL": "data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAABQBACdASoQABQAPu1iqU2ppaOiMAgBMB2JbAC7BagR8oy4qTL4KMNESnQAAPqYt0Dqux33C+QvBfttcMJ5ynRVEqm+ArIoJwIcCR2h379DfR/EEEVJTYbcv2RYrqEnaXCq/Kzo5GS6ZU7NwPyZoVf+Ow6kw1CMA+dciSLVZiWy88f7qMMMZvfR4k6U7V72C6xO4yn1Wb/3H1vAjj05ajcfmDzV+9F+A03wUPn7QT3DEp+zjge93VHMzjuOrAwAAAA=",
+    "alt": "Colour swatches and printed design sketches spread across a desk",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1561070791-2526d30994b5",
+    "license": "https://unsplash.com/license"
+  },
+  "service-graphic-design": {
+    "src": "/images/stock/service-graphic-design-ce1ad60a.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAABwAgCdASoQAAsAA4BaJQBOj+AQVRi6/YxJJ0gAAP7f9gS7jEBwbw38H26m+qTVUG6pQ968gDr5U1rOhgcn/ce7rCEkxBEb49clwTuLnG+KhzK5UxJxQ50FT+AKsBppNDTJvtYfwAA=",
+    "alt": "A designer working with a pen tablet beside colour swatches",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1572044162444-ad60f128bdea",
+    "license": "https://unsplash.com/license"
+  },
+  "service-social-media-design": {
+    "src": "/images/stock/service-social-media-design-33067ede.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoQAAsAA4BaJZwAAsfs13o9wAD+j52ayypDBif2qss3LBqAzr7KbqQtEdWjI0FTA4Uc0FQRNN4VOIq1wn/fduCV1aJRyoVAAAA=",
+    "alt": "A smartphone showing a visual app layout on a white surface",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1586953208448-b95a79798f07",
+    "license": "https://unsplash.com/license"
+  },
+  "service-seo": {
+    "src": "/images/stock/service-seo-e85ebbdd.webp",
+    "width": 1600,
+    "height": 1140,
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoQAAsAA4BaJZwC7AEIbpg7N5AAziQWcmL1xKM7pc4mQUcb4uj94qK+8vo3EZOFQf9Yx66Nkkq1e605aYaePPGUBpXXA6dLvXhtImqHGAA=",
+    "alt": "A laptop displaying analytics charts",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+    "license": "https://unsplash.com/license"
+  },
+  "service-website-maintenance": {
+    "src": "/images/stock/service-website-maintenance-48d7d3db.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwAgCdASoQAAsAA4BaJZQAD48O612D5qOYwAD+t1lead121N8868gaa//LRH0lbZvBUZQxVUSNBirzZYsrs6MWMpBNm2gfQshxiMN58CG0AsA3Ae2e1VW6NZBBDLr0iN5csv1DrO+ulDGQAAA=",
+    "alt": "A developer workstation with monitors in a dark room",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1561736778-92e52a7769ef",
+    "license": "https://unsplash.com/license"
+  },
+  "service-graphic-print": {
+    "src": "/images/stock/service-graphic-print-7415e457.webp",
+    "width": 1600,
+    "height": 1068,
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoQAAsAA4BaJZwAAvjbf1r6tYAA/U48BgUerrOP0O0qmAJKBFg8n5Txo0iYhfERjBD8vIaG5phTA7R8dLPfRpr027iceT/5MH/TPH+8AAA=",
+    "alt": "Printed sheets running through a printing press",
+    "decorative": false,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1503694978374-8a2fa686963a",
+    "license": "https://unsplash.com/license"
+  },
+  "hero-stage": {
+    "src": "/images/stock/hero-stage-44b22069.webp",
+    "width": 2200,
+    "height": 1671,
+    "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABQAgCdASoQAAwAA4BaJbACdLoAAnfgi0bu3AAA/pG9PuaH8diDow2BKbnvg0rkZ528p/lUwI31YK1ShSpLSggpO//Bze/xisJczN217b/NxXz0XNfvmMqb4zHYlCu+AAA=",
+    "alt": "",
+    "decorative": true,
+    "source": "Unsplash",
+    "sourceUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe",
+    "license": "https://unsplash.com/license"
+  }
+}

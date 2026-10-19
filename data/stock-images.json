@@ -1,0 +1,137 @@
+{
+  "_readme": "Free stock photography from Unsplash (https://unsplash.com/license): free for commercial use, no permission or attribution required (attribution appreciated). Only standard-licence images from images.unsplash.com are listed; Unsplash+ images are excluded. Run `npm run images:stock` to download, grade and register them in data/stock-assets.json. These are generic illustrative photos, never presented as Web Logo Studio client work.",
+  "license": {
+    "name": "Unsplash License",
+    "url": "https://unsplash.com/license"
+  },
+  "images": [
+    {
+      "id": "hero-stage",
+      "unsplash": "1618005182384-a83a8bd57fbe",
+      "usage": "Home hero stage backdrop (abstract, brand palette)",
+      "alt": "",
+      "decorative": true,
+      "width": 2200
+    },
+    {
+      "id": "abstract-waves",
+      "unsplash": "1617791160505-6f00504e3519",
+      "usage": "Hero ambience, statement and closing call to action",
+      "alt": "",
+      "decorative": true,
+      "width": 2200
+    },
+    {
+      "id": "studio-swatches",
+      "unsplash": "1561070791-2526d30994b5",
+      "usage": "Why us section",
+      "alt": "Colour swatches and printed design sketches spread across a desk",
+      "width": 1600
+    },
+    {
+      "id": "service-website-design",
+      "unsplash": "1581291518857-4e27b48ff24e",
+      "usage": "Website Design service",
+      "alt": "A designer sketching website wireframes on paper",
+      "width": 1600
+    },
+    {
+      "id": "service-website-development",
+      "unsplash": "1517694712202-14dd9538aa97",
+      "usage": "Website Development service",
+      "alt": "A laptop showing code on a bright desk",
+      "width": 1600
+    },
+    {
+      "id": "service-ecommerce-development",
+      "unsplash": "1563013544-824ae1b704d3",
+      "usage": "E-commerce Development service",
+      "alt": "Paying online with a card in front of a laptop",
+      "width": 1600
+    },
+    {
+      "id": "service-wordpress-development",
+      "unsplash": "1499951360447-b19be8fe80f5",
+      "usage": "WordPress Development service",
+      "alt": "A tidy desk with a desktop monitor and laptop showing websites",
+      "width": 1600
+    },
+    {
+      "id": "service-nextjs-development",
+      "unsplash": "1555066931-4365d14bab8c",
+      "usage": "Next.js Development service",
+      "alt": "Code in a dark editor on a laptop screen",
+      "width": 1600
+    },
+    {
+      "id": "service-landing-page-design",
+      "unsplash": "1587440871875-191322ee64b0",
+      "usage": "Landing Page Design service",
+      "alt": "A team arranging wireframes and sticky notes on a table",
+      "width": 1600
+    },
+    {
+      "id": "service-website-redesign",
+      "unsplash": "1600132806370-bf17e65e942f",
+      "usage": "Website Redesign service",
+      "alt": "Blueprint-style website wireframes drawn on dark paper",
+      "width": 1600
+    },
+    {
+      "id": "service-ui-ux-design",
+      "unsplash": "1586717791821-3f44a563fa4c",
+      "usage": "UI/UX Design service",
+      "alt": "Sketching interface wireframes on a tablet with a stylus",
+      "width": 1600
+    },
+    {
+      "id": "service-logo-design",
+      "unsplash": "1611532736597-de2d4265fba3",
+      "usage": "Logo Design service",
+      "alt": "A letter A drawn on a tablet beside a red sketchbook",
+      "width": 1600
+    },
+    {
+      "id": "service-brand-identity",
+      "unsplash": "1561070791-2526d30994b5",
+      "usage": "Brand Identity Design service",
+      "alt": "Colour swatches and printed design sketches spread across a desk",
+      "width": 1600
+    },
+    {
+      "id": "service-graphic-design",
+      "unsplash": "1572044162444-ad60f128bdea",
+      "usage": "Graphic Design service",
+      "alt": "A designer working with a pen tablet beside colour swatches",
+      "width": 1600
+    },
+    {
+      "id": "service-social-media-design",
+      "unsplash": "1586953208448-b95a79798f07",
+      "usage": "Social Media Design service",
+      "alt": "A smartphone showing a visual app layout on a white surface",
+      "width": 1600
+    },
+    {
+      "id": "service-seo",
+      "unsplash": "1460925895917-afdab827c52f",
+      "usage": "Search Engine Optimization service",
+      "alt": "A laptop displaying analytics charts",
+      "width": 1600
+    },
+    {
+      "id": "service-website-maintenance",
+      "unsplash": "1561736778-92e52a7769ef",
+      "usage": "Website Maintenance service",
+      "alt": "A developer workstation with monitors in a dark room",
+      "width": 1600
+    },
+    {
+      "id": "service-graphic-print",
+      "unsplash": "1503694978374-8a2fa686963a",
+      "usage": "Print collateral supporting image",
+      "alt": "Printed sheets running through a printing press",
+      "width": 1600
+    }
+  ]
+}
