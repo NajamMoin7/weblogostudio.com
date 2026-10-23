@@ -47,15 +47,15 @@ export default function Accordion({ items, tone = "dark", defaultOpen = -1 }) {
                 onClick={() => setOpen(isOpen ? -1 : i)}
                 onKeyDown={onKeyDown}
                 className={`group/acc flex w-full items-start justify-between gap-6 py-6 text-left text-[1.05rem] font-medium leading-snug transition-colors duration-150 ${
-                  paper ? "text-paper-ink" : "text-fg hover:text-white"
+                  paper ? "text-paper-ink" : "text-fg hover:text-brand"
                 }`}
               >
                 <span>{item.q}</span>
                 <span
                   aria-hidden="true"
                   className={`mt-0.5 grid size-7 shrink-0 place-items-center rounded-full border transition-[transform,background-color,color,border-color] duration-300 ease-out-quint group-hover/acc:scale-110 group-active/acc:scale-95 ${
-                    paper ? "border-paper-ink/20" : "border-line-strong group-hover/acc:border-fg/60"
-                  } ${isOpen ? `rotate-45 ${paper ? "bg-paper-ink text-paper" : "bg-fg text-ink"}` : ""}`}
+                    paper ? "border-paper-ink/20" : "border-line-strong group-hover/acc:border-brand/60"
+                  } ${isOpen ? "rotate-45 border-orange-strong bg-orange-strong text-white" : ""}`}
                 >
                   <Plus className="size-3.5" strokeWidth={2.2} />
                 </span>

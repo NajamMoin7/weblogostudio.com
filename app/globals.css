@@ -2,46 +2,94 @@
 
 /*
   Web Logo Studio design tokens.
-  Colours are sampled directly from logo/logo.jpeg:
-  - Electric blue  #0077FE  (W stroke, L stem)
-  - Signal cyan    #00E5FC  (W highlight, L top)
-  - Ultraviolet    #A634FC  (W ribbon, L foot)
-  - Deep violet    #811FFE  (L inner gradient)
-  - Logo white     #EEF2F8  (wordmark)
-  - Tagline steel  #A0AEC8  ("Brands for a brighter web")
-  - Logo black     #000000  (background)
+  Brand palette (approved theme reference, checked against logo/logo.jpeg):
+  - Forest green  #183D32  (logo: W strokes #013B2F to #095342, wordmark "Weblogo")
+  - Cream         #F5F0E6  (warm page background; the logo sits on near-white)
+  - Accent orange #C66A43  (logo: L top, #F96B21 to #BE420C)
+  - Dark text     #202521  (logo: L foot and "Studio", #262F34)
+
+  Accessible tints of the accent (WCAG AA):
+  - #B4532A  orange button fill: white text 4.99:1
+  - #A04A20  orange text on cream: 5.4:1
+  - #F0915F  orange text on forest green: 5.09:1
+
+  Components use semantic tokens (ink = page background, fg = text, cyan = accent text and
+  focus ring, and so on), so a section can switch to the forest-green scheme with the
+  .theme-forest class below without changing any component classes.
 */
 
 @theme {
-  --color-ink: #050608;
-  --color-surface: #0b0d12;
-  --color-surface-2: #11141b;
-  --color-surface-3: #181c25;
-  --color-line: rgb(238 242 248 / 0.09);
-  --color-line-strong: rgb(238 242 248 / 0.18);
-  --color-fg: #eef2f8;
-  --color-muted: #a0aec8;
-  --color-subtle: #8591a8;
-  --color-blue: #0077fe;
-  --color-blue-bright: #3d97ff;
-  --color-cyan: #00e5fc;
-  --color-violet: #a634fc;
-  --color-violet-deep: #811ffe;
-  --color-paper: #eef1f6;
-  --color-paper-2: #e2e6ee;
-  --color-paper-ink: #0a0c12;
-  --color-paper-muted: #48526a;
-  --color-danger: #ff7a8a;
-  --color-success: #4fe3b0;
+  /* Brand */
+  --color-forest: #183d32;
+  --color-forest-deep: #112c24;
+  --color-forest-soft: #e3ebe4;
+  --color-cream: #f5f0e6;
+  --color-orange: #c66a43;
+  --color-orange-strong: #b4532a;
+  --color-orange-deep: #9a4421;
+  --color-charcoal: #202521;
 
-  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* Semantic (light scheme) */
+  --color-ink: #f5f0e6;
+  --color-surface: #fffdf8;
+  --color-surface-2: #efe8da;
+  --color-surface-3: #e6ddcb;
+  --color-line: rgb(32 37 33 / 0.11);
+  --color-line-strong: rgb(32 37 33 / 0.22);
+  --color-fg: #202521;
+  --color-muted: #4f5650;
+  --color-subtle: #5c625c;
+  --color-brand: #183d32;
+  --color-on-brand: #f5f0e6;
+  --color-blue: #183d32;
+  --color-blue-bright: #2f6b57;
+  --color-cyan: #a04a20;
+  --color-violet: #c66a43;
+  --color-violet-deep: #b4532a;
+  --color-paper: #fffdf8;
+  --color-paper-2: #efe8da;
+  --color-paper-ink: #202521;
+  --color-paper-muted: #4f5650;
+  --color-danger: #b42318;
+  --color-success: #1e7a52;
+
+  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1rem;
+  --shadow-card: 0 1px 2px rgb(32 37 33 / 0.04), 0 8px 24px -12px rgb(32 37 33 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(32 37 33 / 0.04), 0 24px 48px -24px rgb(24 61 50 / 0.32);
 
   --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 
   --breakpoint-xs: 26rem;
+}
+
+/* Forest-green scheme for featured bands, the closing call to action and the footer.
+   In the base layer, so background utilities on the same element still win. */
+@layer base {
+.theme-forest {
+  --color-ink: #183d32;
+  --color-surface: #1d4639;
+  --color-surface-2: #224f41;
+  --color-surface-3: #2a5b4b;
+  --color-line: rgb(245 240 230 / 0.14);
+  --color-line-strong: rgb(245 240 230 / 0.28);
+  --color-fg: #f5f0e6;
+  --color-muted: #c8d2cb;
+  --color-subtle: #b4c2b9;
+  --color-brand: #f5f0e6;
+  --color-on-brand: #183d32;
+  --color-blue: #f0915f;
+  --color-blue-bright: #f0915f;
+  --color-cyan: #f0915f;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.1), 0 12px 28px -16px rgb(0 0 0 / 0.45);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.1), 0 28px 56px -28px rgb(0 0 0 / 0.6);
+  background-color: var(--color-ink);
+  color: var(--color-fg);
+}
 }
 
 @utility container-page {
@@ -57,36 +105,39 @@
   }
 }
 
-/* Wide display face, echoing the extended letterforms of the wordmark */
+/* Refined serif display face for headings (Playfair Display). */
 @utility font-display-wide {
   font-family: var(--font-display);
-  font-variation-settings: "wdth" 118;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.012em;
+  font-optical-sizing: auto;
+  font-variant-numeric: lining-nums;
 }
 
-/* Spaced uppercase labels, echoing the logo tagline */
+/* Spaced uppercase labels */
 @utility eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
+  font-weight: 600;
   line-height: 1.2;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
-/* The signature gradient: used on thin accents only, never large fills */
+/* Accent rule: the logo's orange, used on thin accents only, never large fills. */
 @utility brand-gradient {
-  background-image: linear-gradient(110deg, #00e5fc 0%, #0077fe 46%, #a634fc 100%);
+  background-image: linear-gradient(110deg, #e0743f 0%, #c66a43 45%, #b4532a 100%);
 }
 
+/* Orange emphasis inside large headings (meets 3:1 for large text on cream). */
 @utility text-gradient {
-  background-image: linear-gradient(110deg, #00e5fc 0%, #3d97ff 42%, #b55cff 100%);
+  background-image: linear-gradient(110deg, #c25f35 0%, #a9481f 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
@@ -105,8 +156,8 @@ body {
 }
 
 ::selection {
-  background: rgb(0 119 254 / 0.45);
-  color: #fff;
+  background: rgb(198 106 67 / 0.28);
+  color: var(--color-charcoal);
 }
 
 :focus-visible {
@@ -274,7 +325,7 @@ p {
   .marquee { overflow-x: auto !important; -webkit-mask-image: none; mask-image: none; }
 }
 
-/* Subtle film grain on dark surfaces for depth, without gradients or glows */
+/* Subtle paper grain for depth, without gradients or glows */
 .grain {
   position: relative;
   isolation: isolate;
@@ -285,15 +336,15 @@ p {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.05;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 /* Fine construction grid used behind logo and identity visuals */
 .grid-lines {
   background-image:
-    linear-gradient(to right, rgb(238 242 248 / 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(238 242 248 / 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgb(32 37 33 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(32 37 33 / 0.06) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
@@ -478,8 +529,8 @@ p {
 /* Editorial statement: words light up as the paragraph scrolls through the viewport. */
 @supports (animation-timeline: view()) {
   @keyframes word-light {
-    from { color: rgb(238 242 248 / 0.18); }
-    to { color: rgb(238 242 248 / 1); }
+    from { color: color-mix(in srgb, var(--color-fg) 20%, transparent); }
+    to { color: var(--color-fg); }
   }
   .scroll-words > span {
     animation: word-light linear both;
@@ -495,7 +546,7 @@ p {
   inset: 0;
   z-index: -1;
   border-radius: inherit;
-  background: var(--fill, #0a5fd8);
+  background: var(--fill, var(--color-forest));
   transform: scaleX(0);
   transform-origin: right center;
   transition: transform var(--dur-slow) var(--ease-out-quint);
@@ -507,7 +558,7 @@ p {
 @media (prefers-reduced-motion: reduce) {
   .ambient, .word-mask > .word, .rotator .ch { animation: none !important; }
   .depth { transform: none !important; }
-  .scroll-words > span { animation: none !important; color: rgb(238 242 248) !important; }
+  .scroll-words > span { animation: none !important; color: var(--color-fg) !important; }
 }
 /* Text turns white just after the fill starts moving, so it never sits white-on-white. */
 .btn-fill {

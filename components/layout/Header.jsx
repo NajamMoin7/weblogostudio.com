@@ -76,7 +76,7 @@ export default function Header({ logo }) {
   const surface = menuOpen
     ? "border-line bg-ink"
     : scrolled
-      ? "border-line bg-ink/85 backdrop-blur-md"
+      ? "border-line bg-ink/90 shadow-[0_6px_24px_-18px_rgb(32_37_33/0.35)] backdrop-blur-md"
       : "border-transparent bg-ink";
 
   return (
@@ -96,14 +96,14 @@ export default function Header({ logo }) {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={`group/nav relative block px-3.5 py-2 text-[0.92rem] transition-colors duration-150 ${
-                      active ? "text-fg" : "text-muted hover:text-fg"
+                      active ? "font-medium text-brand" : "font-medium text-fg/80 hover:text-brand"
                     }`}
                   >
                     {item.label}
                     {!active && (
                       <span
                         aria-hidden="true"
-                        className="absolute inset-x-3.5 -bottom-px h-px origin-left scale-x-0 bg-fg/40 transition-transform duration-300 ease-out-quint group-hover/nav:scale-x-100"
+                        className="absolute inset-x-3.5 -bottom-px h-px origin-left scale-x-0 bg-orange/60 transition-transform duration-300 ease-out-quint group-hover/nav:scale-x-100"
                       />
                     )}
                     <PendingHint />
@@ -131,7 +131,7 @@ export default function Header({ logo }) {
           <button
             ref={toggleRef}
             type="button"
-            className="-mr-2 grid size-11 place-items-center rounded-md text-fg transition-colors hover:bg-white/5 lg:hidden"
+            className="-mr-2 grid size-11 place-items-center rounded-md text-fg transition-colors hover:bg-fg/5 lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -179,7 +179,7 @@ export default function Header({ logo }) {
                         href={item.href}
                         aria-current={active ? "page" : undefined}
                         className={`font-display-wide flex items-center justify-between border-b border-line py-4 text-[1.7rem] font-semibold ${
-                          active ? "text-fg" : "text-muted"
+                          active ? "text-brand" : "text-fg/75"
                         }`}
                       >
                         {item.label}

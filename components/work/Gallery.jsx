@@ -85,7 +85,7 @@ export default function Gallery({ images, title, background }) {
       <dialog
         ref={dialogRef}
         aria-label={`${title} gallery`}
-        className="m-0 h-dvh max-h-none w-screen max-w-none bg-ink/95 p-0 text-fg backdrop:bg-ink/80 backdrop:backdrop-blur-sm"
+        className="m-0 h-dvh max-h-none w-screen max-w-none theme-forest bg-ink/[0.97] p-0 text-fg backdrop:bg-forest-deep/80 backdrop:backdrop-blur-sm"
         onClick={(e) => e.target === dialogRef.current && close()}
       >
         <div className="flex h-full flex-col">

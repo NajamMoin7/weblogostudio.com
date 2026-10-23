@@ -46,7 +46,7 @@ export default function BeforeAfter({ before, after, labelBefore = "Before", lab
       <span className="pointer-events-none absolute left-3 top-3 rounded-sm bg-ink/80 px-2 py-1 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-fg">
         {labelBefore}
       </span>
-      <span className="pointer-events-none absolute right-3 top-3 rounded-sm bg-fg px-2 py-1 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-ink">
+      <span className="pointer-events-none absolute right-3 top-3 rounded-md bg-forest px-2 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-cream">
         {labelAfter}
       </span>
 

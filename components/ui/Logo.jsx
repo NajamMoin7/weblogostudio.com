@@ -1,23 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import wordmark from "@/public/brand/logo-wordmark.png";
+import horizontal from "@/public/brand/logo-horizontal.png";
 import lockup from "@/public/brand/logo-lockup.png";
+import mark from "@/public/brand/logo-mark.png";
 
 /**
- * The real Web Logo Studio logo, extracted from logo/logo.jpeg with a transparent background.
- * `variant="wordmark"` (WEBLOGO + STUDIO) suits the header, where the tagline would be too small to read.
- * `variant="lockup"` is the complete logo including "Brands for a brighter web".
- * Proportions are always preserved: callers set a height and the width follows.
+ * The approved Web Logo Studio logo, built from logo/logo.jpeg by `npm run brand:assets`
+ * (transparent background, artwork colours untouched).
+ * - `horizontal` (default): the mark beside the "Weblogo Studio" wordmark, for the header.
+ * - `lockup`: the master logo, mark above wordmark.
+ * - `mark`: the W/L monogram alone.
+ * The artwork is designed for light backgrounds; on forest green, place it on a cream panel.
+ * Proportions are always preserved: callers set a height (or width) and the other follows.
  */
-export default function Logo({ variant = "wordmark", className = "h-9 w-auto", priority = false, link = true }) {
-  const src = variant === "lockup" ? lockup : wordmark;
+const sources = { horizontal, lockup, mark };
+const sizes = { horizontal: "256px", lockup: "320px", mark: "96px" };
+
+export default function Logo({ variant = "horizontal", className = "h-9 w-auto", priority = false, link = true }) {
   const img = (
     <Image
-      src={src}
+      src={sources[variant] ?? horizontal}
       alt="Web Logo Studio"
       priority={priority}
       className={className}
-      sizes={variant === "lockup" ? "320px" : "180px"}
+      sizes={sizes[variant] ?? sizes.horizontal}
     />
   );
   if (!link) return img;

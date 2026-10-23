@@ -18,8 +18,8 @@ export default function NotFound() {
   return (
     <section className="grain relative overflow-hidden">
       <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-[12%] hidden w-40 md:block">
-        <span className="brand-gradient absolute -top-10 left-0 h-[140%] w-3 -skew-x-[24deg]" />
-        <span className="absolute -top-10 left-14 h-[140%] w-3 -skew-x-[24deg] bg-fg/10" />
+        <span className="absolute -top-10 left-0 h-[140%] w-8 -skew-x-[24deg] bg-forest/90" />
+        <span className="brand-gradient absolute -top-10 left-14 h-[140%] w-8 -skew-x-[24deg]" />
       </div>
       <div className="container-page relative flex min-h-[72vh] flex-col justify-center py-24">
         <p className="eyebrow text-muted">Error 404</p>

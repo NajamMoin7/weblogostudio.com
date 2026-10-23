@@ -15,10 +15,11 @@ import { useHeroMotion } from "./HeroMotion";
  *   and when the hero is off screen.
  */
 
+// The logo orange, from light to deep (all at least 3:1 on cream for large text).
 const STOPS = [
-  [0, 229, 252],
-  [0, 119, 254],
-  [166, 52, 252],
+  [200, 98, 56],
+  [180, 83, 42],
+  [154, 68, 33],
 ];
 
 function gradientAt(t) {
@@ -27,8 +28,7 @@ function gradientAt(t) {
   const a = STOPS[seg];
   const b = STOPS[seg + 1];
   const c = a.map((v, i) => Math.round(v + (b[i] - v) * local));
-  // Lift lightness a little so text stays bright on black.
-  return `rgb(${c.map((v) => Math.min(255, v + 34)).join(" ")})`;
+  return `rgb(${c.join(" ")})`;
 }
 
 function Words({ lines, animate }) {

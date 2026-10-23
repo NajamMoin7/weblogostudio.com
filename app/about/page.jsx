@@ -35,10 +35,10 @@ const principles = [
 ];
 
 const brandColours = [
-  ["Electric blue", "#0077FE"],
-  ["Signal cyan", "#00E5FC"],
-  ["Ultraviolet", "#A634FC"],
-  ["Logo white", "#EEF2F8"],
+  ["Forest green", "#183D32"],
+  ["Cream", "#F5F0E6"],
+  ["Accent orange", "#C66A43"],
+  ["Dark text", "#202521"],
 ];
 
 export default function AboutPage() {
@@ -76,23 +76,23 @@ export default function AboutPage() {
 
       <section aria-labelledby="identity-title" className="border-y border-line bg-surface py-20 lg:py-28">
         <div className="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
-          <div className="grain grid-lines relative grid aspect-[16/10] place-items-center overflow-hidden rounded-2xl border border-line bg-ink p-10 lg:col-span-7">
-            <Logo variant="lockup" link={false} className="h-auto w-[78%] max-w-lg" />
+          <div className="grain grid-lines relative grid aspect-[16/10] place-items-center overflow-hidden rounded-3xl border border-line bg-surface p-10 shadow-card lg:col-span-7">
+            <Logo variant="lockup" link={false} className="h-auto w-[62%] max-w-md" />
           </div>
           <div className="lg:col-span-5">
             <SectionHeading
               id="identity-title"
               eyebrow="Our own identity"
               title="We hold our brand to the same standard."
-              intro="The interlocking ribbons of the W and the gradient L represent the two halves of our work, web and logo, meeting in one mark. This website takes its palette directly from it."
+              intro="The forest-green W and the orange and charcoal L represent the two halves of our work, web and logo, meeting in one mark. This website takes its palette directly from it."
             />
             <ul className="mt-8 grid grid-cols-2 gap-3">
               {brandColours.map(([name, hex]) => (
-                <li key={hex} className="flex items-center gap-3 rounded-lg border border-line p-3">
+                <li key={hex} className="flex items-center gap-3 rounded-xl border border-line bg-ink p-3">
                   <span className="size-9 shrink-0 rounded-md border border-line-strong" style={{ background: hex }} />
                   <span>
                     <span className="block text-sm text-fg">{name}</span>
-                    <span className="font-mono text-xs text-subtle">{hex}</span>
+                    <span className="text-xs tabular-nums text-subtle">{hex}</span>
                   </span>
                 </li>
               ))}

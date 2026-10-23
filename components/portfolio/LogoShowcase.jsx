@@ -11,7 +11,7 @@ function LogoTile({ item }) {
   return (
     <Link
       href={`/portfolio/${item.slug}`}
-      className="group relative block size-36 overflow-hidden rounded-xl border border-line transition-[border-color,transform] duration-300 ease-out-quint hover:-translate-y-1 hover:border-line-strong sm:size-44"
+      className="group relative block size-36 overflow-hidden rounded-xl border border-line shadow-card transition-[border-color,transform,box-shadow] duration-300 ease-out-quint hover:-translate-y-1 hover:border-line-strong hover:shadow-lift sm:size-44"
       style={{ background: item.background ?? "#ffffff" }}
     >
       <Image
@@ -21,7 +21,7 @@ function LogoTile({ item }) {
         sizes="176px"
         className="object-contain transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
       />
-      <span className="absolute inset-x-0 bottom-0 translate-y-full bg-ink/85 px-3 py-2 text-[0.7rem] font-medium text-fg backdrop-blur-sm transition-transform duration-300 ease-out-quint group-hover:translate-y-0 group-focus-visible:translate-y-0">
+      <span className="absolute inset-x-0 bottom-0 translate-y-full bg-forest/90 px-3 py-2 text-[0.7rem] font-medium text-cream backdrop-blur-sm transition-transform duration-300 ease-out-quint group-hover:translate-y-0 group-focus-visible:translate-y-0">
         <span className="block truncate">{item.displayTitle}</span>
       </span>
     </Link>

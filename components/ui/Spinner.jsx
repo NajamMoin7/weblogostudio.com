@@ -1,5 +1,5 @@
 /**
- * Branded spinner: a track ring plus an arc in the logo gradient (cyan, blue, violet).
+ * Branded spinner: a track ring plus an arc in the logo orange.
  * Decorative by default; pass `label` to expose it to assistive technology.
  */
 export default function Spinner({ size = 16, label, className = "" }) {
@@ -15,9 +15,9 @@ export default function Spinner({ size = 16, label, className = "" }) {
       <svg viewBox="0 0 24 24" width={size} height={size} className="brand-spinner">
         <defs>
           <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#00e5fc" />
-            <stop offset="50%" stopColor="#0077fe" />
-            <stop offset="100%" stopColor="#a634fc" />
+            <stop offset="0%" stopColor="#e0743f" />
+            <stop offset="50%" stopColor="#c66a43" />
+            <stop offset="100%" stopColor="#b4532a" />
           </linearGradient>
         </defs>
         <circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" strokeOpacity="0.18" strokeWidth="2.5" />

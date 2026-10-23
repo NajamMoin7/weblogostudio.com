@@ -10,7 +10,7 @@ export default function PageHero({ breadcrumbs, eyebrow, title, intro, actions, 
           <div className={aside ? "lg:col-span-6" : "max-w-4xl"}>
             {eyebrow && (
               <p className="rise-in eyebrow mb-6 flex items-center gap-3 text-muted" style={{ "--i": 0 }}>
-                <span aria-hidden="true" className="brand-gradient h-px w-8" />
+                <span aria-hidden="true" className="brand-gradient h-0.5 w-8 rounded-full" />
                 {eyebrow}
               </p>
             )}

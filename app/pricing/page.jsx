@@ -36,7 +36,7 @@ export default function PricingPage() {
             <li key={c.id} className="shrink-0">
               <Link
                 href={`#${c.id}`}
-                className="block rounded-md px-3.5 py-2 text-sm text-muted transition-colors hover:bg-white/5 hover:text-fg"
+                className="block rounded-md px-3.5 py-2 text-sm text-muted transition-colors hover:bg-fg/5 hover:text-fg"
               >
                 {c.label}
               </Link>

@@ -126,7 +126,7 @@ export function HeroPauseButton({ className = "" }) {
       onClick={toggle}
       aria-pressed={userPaused}
       aria-label={userPaused ? "Play hero animation" : "Pause hero animation"}
-      className={`grid size-11 place-items-center rounded-full border border-line-strong bg-ink/60 text-fg backdrop-blur-sm transition-[background-color,color,border-color,transform] duration-200 ease-out-quint hover:border-fg hover:bg-fg hover:text-ink active:scale-95 ${className}`}
+      className={`grid size-11 place-items-center rounded-full border-[1.5px] border-line-strong bg-surface text-fg transition-[background-color,color,border-color,transform] duration-200 ease-out-quint hover:border-brand hover:bg-brand hover:text-on-brand active:scale-95 ${className}`}
     >
       {userPaused ? <Play aria-hidden="true" className="size-4" /> : <Pause aria-hidden="true" className="size-4" />}
     </button>

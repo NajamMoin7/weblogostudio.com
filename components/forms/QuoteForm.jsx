@@ -131,7 +131,7 @@ export default function QuoteForm({ serviceOptions }) {
                         <span
                           aria-hidden="true"
                           className={`grid size-4 shrink-0 place-items-center rounded-[4px] border transition-colors duration-150 ${
-                            checked ? "border-cyan bg-cyan text-ink" : "border-fg/30"
+                            checked ? "border-orange-strong bg-orange-strong text-white" : "border-fg/30"
                           }`}
                         >
                           {checked && <Check className="size-3" strokeWidth={3} />}

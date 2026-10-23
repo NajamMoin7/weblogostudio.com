@@ -104,20 +104,20 @@ export default function WorkGrid({ items, categories }) {
                   type="button"
                   aria-pressed={on}
                   onClick={() => chooseCategory(f.id)}
-                  className={`relative inline-flex h-10 items-center gap-2 rounded-md px-4 text-sm transition-colors duration-200 active:scale-[0.97] ${
-                    on ? "text-ink" : "border border-line-strong text-muted hover:border-fg/40 hover:text-fg"
+                  className={`relative inline-flex h-10 items-center gap-2 rounded-full px-4 text-sm font-medium transition-colors duration-200 active:scale-[0.97] ${
+                    on ? "text-cream" : "border border-line-strong bg-surface text-muted hover:border-brand/40 hover:text-brand"
                   }`}
                 >
                   {on && (
                     <motion.span
                       layoutId="work-filter-pill"
                       aria-hidden="true"
-                      className="absolute inset-0 rounded-md bg-fg"
+                      className="absolute inset-0 rounded-full bg-forest"
                       transition={{ type: "spring", duration: 0.4, bounce: 0.12 }}
                     />
                   )}
                   <span className="relative">{f.label}</span>
-                  <span className={`relative font-mono text-[0.7rem] ${on ? "text-ink/60" : "text-subtle"}`}>{counts[f.id] ?? 0}</span>
+                  <span className={`relative font-mono text-[0.7rem] ${on ? "text-cream/75" : "text-subtle"}`}>{counts[f.id] ?? 0}</span>
                 </button>
               );
             })}
@@ -131,7 +131,7 @@ export default function WorkGrid({ items, categories }) {
             value={query}
             onChange={(e) => onSearch(e.target.value)}
             placeholder="Search projects or industries"
-            className="h-10 w-full rounded-md border border-line-strong bg-ink pl-10 pr-9 text-sm text-fg placeholder:text-subtle/80 transition-[border-color,box-shadow] duration-150 hover:border-fg/30 focus:border-cyan focus:outline-none focus:ring-4 focus:ring-cyan/15"
+            className="h-10 w-full rounded-full border border-line-strong bg-surface pl-10 pr-9 text-sm text-fg placeholder:text-subtle/80 transition-[border-color,box-shadow] duration-150 hover:border-fg/30 focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/15"
           />
           {query && (
             <button
@@ -166,7 +166,7 @@ export default function WorkGrid({ items, categories }) {
                     aria-pressed={on}
                     onClick={() => chooseIndustry(name)}
                     className={`inline-flex h-8 shrink-0 items-center gap-1.5 rounded-full border px-3 text-xs transition-colors duration-200 ${
-                      on ? "border-cyan bg-cyan/10 text-fg" : "border-line text-muted hover:border-fg/30 hover:text-fg"
+                      on ? "border-orange-strong bg-orange/10 text-fg" : "border-line bg-surface text-muted hover:border-brand/30 hover:text-brand"
                     }`}
                   >
                     {name === "all" ? "All industries" : name}

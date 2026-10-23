@@ -76,7 +76,7 @@ export default async function WorkPage({ params }) {
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
               <p className="rise-in eyebrow flex items-center gap-3 text-muted" style={{ "--i": 0 }}>
-                <span aria-hidden="true" className="brand-gradient h-px w-8" />
+                <span aria-hidden="true" className="brand-gradient h-0.5 w-8 rounded-full" />
                 {category.label}
                 {item.subcategory ? ` · ${item.subcategory}` : ""}
               </p>

@@ -36,7 +36,7 @@ export default function SectionHeading({
     <div className={`${centered ? "mx-auto text-center" : ""} max-w-3xl ${className}`}>
       {eyebrow && (
         <p className={`reveal eyebrow mb-5 flex items-center gap-3 ${muted} ${centered ? "justify-center" : ""}`}>
-          <span aria-hidden="true" className="brand-gradient h-px w-8" />
+          <span aria-hidden="true" className="brand-gradient h-0.5 w-8 rounded-full" />
           {eyebrow}
         </p>
       )}

@@ -46,7 +46,7 @@ export default function ServiceShowcase({ items }) {
                     <Image src={item.image.src} alt="" fill sizes="64px" className="object-cover" />
                   </span>
                 )}
-                <span className="hidden font-mono text-xs text-subtle lg:inline">{String(i + 1).padStart(2, "0")}</span>
+                <span className="hidden text-xs font-semibold tabular-nums text-subtle lg:inline">{String(i + 1).padStart(2, "0")}</span>
                 <span className="min-w-0 flex-1">
                   <span
                     className={`font-display-wide block text-[clamp(1.25rem,2.4vw,2rem)] font-semibold leading-tight transition-[color,transform] duration-300 ease-out-quint ${
@@ -62,7 +62,7 @@ export default function ServiceShowcase({ items }) {
                 <span
                   aria-hidden="true"
                   className={`grid size-10 shrink-0 place-items-center rounded-full border transition-[background-color,color,border-color,transform] duration-300 ease-out-quint ${
-                    on ? "-rotate-45 border-fg bg-fg text-ink" : "border-line-strong text-muted group-hover:border-fg/50"
+                    on ? "-rotate-45 border-orange-strong bg-orange-strong text-white" : "border-line-strong text-muted group-hover:border-brand/50"
                   }`}
                 >
                   <ArrowRight className="size-4" />
@@ -76,7 +76,7 @@ export default function ServiceShowcase({ items }) {
       {/* Desktop preview */}
       <div className="hidden lg:col-span-5 lg:block">
         <div className="sticky top-28">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-line bg-surface">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-line bg-forest shadow-lift">
             {items.map((item, i) =>
               item.image ? (
                 <Image
@@ -93,16 +93,16 @@ export default function ServiceShowcase({ items }) {
                 />
               ) : null,
             )}
-            <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_top,rgb(5_6_8/0.92),rgb(5_6_8/0.1)_55%)]" />
-            <div className="absolute inset-x-0 bottom-0 p-7">
-              <span className="grid size-11 place-items-center rounded-lg border border-white/20 bg-ink/60 text-cyan backdrop-blur-sm">
+            <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_top,rgb(17_44_36/0.94),rgb(17_44_36/0.08)_58%)]" />
+            <div className="theme-forest absolute inset-x-0 bottom-0 bg-transparent p-7">
+              <span className="grid size-11 place-items-center rounded-full bg-orange-strong text-white">
                 <ServiceIcon name={current.icon} />
               </span>
               <p className="font-display-wide mt-5 text-2xl font-semibold text-fg">{current.title}</p>
               <p className="mt-2 max-w-sm leading-relaxed text-muted">{current.summary}</p>
             </div>
           </div>
-          <p className="mt-3 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-subtle">Photography: Unsplash</p>
+          <p className="mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-subtle">Photography: Unsplash</p>
         </div>
       </div>
     </div>

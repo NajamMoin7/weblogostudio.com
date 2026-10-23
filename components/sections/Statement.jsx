@@ -18,10 +18,10 @@ export default function Statement() {
     <section aria-labelledby="statement-title" className="relative border-t border-line py-24 lg:py-40">
       <div className="container-page">
         <h2 id="statement-title" className="eyebrow mb-10 flex items-center gap-3 text-muted">
-          <span aria-hidden="true" className="brand-gradient h-px w-8" />
+          <span aria-hidden="true" className="brand-gradient h-0.5 w-8 rounded-full" />
           Why it matters
         </h2>
-        <p className="scroll-words font-display-wide max-w-6xl text-[clamp(1.9rem,4.6vw,4.2rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-fg">
+        <p className="scroll-words font-display-wide max-w-6xl text-[clamp(1.9rem,4.6vw,4.2rem)] font-semibold leading-[1.08] text-fg">
           {words.map((w, i) => (
             <span key={i}>
               {w}

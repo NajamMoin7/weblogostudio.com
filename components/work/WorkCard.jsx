@@ -32,7 +32,7 @@ export default function WorkCard({ item, sizes = "(min-width: 1280px) 25vw, (min
       className="group block rounded-xl transition-transform duration-300 ease-out-quint hover:-translate-y-1 focus-visible:-translate-y-1"
     >
       <div
-        className="relative overflow-hidden rounded-xl border border-line bg-surface-2 transition-[border-color,box-shadow] duration-300 ease-out-quint group-hover:border-line-strong group-hover:shadow-[0_28px_60px_-34px_rgb(0_0_0/0.95)]"
+        className="relative overflow-hidden rounded-xl border border-line bg-surface shadow-card transition-[border-color,box-shadow] duration-300 ease-out-quint group-hover:border-line-strong group-hover:shadow-lift"
         style={{ aspectRatio: frame.aspectRatio, background: item.bg ?? undefined }}
       >
         <Image
@@ -45,16 +45,16 @@ export default function WorkCard({ item, sizes = "(min-width: 1280px) 25vw, (min
         />
         <span
           aria-hidden="true"
-          className="absolute right-3 top-3 grid size-9 place-items-center rounded-full bg-ink/80 text-fg backdrop-blur-sm transition-[opacity,transform,background-color,color] duration-300 ease-out-quint [@media(hover:hover)]:translate-y-1 [@media(hover:hover)]:opacity-0 group-hover:translate-y-0 group-hover:bg-fg group-hover:text-ink group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
+          className="absolute right-3 top-3 grid size-9 place-items-center rounded-full bg-orange-strong text-white shadow-card transition-[opacity,transform,background-color,color] duration-300 ease-out-quint [@media(hover:hover)]:translate-y-1 [@media(hover:hover)]:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
         >
           <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:rotate-45" />
         </span>
       </div>
       <div className="mt-3 flex items-baseline justify-between gap-3 px-0.5">
-        <Heading className="min-w-0 truncate text-[0.95rem] font-medium text-fg transition-colors duration-200 group-hover:text-white">
+        <Heading className="min-w-0 truncate text-[0.95rem] font-semibold text-fg transition-colors duration-200 group-hover:text-cyan">
           {item.title}
         </Heading>
-        <span className="shrink-0 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-subtle transition-colors duration-200 group-hover:text-cyan">
+        <span className="shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-subtle">
           {item.subcategory && item.category === "logos" ? item.subcategory.split(/[,&]/)[0].trim() : label}
         </span>
       </div>

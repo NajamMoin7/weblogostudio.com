@@ -3,7 +3,7 @@ import { testimonials } from "@/data/testimonials";
 
 export function TestimonialCard({ testimonial }) {
   return (
-    <figure className="flex h-full flex-col justify-between rounded-xl border border-line bg-surface p-8">
+    <figure className="flex h-full flex-col justify-between rounded-2xl border border-line bg-surface p-8 shadow-card">
       <blockquote className="text-lg leading-relaxed text-fg">
         <p>“{testimonial.quote}”</p>
       </blockquote>

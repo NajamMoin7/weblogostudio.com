@@ -1,4 +1,4 @@
-import { Archivo, Geist, Geist_Mono } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -8,21 +8,15 @@ import JsonLd from "@/components/ui/JsonLd";
 import RevealObserver from "@/components/motion/RevealObserver";
 import { siteConfig, absoluteUrl } from "@/lib/site";
 
-const archivo = Archivo({
-  variable: "--font-archivo",
-  subsets: ["latin"],
-  axes: ["wdth"],
-  display: "swap",
-});
-
-const geist = Geist({
-  variable: "--font-geist",
+// Headings: Playfair Display (refined serif). Body and UI: Inter. Both are variable fonts.
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -52,8 +46,8 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#050608",
-  colorScheme: "dark",
+  themeColor: "#f5f0e6",
+  colorScheme: "light",
 };
 
 const organizationJsonLd = {
@@ -82,7 +76,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${geist.variable} ${geistMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         {/* Enables scroll-reveal hidden states before first paint. Without JavaScript, content stays visible. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add(\"reveal-on\")" }} />
@@ -96,7 +90,7 @@ export default function RootLayout({ children }) {
         </a>
         <div id="scroll-sentinel" aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-2" />
         <MotionProvider>
-          <Header logo={<Logo priority className="h-8 w-auto sm:h-9" />} />
+          <Header logo={<Logo priority className="h-10 w-auto sm:h-[3.15rem]" />} />
           <main id="main" className="flex-1">
             {children}
           </main>

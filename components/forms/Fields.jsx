@@ -1,9 +1,9 @@
 import { ChevronDown } from "lucide-react";
 
 export const controlClasses = (error) =>
-  `w-full rounded-md border bg-ink px-4 text-fg placeholder:text-subtle/80 transition-[border-color,box-shadow] duration-150 ` +
+  `w-full rounded-lg border bg-surface px-4 text-fg placeholder:text-subtle/80 transition-[border-color,box-shadow] duration-150 ` +
   `focus:outline-none focus-visible:outline-none focus:ring-4 ` +
-  (error ? "border-danger focus:border-danger focus:ring-danger/15" : "border-line-strong hover:border-fg/30 focus:border-cyan focus:ring-cyan/15");
+  (error ? "border-danger focus:border-danger focus:ring-danger/15" : "border-line-strong hover:border-fg/35 focus:border-brand focus:ring-brand/15");
 
 export function describedBy(id, { hint, error }) {
   return [hint && `${id}-hint`, error && `${id}-error`].filter(Boolean).join(" ") || undefined;
@@ -94,7 +94,7 @@ export function ConsentField({ id = "consent", checked, onChange, error }) {
           onChange={onChange}
           aria-invalid={Boolean(error)}
           aria-describedby={describedBy(id, { error })}
-          className="mt-0.5 size-5 shrink-0 cursor-pointer rounded accent-[#00e5fc]"
+          className="mt-0.5 size-5 shrink-0 cursor-pointer rounded accent-[#b4532a]"
         />
         <label htmlFor={id} className="cursor-pointer text-sm leading-relaxed text-muted">
           I have read the{" "}

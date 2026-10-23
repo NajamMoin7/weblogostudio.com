@@ -13,7 +13,7 @@ export default function FeaturedWork() {
   items.sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug));
 
   return (
-    <section aria-labelledby="work-title" className="overflow-hidden border-t border-line py-20 lg:py-32">
+    <section aria-labelledby="work-title" className="theme-forest overflow-hidden py-20 lg:py-32">
       <div className="container-page">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading

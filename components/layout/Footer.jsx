@@ -36,18 +36,21 @@ export default function Footer() {
   const { email, phone } = siteConfig.contact;
 
   return (
-    <footer className="grain border-t border-line bg-surface">
+    <footer className="theme-forest grain">
       <div className="container-page pb-10 pt-16 lg:pt-20">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Logo variant="lockup" className="h-auto w-56" />
+            {/* The logo artwork is made for light backgrounds, so it sits on a cream panel here. */}
+            <div className="inline-flex rounded-xl bg-cream px-6 py-5 shadow-card">
+              <Logo variant="lockup" className="h-auto w-44" />
+            </div>
             <p className="mt-6 max-w-sm leading-relaxed text-muted">
               Websites, logos and brand identities for businesses that want to look credible, stand apart and grow
               online.
             </p>
             <Link
               href="/get-a-quote"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-fg underline decoration-line-strong underline-offset-[6px] transition-colors hover:decoration-cyan"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-fg underline decoration-cyan/70 underline-offset-[6px] transition-colors decoration-[1.5px] hover:decoration-cyan"
             >
               Start a project
             </Link>
