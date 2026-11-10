@@ -1,0 +1,122 @@
+{
+  "title": "Choose the visual world for Web Logo Studio",
+  "question": "The roll assigned the Type Specimen direction. Keep it, take an alternate, or re-roll. Applies to the main site and /99.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Type Specimen",
+      "kicker": "THE ROLL",
+      "lineage": "Foundry specimen sheets: one face shown at every size it must survive",
+      "thesis": "The studio's work set like a foundry specimen: every logo and site proven at every size, billboard to favicon.",
+      "palette": ["#FBFBF8", "#141815", "#0B4F3C", "#F26A1B"],
+      "materials": ["bright specimen paper, rich black ink", "one variable grotesk (Archivo) swinging condensed to expanded", "size ladders, point-size captions, sheet numbers"],
+      "viewport": "Sheet header with sheet no. and live ET clock; the offer set as a size ladder on the left; a real portfolio logo shown at five sizes on the right; quote button under the ladder.",
+      "risk": "Turns into a dry type poster if the real work does not carry the specimen.",
+      "raised": [
+        {"from": "challenger-broadcast", "raise": "A live ET studio clock is locked to one corner and says whether the 2-hour concept clock is running now."},
+        {"from": "challenger-pattern", "raise": "One orange marking ink traces only the path the visitor commits to: the pay button, the active step, the chosen filter."},
+        {"from": "challenger-kit", "raise": "Home and away colorways: paper sections and inverse green sections swap ground while the logo stays untouched."},
+        {"from": "challenger-daylight", "raise": "Tabular time stamps annotate the process: 0:00 pay, 0:05 send info, 2:00 first concept."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Printer's Proof",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "The approval proof a print or sign shop sends before anything is produced",
+      "thesis": "Every project is a proof waiting for the client's sign-off: concept, approve, go live.",
+      "palette": ["#FFFFFF", "#16191A", "#0B4F3C", "#E8501C", "#00A3D9"],
+      "materials": ["crop marks and registration targets", "CMYK colour bars", "job ticket and APPROVED stamp boxes"],
+      "viewport": "A proof sheet with crop marks framing the headline, a job ticket listing $99 / 2 hrs / 2 rounds, and the pay button set in the approval box.",
+      "risk": "Crop marks and registration targets are a familiar design-studio motif; most runs in this category land near here."
+    },
+    {
+      "id": "challenger-riso",
+      "label": "Risograph Print",
+      "verdict": "competitive",
+      "lineage": "Riso-printed flyers and zines: spot inks misregistered on toothy paper",
+      "thesis": "The studio as a print shop: two spot inks, slightly out of register, layered over warm paper.",
+      "palette": ["#F3EFE6", "#0B4F3C", "#FF6B2C", "#1C2A4A"],
+      "materials": ["two spot inks that multiply where they overlap", "halftone grain", "cut-paper blocks"],
+      "viewport": "Large cut-paper headline in green and orange ink layers, portfolio pieces printed as overlapping spot-ink cards.",
+      "case": "Fuses well and feels made by hand; loses on clarity for growing companies who want precision.",
+      "risk": "Reads indie-zine to a law firm or mortgage broker."
+    },
+    {
+      "id": "challenger-pattern",
+      "label": "Sewing Pattern Envelope",
+      "verdict": "declined",
+      "lineage": "Home sewing patterns: views A/B/C, yardage tables, dashed cutting lines",
+      "thesis": "Packages as views on an envelope, the brief as a cutting layout.",
+      "palette": ["#E9DFC8", "#1A1A1A", "#C8322A"],
+      "materials": ["manila tissue", "dashed drafting marks"],
+      "viewport": "Envelope front indexing website, logo and brand as views A, B and C.",
+      "case": "Business owners don't identify with it, and it blurs what the studio sells.",
+      "risk": "Costume, not a system.",
+      "kept": "One marking ink traces only the committed path."
+    },
+    {
+      "id": "challenger-broadcast",
+      "label": "Emergency Broadcast",
+      "verdict": "declined",
+      "lineage": "Colour bars, alert cards and a timecode in the corner",
+      "thesis": "The studio as the only channel left on air.",
+      "palette": ["#0A0A0A", "#F2F2F2", "#E8E000", "#00B7E8"],
+      "materials": ["tape noise", "colour bars"],
+      "viewport": "Alert card headline with a crawl along the foot.",
+      "case": "Alarming tone and noise hurt trust and LCP for paid traffic.",
+      "risk": "Reads as glitch art.",
+      "kept": "A live clock locked to one corner."
+    },
+    {
+      "id": "challenger-kit",
+      "label": "Football Kit Wall",
+      "verdict": "declined",
+      "lineage": "Crests, drop-shadow numbers, home and away colorways",
+      "thesis": "Every client brand as a kit, crest over the heart.",
+      "palette": ["#0B4F3C", "#FFFFFF", "#D4A43A"],
+      "materials": ["polyester weave", "embroidered crest"],
+      "viewport": "A shirt back with the offer as the number.",
+      "case": "Off-subject for most clients; clarity suffers.",
+      "risk": "Sports novelty.",
+      "kept": "Home and away colorway logic."
+    },
+    {
+      "id": "challenger-daylight",
+      "label": "Daylight Section",
+      "verdict": "declined",
+      "lineage": "Architectural sections tracing a sunbeam through rooms",
+      "thesis": "Time of day as the page's structure.",
+      "palette": ["#F4F1EA", "#2B2B2B", "#E9B44C", "#5C7CA3"],
+      "materials": ["limewash", "section poche"],
+      "viewport": "A building section with the 2-hour clock as the sunbeam.",
+      "case": "Beautiful but abstract; the offer gets lost.",
+      "risk": "Architecture-portfolio cosplay.",
+      "kept": "Tabular time stamps as annotation."
+    },
+    {
+      "id": "challenger-terminal",
+      "label": "Phosphor Terminal",
+      "verdict": "declined",
+      "lineage": "Green-phosphor terminals",
+      "thesis": "The studio as a transcript.",
+      "palette": ["#050805", "#33FF66"],
+      "materials": ["scanline glow"],
+      "viewport": "A typed transcript ending in a pay prompt.",
+      "case": "Tool costume; hostile to local-business owners.",
+      "risk": "Hacker cliché.",
+      "kept": "States print themselves as set text, not badges."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A clean modern agency site: big sans headline, portfolio grid, one accent CTA.",
+    "palette": ["#FFFFFF", "#0F1412", "#0B4F3C"],
+    "materials": ["clean grid", "portfolio thumbnails"],
+    "viewport": "Headline and two buttons left, featured project right, logo strip below.",
+    "risk": "Indistinguishable from every other studio by design."
+  },
+  "steer": true
+}

@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   experimental: {
     agentFeedback: true,
   },
@@ -14,6 +13,10 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
+  },
+  // The pricing page was retired; send old links and bookmarks to the quote form.
+  async redirects() {
+    return [{ source: "/pricing", destination: "/get-a-quote", permanent: true }];
   },
 };
 

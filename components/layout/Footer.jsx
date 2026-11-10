@@ -3,7 +3,7 @@ import { cacheLife } from "next/cache";
 import Logo from "@/components/ui/Logo";
 import { mainNav, legalNav } from "@/data/navigation";
 import { getServicesByGroup, serviceHref } from "@/data/services";
-import { siteConfig } from "@/lib/site";
+import { addressLines, mapsUrl, siteConfig } from "@/lib/site";
 
 async function CurrentYear() {
   "use cache";
@@ -15,15 +15,19 @@ function FooterColumn({ title, children }) {
   return (
     <div>
       <h2 className="eyebrow mb-5 text-subtle">{title}</h2>
-      <ul className="space-y-3 text-[0.95rem]">{children}</ul>
+      <ul className="space-y-2.5 text-[0.95rem]">{children}</ul>
     </div>
   );
 }
 
-function FooterLink({ href, children }) {
+function FooterLink({ href, children, external }) {
   return (
     <li>
-      <Link href={href} className="text-muted transition-colors duration-150 hover:text-fg">
+      <Link
+        href={href}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        className="text-muted underline-offset-4 transition-colors duration-150 hover:text-fg hover:underline"
+      >
         {children}
       </Link>
     </li>
@@ -33,37 +37,42 @@ function FooterLink({ href, children }) {
 export default function Footer() {
   const webServices = getServicesByGroup("web");
   const otherServices = [...getServicesByGroup("brand"), ...getServicesByGroup("growth")];
-  const { email, phone } = siteConfig.contact;
+  const { email, phone, phoneHref } = siteConfig.contact;
 
   return (
-    <footer className="theme-forest grain">
-      <div className="container-page pb-10 pt-16 lg:pt-20">
+    <footer className="theme-forest">
+      <div className="container-page pb-10 pt-16 lg:pt-24">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            {/* The logo artwork is made for light backgrounds, so it sits on a cream panel here. */}
-            <div className="inline-flex rounded-xl bg-cream px-6 py-5 shadow-card">
-              <Logo variant="lockup" className="h-auto w-44" />
-            </div>
-            <p className="mt-6 max-w-sm leading-relaxed text-muted">
-              Websites, logos and brand identities for businesses that want to look credible, stand apart and grow
-              online.
-            </p>
-            <Link
-              href="/get-a-quote"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-fg underline decoration-cyan/70 underline-offset-[6px] transition-colors decoration-[1.5px] hover:decoration-cyan"
-            >
-              Start a project
-            </Link>
+            <Logo variant="lockupWhite" className="h-auto w-48 sm:w-56" />
+            <address className="mt-8 not-italic leading-relaxed text-muted">
+              <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="block transition-colors hover:text-fg">
+                {addressLines.map((l) => (
+                  <span key={l} className="block">
+                    {l}
+                  </span>
+                ))}
+              </a>
+              <a href={phoneHref} className="font-display-wide mt-4 block text-3xl font-bold text-fg transition-colors hover:text-cyan">
+                {phone}
+              </a>
+              {email && (
+                <a href={`mailto:${email}`} className="mt-2 block break-all transition-colors hover:text-fg">
+                  {email}
+                </a>
+              )}
+            </address>
           </div>
 
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-4 lg:col-span-8">
             <FooterColumn title="Studio">
+              <FooterLink href="/">Home</FooterLink>
               {mainNav.map((item) => (
                 <FooterLink key={item.href} href={item.href}>
                   {item.label}
                 </FooterLink>
               ))}
-              <FooterLink href="/faq">FAQ</FooterLink>
+              <FooterLink href="/get-a-quote">Get a quote</FooterLink>
             </FooterColumn>
 
             <FooterColumn title="Websites">
@@ -74,7 +83,7 @@ export default function Footer() {
               ))}
             </FooterColumn>
 
-            <FooterColumn title="Brand & Growth">
+            <FooterColumn title="Brand & growth">
               {otherServices.map((s) => (
                 <FooterLink key={s.slug} href={serviceHref(s.slug)}>
                   {s.navTitle ?? s.title}
@@ -82,38 +91,27 @@ export default function Footer() {
               ))}
             </FooterColumn>
 
-            <FooterColumn title="Contact">
-              <FooterLink href="/contact">Contact form</FooterLink>
-              <FooterLink href="/get-a-quote">Request a quote</FooterLink>
-              {/* Shown only once genuine details are configured (NEXT_PUBLIC_CONTACT_EMAIL / _PHONE). */}
-              {email && (
-                <li>
-                  <a href={`mailto:${email}`} className="break-all text-muted transition-colors hover:text-fg">
-                    {email}
-                  </a>
-                </li>
-              )}
-              {phone && (
-                <li>
-                  <a href={`tel:${phone.replace(/\s+/g, "")}`} className="text-muted transition-colors hover:text-fg">
-                    {phone}
-                  </a>
-                </li>
-              )}
+            <FooterColumn title="Follow">
               {siteConfig.socials.map((s) => (
-                <li key={s.href}>
-                  <a href={s.href} rel="noopener noreferrer" target="_blank" className="text-muted hover:text-fg">
-                    {s.label}
-                  </a>
-                </li>
+                <FooterLink key={s.href} href={s.href} external>
+                  {s.label}
+                </FooterLink>
               ))}
             </FooterColumn>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 text-sm text-subtle md:flex-row md:items-center md:justify-between">
+        <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 text-sm text-subtle lg:flex-row lg:items-center lg:justify-between">
           <p>
-            © <CurrentYear /> {siteConfig.name}. All rights reserved.
+            © <CurrentYear /> {siteConfig.legalName} ·{" "}
+            <a
+              href={siteConfig.manager.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted underline decoration-line-strong underline-offset-4 transition-colors hover:text-fg"
+            >
+              Managed by {siteConfig.manager.name}
+            </a>
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {legalNav.map((item) => (

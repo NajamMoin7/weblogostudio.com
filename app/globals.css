@@ -1,102 +1,112 @@
 @import "tailwindcss";
 
 /*
-  Web Logo Studio design tokens.
-  Brand palette (approved theme reference, checked against logo/logo.jpeg):
-  - Forest green  #183D32  (logo: W strokes #013B2F to #095342, wordmark "Weblogo")
-  - Cream         #F5F0E6  (warm page background; the logo sits on near-white)
-  - Accent orange #C66A43  (logo: L top, #F96B21 to #BE420C)
-  - Dark text     #202521  (logo: L foot and "Studio", #262F34)
+  Web Logo Studio, "Type Specimen" system.
+  The studio's work is set like a foundry specimen sheet: bright paper, rich ink, hairline
+  rules, point-size captions, and one variable grotesk (Archivo) swinging from condensed
+  display to normal-width text.
 
-  Accessible tints of the accent (WCAG AA):
-  - #B4532A  orange button fill: white text 4.99:1
-  - #A04A20  orange text on cream: 5.4:1
-  - #F0915F  orange text on forest green: 5.09:1
+  Two colourways, like a kit:
+  - Home (default): specimen paper #FBFBF8, ink #141815, logo green #0B4F3C as second ink.
+  - Away (.theme-forest): logo green ground with paper ink, for featured sheets and the footer.
 
-  Components use semantic tokens (ink = page background, fg = text, cyan = accent text and
-  focus ring, and so on), so a section can switch to the forest-green scheme with the
-  .theme-forest class below without changing any component classes.
+  One marking ink, orange, traces only the path a visitor commits to: primary buttons,
+  the active step, the chosen filter. It is never used as decoration.
+  - #F26A1B  marking ink for large fills and rules (decorative only)
+  - #C2470E  button fill: white text 5.0:1; orange text on paper 4.8:1
+  - #FFA36B  orange text on green: 4.9:1
+
+  Components use semantic tokens (ink = page ground, fg = text, cyan = accent text and focus),
+  so a sheet switches colourway with .theme-forest without changing component classes.
 */
 
 @theme {
   /* Brand */
-  --color-forest: #183d32;
-  --color-forest-deep: #112c24;
-  --color-forest-soft: #e3ebe4;
-  --color-cream: #f5f0e6;
-  --color-orange: #c66a43;
-  --color-orange-strong: #b4532a;
-  --color-orange-deep: #9a4421;
-  --color-charcoal: #202521;
+  --color-forest: #0b4f3c;
+  --color-forest-deep: #083d2e;
+  --color-forest-soft: #e2ece7;
+  --color-cream: #fbfbf8;
+  --color-orange: #f26a1b;
+  --color-orange-strong: #c2470e;
+  --color-orange-deep: #a33a0a;
+  --color-charcoal: #141815;
 
-  /* Semantic (light scheme) */
-  --color-ink: #f5f0e6;
-  --color-surface: #fffdf8;
-  --color-surface-2: #efe8da;
-  --color-surface-3: #e6ddcb;
-  --color-line: rgb(32 37 33 / 0.11);
-  --color-line-strong: rgb(32 37 33 / 0.22);
-  --color-fg: #202521;
-  --color-muted: #4f5650;
-  --color-subtle: #5c625c;
-  --color-brand: #183d32;
-  --color-on-brand: #f5f0e6;
-  --color-blue: #183d32;
-  --color-blue-bright: #2f6b57;
-  --color-cyan: #a04a20;
-  --color-violet: #c66a43;
-  --color-violet-deep: #b4532a;
-  --color-paper: #fffdf8;
-  --color-paper-2: #efe8da;
-  --color-paper-ink: #202521;
-  --color-paper-muted: #4f5650;
+  /* Semantic (home colourway) */
+  --color-ink: #fbfbf8;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f1ec;
+  --color-surface-3: #e6e6df;
+  --color-line: rgb(20 24 21 / 0.12);
+  --color-line-strong: rgb(20 24 21 / 0.3);
+  --color-fg: #141815;
+  --color-muted: #464d48;
+  --color-subtle: #5b625d;
+  --color-brand: #0b4f3c;
+  --color-on-brand: #fbfbf8;
+  --color-blue: #0b4f3c;
+  --color-blue-bright: #12684f;
+  --color-cyan: #b8430c;
+  --color-violet: #f26a1b;
+  --color-violet-deep: #c2470e;
+  --color-paper: #ffffff;
+  --color-paper-2: #f1f1ec;
+  --color-paper-ink: #141815;
+  --color-paper-muted: #464d48;
   --color-danger: #b42318;
-  --color-success: #1e7a52;
+  --color-success: #13704f;
 
-  --font-display: var(--font-playfair), ui-serif, Georgia, serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
 
-  --radius-card: 1rem;
-  --shadow-card: 0 1px 2px rgb(32 37 33 / 0.04), 0 8px 24px -12px rgb(32 37 33 / 0.12);
-  --shadow-lift: 0 2px 4px rgb(32 37 33 / 0.04), 0 24px 48px -24px rgb(24 61 50 / 0.32);
+  /* Specimen corners: print-sharp, never pill-soft (pills stay for small controls). */
+  --radius-md: 0.25rem;
+  --radius-lg: 0.3125rem;
+  --radius-xl: 0.375rem;
+  --radius-2xl: 0.5rem;
+  --radius-3xl: 0.625rem;
+  --radius-card: 0.375rem;
 
-  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  /* Print is flat. Elevation is reserved for things that genuinely lift (hovered work, menus). */
+  --shadow-card: 0 1px 0 rgb(20 24 21 / 0.04);
+  --shadow-lift: 0 18px 40px -22px rgb(11 79 60 / 0.38), 0 2px 6px -2px rgb(20 24 21 / 0.08);
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 
   --breakpoint-xs: 26rem;
 }
 
-/* Forest-green scheme for featured bands, the closing call to action and the footer.
-   In the base layer, so background utilities on the same element still win. */
+/* Away colourway: logo-green sheets. In the base layer so utilities on the same element still win. */
 @layer base {
-.theme-forest {
-  --color-ink: #183d32;
-  --color-surface: #1d4639;
-  --color-surface-2: #224f41;
-  --color-surface-3: #2a5b4b;
-  --color-line: rgb(245 240 230 / 0.14);
-  --color-line-strong: rgb(245 240 230 / 0.28);
-  --color-fg: #f5f0e6;
-  --color-muted: #c8d2cb;
-  --color-subtle: #b4c2b9;
-  --color-brand: #f5f0e6;
-  --color-on-brand: #183d32;
-  --color-blue: #f0915f;
-  --color-blue-bright: #f0915f;
-  --color-cyan: #f0915f;
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.1), 0 12px 28px -16px rgb(0 0 0 / 0.45);
-  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.1), 0 28px 56px -28px rgb(0 0 0 / 0.6);
-  background-color: var(--color-ink);
-  color: var(--color-fg);
-}
+  .theme-forest {
+    --color-ink: #0b4f3c;
+    --color-surface: #0e5a45;
+    --color-surface-2: #11644d;
+    --color-surface-3: #157057;
+    --color-line: rgb(251 251 248 / 0.16);
+    --color-line-strong: rgb(251 251 248 / 0.34);
+    --color-fg: #fbfbf8;
+    --color-muted: #d3e2db;
+    --color-subtle: #b9cfc5;
+    --color-brand: #fbfbf8;
+    --color-on-brand: #0b4f3c;
+    --color-blue: #ffa36b;
+    --color-blue-bright: #ffa36b;
+    --color-cyan: #ffa36b;
+    --shadow-card: 0 1px 0 rgb(0 0 0 / 0.08);
+    --shadow-lift: 0 22px 44px -24px rgb(0 0 0 / 0.55);
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+  }
 }
 
 @utility container-page {
   width: 100%;
-  max-width: 82rem;
+  max-width: 84rem;
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: 1rem;
   @variant sm {
     padding-inline: 2rem;
   }
@@ -105,44 +115,70 @@
   }
 }
 
-/* Refined serif display face for headings (Playfair Display). */
+/* Display voice: Archivo set condensed and heavy, like the big lines of a specimen. */
 @utility font-display-wide {
   font-family: var(--font-display);
-  letter-spacing: -0.012em;
-  font-optical-sizing: auto;
+  font-stretch: 78%;
+  letter-spacing: -0.02em;
   font-variant-numeric: lining-nums;
 }
 
-/* Spaced uppercase labels */
+/* Extra-condensed for the very largest specimen lines. */
+@utility font-condensed {
+  font-family: var(--font-display);
+  font-stretch: 64%;
+  letter-spacing: -0.015em;
+}
+
+/* Expanded for small set labels: the other end of the width axis. */
+@utility font-expanded {
+  font-family: var(--font-display);
+  font-stretch: 118%;
+}
+
+/* Small set labels (footer column titles, form group labels). Not used above headings. */
 @utility eyebrow {
   font-family: var(--font-sans);
+  font-stretch: 112%;
   font-size: 0.72rem;
   font-weight: 600;
   line-height: 1.2;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-/* Accent rule: the logo's orange, used on thin accents only, never large fills. */
-@utility brand-gradient {
-  background-image: linear-gradient(110deg, #e0743f 0%, #c66a43 45%, #b4532a 100%);
+/* Point-size caption, the specimen's annotation voice. Tabular so numbers align. */
+@utility caption {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-subtle);
 }
 
-/* Orange emphasis inside large headings (meets 3:1 for large text on cream). */
+/* Legacy accent rule: now the flat marking ink (no gradients anywhere). */
+@utility brand-gradient {
+  background-color: var(--color-orange);
+}
+
+/* Legacy emphasis class: solid marking-ink text, never a gradient. */
 @utility text-gradient {
-  background-image: linear-gradient(110deg, #c25f35 0%, #a9481f 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-cyan);
 }
 
 :root {
   color-scheme: light;
+  --dur-fast: 160ms;
+  --dur-base: 240ms;
+  --dur-slow: 480ms;
 }
 
 html {
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: 6rem;
+  scrollbar-color: rgb(20 24 21 / 0.35) var(--color-ink);
 }
 
 body {
@@ -153,17 +189,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
+  caret-color: var(--color-orange-strong);
 }
 
 ::selection {
-  background: rgb(198 106 67 / 0.28);
-  color: var(--color-charcoal);
+  background: rgb(11 79 60 / 0.9);
+  color: #fbfbf8;
 }
 
 :focus-visible {
   outline: 2px solid var(--color-cyan);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 h1,
@@ -177,203 +214,146 @@ p {
   text-wrap: pretty;
 }
 
-/* Hero entrance: CSS-only so it never waits on JavaScript */
-@keyframes rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+a {
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
 }
 
+/* Legacy entrance class. Content above the fold is never hidden or delayed, so it is static. */
 .rise-in {
-  animation: rise-in 700ms var(--ease-out-quint) both;
-  animation-delay: calc(var(--i, 0) * 70ms);
+  animation: none;
 }
 
 /*
-  Viewport reveals (once), driven by components/motion/RevealObserver.jsx.
-  Hidden states apply only when html.reveal-on is set by an inline script before paint,
-  so content is always visible without JavaScript. Elements entering together are
-  staggered with --rd (set by the observer).
+  Scroll reveals (components/motion/RevealObserver.jsx).
+  Nothing is hidden by CSS alone. The observer marks only elements that start BELOW the
+  viewport with data-reveal="pending", so the first viewport always paints at full opacity
+  and LCP is never delayed. Elements reveal once, with a short stagger (--rd).
 */
-.reveal-on .reveal {
+[data-reveal="pending"].reveal,
+[data-reveal="pending"].reveal-card {
   opacity: 0;
   transform: translate3d(0, 18px, 0);
+}
+.reveal,
+.reveal-card {
   transition:
-    opacity 700ms var(--ease-out-quint),
-    transform 800ms var(--ease-out-quint);
+    opacity 640ms var(--ease-out-expo),
+    transform 760ms var(--ease-out-expo);
   transition-delay: var(--rd, 0ms);
 }
-.reveal-on .reveal[data-revealed] {
-  opacity: 1;
-  transform: none;
-}
-
-/* Card variant: a touch more lift and a slight scale, for gallery-style items. */
-.reveal-on .reveal-card {
+[data-reveal="pending"].reveal-words .rw-word {
   opacity: 0;
-  transform: translate3d(0, 28px, 0) scale(0.97);
-  transition:
-    opacity 700ms var(--ease-out-quint),
-    transform 900ms var(--ease-out-quint);
-  transition-delay: var(--rd, 0ms);
+  transform: translate3d(0, 0.35em, 0);
 }
-.reveal-on .reveal-card[data-revealed] {
-  opacity: 1;
-  transform: none;
-}
-
-/* Heading words: each word sharpens from a blur, staggered by --w. */
-.reveal-on .reveal-words .rw-word {
+.reveal-words .rw-word {
   display: inline-block;
-  opacity: 0;
-  filter: blur(12px);
   transition:
-    opacity 650ms var(--ease-out-quint),
-    filter 750ms var(--ease-out-quint);
-  transition-delay: calc(var(--w, 0) * 55ms);
+    opacity 560ms var(--ease-out-expo),
+    transform 680ms var(--ease-out-expo);
+  transition-delay: calc(var(--rd, 0ms) + var(--w, 0) * 40ms);
 }
-.reveal-on .reveal-words[data-revealed] .rw-word {
-  opacity: 1;
-  filter: blur(0);
+/* Image reveal: the frame opens from a narrow slot, like a sheet sliding out of a sleeve. */
+[data-reveal="pending"].reveal-image {
+  clip-path: inset(0 0 100% 0);
 }
-
-/* Image reveal: a rounded mask opens while the image settles from a slight zoom. */
-.reveal-on .reveal-image {
-  clip-path: inset(10% 8% 10% 8% round 18px);
-  transition: clip-path 1100ms var(--ease-out-quint);
+.reveal-image {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 900ms var(--ease-out-expo);
   transition-delay: var(--rd, 0ms);
 }
-.reveal-on .reveal-image > * {
-  transform: scale(1.12);
-  transition: transform 1400ms var(--ease-out-quint);
-  transition-delay: var(--rd, 0ms);
+
+/* Hairline rules that draw in when their sheet reveals (decorative). */
+.rule-draw {
+  transform-origin: 0 50%;
+  transition: transform 900ms var(--ease-out-expo);
+  transition-delay: calc(var(--rd, 0ms) + 120ms);
 }
-.reveal-on .reveal-image[data-revealed] {
-  clip-path: inset(0 0 0 0 round 10px);
-}
-.reveal-on .reveal-image[data-revealed] > * {
-  transform: none;
+[data-reveal="pending"] .rule-draw {
+  transform: scaleX(0);
 }
 
-/* Infinite marquee: two identical copies translate by exactly one copy (-50%) for a seamless loop. */
-@keyframes marquee-x {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-50%, 0, 0); }
+/* Hero specimen: size rules draw once on load. Decorative only; every word is static. */
+@keyframes rule-in {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
-.marquee {
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-x var(--marquee-duration, 40s) linear infinite;
-}
-.marquee[data-direction="right"] .marquee-track { animation-direction: reverse; }
-.marquee:hover .marquee-track,
-.marquee:focus-within .marquee-track,
-.marquee[data-paused="true"] .marquee-track {
-  animation-play-state: paused;
+.spec-rule {
+  transform-origin: 0 50%;
+  animation: rule-in 900ms var(--ease-out-expo) both;
+  animation-delay: calc(120ms + var(--i, 0) * 70ms);
 }
 
-/* Swap button: the arrow chip travels from the right edge to the left while the label shifts right.
-   Done with two chips and transforms only (no layout properties animate). */
-.btn-swap { padding-right: 3.6rem; padding-left: 1.5rem; }
-.btn-swap .swap-label,
-.btn-swap .swap-chip {
-  transition: transform 420ms var(--ease-out-quint), opacity 260ms var(--ease-out-quint);
-}
-.btn-swap .swap-chip { position: absolute; top: 50%; translate: 0 -50%; }
-.btn-swap .swap-chip-end { right: 0.45rem; }
-.btn-swap .swap-chip-start { left: 0.45rem; opacity: 0; transform: translateX(-140%); }
-@media (hover: hover) {
-  .btn-swap:hover .swap-label { transform: translateX(2.1rem); }
-  .btn-swap:hover .swap-chip-end { opacity: 0; transform: translateX(140%); }
-  .btn-swap:hover .swap-chip-start { opacity: 1; transform: none; }
-}
-.btn-swap:focus-visible .swap-label { transform: translateX(2.1rem); }
-.btn-swap:focus-visible .swap-chip-end { opacity: 0; transform: translateX(140%); }
-.btn-swap:focus-visible .swap-chip-start { opacity: 1; transform: none; }
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 1ms !important;
-    animation-delay: 0ms !important;
-    transition-duration: 1ms !important;
-    scroll-behavior: auto !important;
-  }
-  /* Reduced motion: reveals show immediately, marquee becomes a static, scrollable row. */
-  .reveal-on .reveal,
-  .reveal-on .reveal-card,
-  .reveal-on .reveal-words .rw-word,
-  .reveal-on .reveal-image,
-  .reveal-on .reveal-image > * {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    clip-path: none !important;
-  }
-  .marquee-track { animation: none !important; }
-  .marquee-copy[aria-hidden="true"] { display: none; }
-  .marquee { overflow-x: auto !important; -webkit-mask-image: none; mask-image: none; }
+/* Size scrubber (components/sections/HeroSpecimen.jsx): the large tile resizes the mark to the
+   true pixel size of the hovered or focused cell. Width only changes inside a fixed-size tile,
+   so nothing around it moves. */
+.spec-mark {
+  transition: width 520ms var(--ease-out-expo);
 }
 
-/* Subtle paper grain for depth, without gradients or glows */
-.grain {
-  position: relative;
-  isolation: isolate;
-}
-.grain::after {
+/* Buttons: the marking ink fills from the left on hover (transform only, no layout). */
+.btn-fill::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  border-radius: inherit;
+  background: var(--fill, var(--color-orange-deep));
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--dur-slow) var(--ease-out-quint);
+}
+@media (hover: hover) {
+  .btn-fill:hover::before {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
 }
 
-/* Fine construction grid used behind logo and identity visuals */
-.grid-lines {
-  background-image:
-    linear-gradient(to right, rgb(32 37 33 / 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(32 37 33 / 0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
+/* Arrow travel inside buttons and links. */
+.arrow-nudge {
+  transition: transform 320ms var(--ease-out-expo);
+}
+@media (hover: hover) {
+  .group\/btn:hover .arrow-nudge,
+  .group:hover .arrow-nudge {
+    transform: translateX(3px);
+  }
 }
 
-/* ------------------------------------------------------------------ */
-/* Interaction layer                                                   */
-/* ------------------------------------------------------------------ */
-
-
-/* Gentle scroll-linked parallax, transform only, small distances. */
+/*
+  Phone mockups (/99). The screen is a size container, so the page screenshot can pan to its
+  own bottom: translate by -100% of the image plus one screen height (100cqh).
+  Fine pointers: hover pans through the whole page. Touch: the page pans as the row scrolls
+  through the viewport (scroll-driven, compositor only). Reduced motion: static.
+*/
+.phone-screen {
+  container-type: size;
+}
+.phone-page {
+  transition: translate 5.5s cubic-bezier(0.45, 0, 0.55, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .phone:hover .phone-page,
+  .phone:focus-visible .phone-page {
+    translate: 0 calc(-100% + 100cqh);
+  }
+}
 @supports (animation-timeline: view()) {
-  @keyframes drift-soft {
-    from { transform: translateY(18px); }
-    to { transform: translateY(-18px); }
-  }
-  @keyframes drift-lift {
-    from { transform: translateY(36px); }
-    to { transform: translateY(-28px); }
-  }
-  .parallax-soft {
-    animation: drift-soft linear both;
-    animation-timeline: view();
-  }
-  .parallax-lift {
-    animation: drift-lift linear both;
-    animation-timeline: view();
+  @media (hover: none) {
+    @keyframes phone-pan {
+      from { translate: 0 0; }
+      to { translate: 0 calc((-100% + 100cqh) * 0.55); }
+    }
+    .phone-page {
+      animation: phone-pan linear both;
+      animation-timeline: view();
+      animation-range: entry 40% exit 10%;
+    }
   }
 }
 
-/* Reading progress in the header, driven by the root scroll position. No JavaScript. */
+/* Header reading progress, driven by the root scroll position. No JavaScript. */
 @supports (animation-timeline: scroll()) {
   @keyframes progress-grow {
     from { transform: scaleX(0); }
@@ -384,15 +364,7 @@ p {
     animation: progress-grow linear both;
     animation-timeline: scroll(root block);
   }
-}
-@supports not (animation-timeline: scroll()) {
-  .scroll-progress {
-    display: none;
-  }
-}
-
-/* Process timeline: the connecting rule fills as the steps scroll into view. */
-@supports (animation-timeline: view()) {
+  /* Process rule fills as the steps scroll through the viewport. */
   .timeline-fill {
     transform-origin: 0 50%;
     animation: progress-grow linear both;
@@ -400,8 +372,13 @@ p {
     animation-range: entry 60% cover 45%;
   }
 }
+@supports not (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: none;
+  }
+}
 
-/* Branded spinner: two ribbon arcs in the logo gradient. */
+/* Branded spinner */
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -409,158 +386,95 @@ p {
   animation: spin 900ms linear infinite;
 }
 
-/* Link pending hint: fixed size, opacity only, so it never shifts layout. */
+/* Nav pending hint: fixed size, opacity only, so it never shifts layout. */
 .link-hint {
   opacity: 0;
   transition: opacity 150ms ease;
-  transition-delay: 0ms;
 }
 .link-hint.is-pending {
   opacity: 1;
   transition-delay: 120ms;
 }
 
+/* Fine construction grid behind logo specimens (a real measuring surface, not decoration). */
+.grid-lines {
+  background-image:
+    linear-gradient(to right, rgb(20 24 21 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(20 24 21 / 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Legacy class kept as a no-op; print sheets carry no noise texture. */
+.grain {
+  position: relative;
+}
+
+/*
+  Page transitions: a sheet change. The old sheet lifts away quickly, the new one settles
+  8px into place. Runs only on client navigations (never on first load), and the header
+  stays anchored. See components/motion/PageTransition.jsx.
+*/
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-old(.sheet) {
+  animation: 140ms ease-in both sheet-out;
+}
+::view-transition-new(.sheet) {
+  animation: 300ms var(--ease-out-expo) 60ms both sheet-in;
+}
+@keyframes sheet-out {
+  to { opacity: 0; transform: translateY(-6px); }
+}
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(8px); }
+}
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .parallax-soft,
-  .parallax-lift,
-  .scroll-progress,
-  .timeline-fill {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal="pending"].reveal,
+  [data-reveal="pending"].reveal-card,
+  [data-reveal="pending"].reveal-words .rw-word,
+  [data-reveal="pending"].reveal-image,
+  [data-reveal="pending"] .rule-draw {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .timeline-fill,
+  .spec-rule,
+  .phone-page {
     animation: none !important;
+    translate: none !important;
+  }
+  /* Without scrolling animation the progress bar would sit at full width forever. */
+  .scroll-progress {
+    display: none !important;
   }
   .brand-spinner {
     animation-duration: 2.4s !important;
   }
-}
-
-/* Route loader becomes visible only if the wait lasts longer than ~300ms. */
-@keyframes fade-in-late {
-  0%, 60% { opacity: 0; }
-  100% { opacity: 1; }
-}
-.appear-late {
-  animation: fade-in-late 500ms linear both;
-}
-
-/* ------------------------------------------------------------------ */
-/* Motion tokens (mirrored in lib/motion.js for Motion components)     */
-/* ------------------------------------------------------------------ */
-:root {
-  --dur-instant: 120ms;
-  --dur-fast: 180ms;
-  --dur-base: 240ms;
-  --dur-slow: 480ms;
-  --dur-reveal: 820ms;
-  --stagger: 65ms;
-}
-
-/* Flow-inspired masked word reveal: each word rises out of a mask and sharpens from a blur. */
-@keyframes word-in {
-  from { transform: translateY(105%); filter: blur(10px); opacity: 0; }
-  to { transform: none; filter: blur(0); opacity: 1; }
-}
-.word-mask {
-  display: inline-block;
-  overflow: clip;
-  overflow-clip-margin: 0.08em;
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
-  vertical-align: top;
-}
-.word-mask > .word {
-  display: inline-block;
-  animation: word-in var(--dur-reveal) var(--ease-out-quint) both;
-  animation-delay: calc(var(--d, 0ms) + var(--w, 0) * var(--stagger));
-}
-.no-reveal .word-mask > .word {
-  animation: none;
-}
-
-/* Rotating phrase: characters swap with a soft vertical blur transition. */
-@keyframes char-in {
-  from { transform: translateY(55%); filter: blur(8px); opacity: 0; }
-  to { transform: none; filter: blur(0); opacity: 1; }
-}
-@keyframes char-out {
-  from { transform: none; filter: blur(0); opacity: 1; }
-  to { transform: translateY(-45%); filter: blur(8px); opacity: 0; }
-}
-.rotator { display: inline-grid; vertical-align: top; }
-.rotator > .phrase { grid-area: 1 / 1; }
-.rotator .rw { display: inline-block; white-space: nowrap; }
-.rotator .ch { display: inline-block; }
-.rotator > .phrase[data-state="idle"] { visibility: hidden; }
-.rotator > .phrase[data-state="active"] .ch {
-  animation: char-in 680ms var(--ease-out-quint) both;
-  animation-delay: calc(140ms + var(--c) * 22ms);
-}
-.rotator > .phrase[data-state="exit"] .ch {
-  animation: char-out 380ms cubic-bezier(0.55, 0, 1, 0.45) both;
-  animation-delay: calc(var(--c) * 12ms);
-}
-.rotator > .phrase[data-state="static"] .ch { animation: none; }
-
-/* Pointer highlight: a brand-gradient copy of the headline revealed under the cursor. */
-.headline-highlight {
-  pointer-events: none;
-  user-select: none;
-  -webkit-mask-image: radial-gradient(circle 190px at var(--hx, -999px) var(--hy, -999px), #000 0%, rgb(0 0 0 / 0.55) 45%, transparent 75%);
-  mask-image: radial-gradient(circle 190px at var(--hx, -999px) var(--hy, -999px), #000 0%, rgb(0 0 0 / 0.55) 45%, transparent 75%);
-  opacity: 0;
-  transition: opacity var(--dur-slow) var(--ease-out-quint);
-}
-[data-pointer="on"] .headline-highlight { opacity: 1; }
-
-/* Ambient background drift (paused by the hero pause control). */
-@keyframes ambient-drift {
-  0% { transform: translate3d(-3%, -2%, 0) scale(1.08) rotate(-2deg); }
-  100% { transform: translate3d(3%, 2%, 0) scale(1.16) rotate(2deg); }
-}
-.ambient {
-  animation: ambient-drift 26s ease-in-out infinite alternate;
-}
-[data-paused="true"] .ambient { animation-play-state: paused; }
-
-/* Pointer parallax layers in the hero stage. --px/--py are -1..1, set by HeroMotion. */
-.depth {
-  transform: translate3d(calc(var(--px, 0) * var(--depth, 0) * 1px), calc(var(--py, 0) * var(--depth, 0) * 1px), 0);
-  transition: transform 900ms var(--ease-out-quint);
-}
-
-/* Editorial statement: words light up as the paragraph scrolls through the viewport. */
-@supports (animation-timeline: view()) {
-  @keyframes word-light {
-    from { color: color-mix(in srgb, var(--color-fg) 20%, transparent); }
-    to { color: var(--color-fg); }
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation: none !important;
   }
-  .scroll-words > span {
-    animation: word-light linear both;
-    animation-timeline: view();
-    animation-range: cover 18% cover 42%;
-  }
-}
-
-/* Primary button: a directional fill slides in from the left on hover. */
-.btn-fill::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: var(--fill, var(--color-forest));
-  transform: scaleX(0);
-  transform-origin: right center;
-  transition: transform var(--dur-slow) var(--ease-out-quint);
-}
-@media (hover: hover) {
-  .btn-fill:hover::before { transform: scaleX(1); transform-origin: left center; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ambient, .word-mask > .word, .rotator .ch { animation: none !important; }
-  .depth { transform: none !important; }
-  .scroll-words > span { animation: none !important; color: var(--color-fg) !important; }
-}
-/* Text turns white just after the fill starts moving, so it never sits white-on-white. */
-.btn-fill {
-  transition: color 260ms var(--ease-out-quint) 70ms, transform 200ms var(--ease-out-quint), box-shadow 200ms var(--ease-out-quint);
 }

@@ -81,11 +81,11 @@ export default function Carousel({ label, children, slideClassName = "basis-[85%
       <div className="relative h-px w-28 overflow-hidden bg-line-strong sm:w-40" aria-hidden="true">
         <span
           ref={progressRef}
-          className="brand-gradient absolute inset-0 origin-left"
+          className="absolute inset-0 origin-left bg-fg"
           style={{ transform: "scaleX(0.08)" }}
         />
       </div>
-      <span className="font-mono text-xs tabular-nums text-subtle" aria-hidden="true">
+      <span className="caption" aria-hidden="true">
         {String(selected + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
       </span>
       <div className="ml-auto flex gap-2">

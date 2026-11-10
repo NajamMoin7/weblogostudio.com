@@ -1,78 +1,58 @@
 import Image from "next/image";
 import Link from "next/link";
-import Marquee from "@/components/ui/Marquee";
-import MarqueeGroup from "@/components/portfolio/MarqueeGroup";
+import { ArrowRight } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Button from "@/components/ui/Button";
 import { work } from "@/data/work";
 
-function LogoTile({ item }) {
-  const img = item.thumbnail;
-  return (
-    <Link
-      href={`/portfolio/${item.slug}`}
-      className="group relative block size-36 overflow-hidden rounded-xl border border-line shadow-card transition-[border-color,transform,box-shadow] duration-300 ease-out-quint hover:-translate-y-1 hover:border-line-strong hover:shadow-lift sm:size-44"
-      style={{ background: item.background ?? "#ffffff" }}
-    >
-      <Image
-        src={img.src}
-        alt={`${item.displayTitle} logo`}
-        fill
-        sizes="176px"
-        className="object-contain transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
-      />
-      <span className="absolute inset-x-0 bottom-0 translate-y-full bg-forest/90 px-3 py-2 text-[0.7rem] font-medium text-cream backdrop-blur-sm transition-transform duration-300 ease-out-quint group-hover:translate-y-0 group-focus-visible:translate-y-0">
-        <span className="block truncate">{item.displayTitle}</span>
-      </span>
-    </Link>
-  );
-}
-
-/** Two counter-moving rows of real logos from the migrated portfolio. */
-export default function LogoShowcase({
-  eyebrow = "Logo design",
-  title = "Marks built to be remembered.",
-  intro,
-  limit = 40,
-}) {
-  // Logos with a client name from the source first; then the rest, in source order.
+/**
+ * One static wall of real logos from the portfolio, rendered once (no duplicated marquee
+ * copies). Named client logos first. Hover lifts the tile and names the client.
+ */
+export default function LogoShowcase({ title, intro, limit = 12, exclude = [] }) {
+  const skip = new Set(exclude);
   const logos = work.filter((w) => w.category === "logos");
   const named = logos.filter((w) => w.titleSource === "source");
-  const pool = [...named, ...logos.filter((w) => w.titleSource !== "source")].slice(0, limit);
-  const half = Math.ceil(pool.length / 2);
-  const rows = [pool.slice(0, half), pool.slice(half)];
+  const pool = [...named, ...logos.filter((w) => w.titleSource !== "source")].filter((w) => !skip.has(w.slug)).slice(0, limit);
+  const styles = new Set(logos.map((l) => l.subcategory).filter(Boolean)).size;
 
   return (
-    <section aria-labelledby="logos-title" className="overflow-hidden border-t border-line py-20 lg:py-28">
+    <section aria-labelledby="logos-title" className="border-t border-line py-20 lg:py-28">
       <div className="container-page">
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading
             id="logos-title"
-            eyebrow={eyebrow}
-            title={title}
-            intro={intro ?? `${logos.length} logos across ${new Set(logos.map((l) => l.subcategory)).size} industries, from abstract marks to mascots.`}
+            title={title ?? `${logos.length} logos. Here are ${pool.length}.`}
+            intro={intro ?? `Wordmarks, emblems and mascots across ${styles} styles, each delivered with full-colour, one-colour and icon versions.`}
           />
-          <Button href="/portfolio?category=logos" variant="secondary" arrow className="shrink-0 self-start md:self-auto">
-            Browse All Logos
-          </Button>
-        </div>
-      </div>
-      <div className="mt-10">
-        <MarqueeGroup label="logo showcase" controlClassName="container-page">
-        {rows.map((row, i) => (
-          <Marquee
-            key={i}
-            label={i === 0 ? "Logo showcase row one" : "Logo showcase row two"}
-            direction={i === 0 ? "left" : "right"}
-            duration={70}
-            itemClassName="px-2.5"
+          <Link
+            href="/portfolio?category=logos"
+            className="group inline-flex shrink-0 items-center gap-2 self-start font-semibold underline decoration-line-strong decoration-2 underline-offset-[7px] hover:decoration-orange lg:self-auto"
           >
-            {row.map((item) => (
-              <LogoTile key={item.slug} item={item} />
-            ))}
-          </Marquee>
-        ))}
-        </MarqueeGroup>
+            Every logo <ArrowRight aria-hidden="true" className="arrow-nudge size-4" />
+          </Link>
+        </div>
+        <ul className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3 lg:grid-cols-6">
+          {pool.map((item) => (
+            <li key={item.slug} className="reveal-card bg-surface">
+              <Link
+                href={`/portfolio/${item.slug}`}
+                className="group relative block aspect-square overflow-hidden"
+                style={{ background: item.background ?? "#ffffff" }}
+              >
+                <Image
+                  src={item.thumbnail.src}
+                  alt={`${item.displayTitle} logo`}
+                  fill
+                  sizes="(min-width: 1024px) 15vw, (min-width: 640px) 31vw, 48vw"
+                  className="object-contain transition-transform duration-700 ease-out-quint group-hover:scale-[1.07]"
+                />
+                <span className="absolute inset-x-0 bottom-0 translate-y-full bg-fg px-3 py-2 text-[0.72rem] font-medium text-ink transition-transform duration-300 ease-out-quint group-hover:translate-y-0 group-focus-visible:translate-y-0">
+                  {item.displayTitle}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

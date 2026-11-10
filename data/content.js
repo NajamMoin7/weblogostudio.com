@@ -6,22 +6,22 @@
 export const processSteps = [
   {
     title: "Discover",
-    text: "We learn about your business, your audience and what success looks like, then agree the scope in writing.",
-    outputs: ["Project brief", "Goals and audience", "Written proposal"],
+    text: "A short call or questionnaire about your business, customers and competitors. You get a written proposal with scope, timeline and price.",
+    outputs: ["Project brief", "Written proposal", "Fixed price"],
   },
   {
-    title: "Strategize",
-    text: "We define the creative direction, structure and requirements, so design decisions have a clear rationale.",
+    title: "Direction",
+    text: "We set the structure, sitemap or logo brief and the visual direction, so every design decision has a reason you have already agreed to.",
     outputs: ["Creative direction", "Sitemap or brief", "Timeline"],
   },
   {
-    title: "Design and Develop",
-    text: "We turn the approved direction into a polished solution, sharing progress and refining it with your feedback.",
+    title: "Design and build",
+    text: "Concepts, then revisions, then production. You review real previews on your own phone and computer at each agreed milestone.",
     outputs: ["Designs and prototypes", "Development", "Review rounds"],
   },
   {
-    title: "Launch and Support",
-    text: "We deliver final files or launch your website, then provide the support agreed in your proposal.",
+    title: "Launch",
+    text: "We launch the site or hand over every final file, with accounts set up in your name and the support period stated in your proposal.",
     outputs: ["Launch or handover", "Final assets", "Agreed support"],
   },
 ];
@@ -81,12 +81,12 @@ export const generalFaqs = [
   },
   {
     q: "How much does a project cost?",
-    a: "Every project is quoted individually after we understand your needs. Our pricing page outlines what each package includes, and a quote request is the quickest way to get a figure for your project.",
+    a: "Custom projects are quoted individually, because a five-page brochure site and a 200-product store are different jobs. Send a quote request with what you need and we reply with a written scope, timeline and fixed price before any work or payment.",
     topic: "Pricing",
   },
   {
     q: "How many revisions are included?",
-    a: "Each package includes a set number of revision rounds, stated in your proposal. Additional rounds can be added if needed, and we agree any extra cost before doing the work.",
+    a: "Your proposal states how many revision rounds are included. Extra rounds can be added, and any extra cost is agreed before we do the work.",
     topic: "Revisions",
   },
   {
@@ -101,7 +101,7 @@ export const generalFaqs = [
   },
   {
     q: "How do we get started?",
-    a: "Send us a quote request with a few details about your project. We will review it, ask any follow-up questions and send a proposal with scope, timeline and price.",
+    a: "Send a quote request or call (707) 564-6678. We review your details, ask any follow-up questions and send a proposal with scope, timeline and price.",
     topic: "Getting started",
   },
 ];

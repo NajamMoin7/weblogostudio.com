@@ -1,0 +1,711 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T22:44:41.218Z",
+  "title": "Design System: Web Logo Studio",
+  "extensions": {
+    "colorMeta": {
+      "logo-green": {
+        "role": "primary",
+        "displayName": "Logo Green",
+        "canonical": "#0b4f3c",
+        "oklch": "oklch(38.2% 0.072 168.7)",
+        "tonalRamp": [
+          "#001107",
+          "#002f1f",
+          "#094e3b",
+          "#326e5a",
+          "#54907b",
+          "#77b49d",
+          "#9bd9c1",
+          "#bfffe6"
+        ],
+        "tokenVar": "--color-forest / --color-brand"
+      },
+      "logo-green-deep": {
+        "role": "primary",
+        "displayName": "Logo Green Deep",
+        "canonical": "#083d2e",
+        "oklch": "oklch(32.2% 0.060 168.9)",
+        "tonalRamp": [
+          "#001108",
+          "#002e20",
+          "#1b4c3c",
+          "#3c6c5b",
+          "#5e8e7c",
+          "#80b29e",
+          "#a3d6c2",
+          "#c8fce8"
+        ],
+        "tokenVar": "--color-forest-deep"
+      },
+      "marking-orange": {
+        "role": "secondary",
+        "displayName": "Marking Orange",
+        "canonical": "#f26a1b",
+        "oklch": "oklch(68.2% 0.186 44.8)",
+        "tonalRamp": [
+          "#210000",
+          "#500000",
+          "#820100",
+          "#af2900",
+          "#d75100",
+          "#ff772e",
+          "#ffb28d",
+          "#ffe6d8"
+        ],
+        "tokenVar": "--color-orange",
+        "note": "Strokes and fills only; never text on paper."
+      },
+      "marking-orange-strong": {
+        "role": "secondary",
+        "displayName": "Marking Orange Strong",
+        "canonical": "#c2470e",
+        "oklch": "oklch(56.1% 0.169 40.3)",
+        "tonalRamp": [
+          "#210000",
+          "#510000",
+          "#840000",
+          "#ab3000",
+          "#d25624",
+          "#fa7a4b",
+          "#ffb092",
+          "#ffe6d9"
+        ],
+        "tokenVar": "--color-orange-strong",
+        "note": "Primary button fill under white text."
+      },
+      "marking-orange-deep": {
+        "role": "secondary",
+        "displayName": "Marking Orange Deep",
+        "canonical": "#a33a0a",
+        "oklch": "oklch(49.2% 0.148 40.1)",
+        "tonalRamp": [
+          "#210000",
+          "#500000",
+          "#7d1200",
+          "#a33a0a",
+          "#ca5e35",
+          "#f18159",
+          "#ffb193",
+          "#ffe6da"
+        ],
+        "tokenVar": "--color-orange-deep",
+        "note": "Primary hover and slide-in fill."
+      },
+      "marking-orange-text": {
+        "role": "secondary",
+        "displayName": "Marking Orange Text",
+        "canonical": "#b8430c",
+        "oklch": "oklch(53.9% 0.162 40.4)",
+        "tonalRamp": [
+          "#210000",
+          "#4f0000",
+          "#820200",
+          "#a83400",
+          "#cf592a",
+          "#f77d4f",
+          "#ffb294",
+          "#ffe6da"
+        ],
+        "tokenVar": "--color-cyan (home colourway)",
+        "note": "Accent text, required asterisks, focus outline on paper."
+      },
+      "marking-orange-on-green": {
+        "role": "secondary",
+        "displayName": "Marking Orange on Green",
+        "canonical": "#ffa36b",
+        "oklch": "oklch(79.6% 0.131 51.3)",
+        "tonalRamp": [
+          "#210000",
+          "#510000",
+          "#742400",
+          "#994600",
+          "#bf682f",
+          "#e58b53",
+          "#ffb381",
+          "#ffe7d3"
+        ],
+        "tokenVar": "--color-cyan (away colourway)",
+        "note": "Accent text, focus and icons inside green sheets."
+      },
+      "specimen-paper": {
+        "role": "neutral",
+        "displayName": "Specimen Paper",
+        "canonical": "#fbfbf8",
+        "oklch": "oklch(98.7% 0.004 106.5)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#252523",
+          "#424240",
+          "#61615f",
+          "#828280",
+          "#a5a5a2",
+          "#c9c9c6",
+          "#efefec"
+        ],
+        "tokenVar": "--color-cream / --color-ink (home)"
+      },
+      "specimen-ink": {
+        "role": "neutral",
+        "displayName": "Specimen Ink",
+        "canonical": "#141815",
+        "oklch": "oklch(20.4% 0.008 153.1)",
+        "tonalRamp": [
+          "#090c09",
+          "#222623",
+          "#3f4340",
+          "#5e635f",
+          "#7f8480",
+          "#a1a7a2",
+          "#c5cbc6",
+          "#eaf0ec"
+        ],
+        "tokenVar": "--color-charcoal / --color-fg (home)"
+      },
+      "sheet-white": {
+        "role": "neutral",
+        "displayName": "Sheet White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ],
+        "tokenVar": "--color-surface (home)"
+      },
+      "paper-shade": {
+        "role": "neutral",
+        "displayName": "Paper Shade",
+        "canonical": "#f1f1ec",
+        "oklch": "oklch(95.7% 0.007 106.5)",
+        "tonalRamp": [
+          "#0b0b08",
+          "#252522",
+          "#42423e",
+          "#61615d",
+          "#83837e",
+          "#a5a5a1",
+          "#c9c9c5",
+          "#efefea"
+        ],
+        "tokenVar": "--color-surface-2 (home)"
+      },
+      "paper-shade-deep": {
+        "role": "neutral",
+        "displayName": "Paper Shade Deep",
+        "canonical": "#e6e6df",
+        "oklch": "oklch(92.3% 0.009 106.6)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#252520",
+          "#42423d",
+          "#62625c",
+          "#83837c",
+          "#a5a59f",
+          "#cacac3",
+          "#efefe8"
+        ],
+        "tokenVar": "--color-surface-3 (home)"
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#464d48",
+        "oklch": "oklch(41.2% 0.012 154.7)",
+        "tonalRamp": [
+          "#070d09",
+          "#212722",
+          "#3d443f",
+          "#5c635e",
+          "#7d857f",
+          "#9fa7a2",
+          "#c3ccc6",
+          "#e8f1eb"
+        ],
+        "tokenVar": "--color-muted (home)"
+      },
+      "ink-subtle": {
+        "role": "neutral",
+        "displayName": "Ink Subtle",
+        "canonical": "#5b625d",
+        "oklch": "oklch(48.8% 0.012 154.8)",
+        "tonalRamp": [
+          "#070d09",
+          "#212723",
+          "#3d443f",
+          "#5c635e",
+          "#7d847f",
+          "#a0a7a2",
+          "#c3cbc6",
+          "#e9f1eb"
+        ],
+        "tokenVar": "--color-subtle (home)"
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgb(20 24 21 / 0.12)",
+        "tokenVar": "--color-line (home)"
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "rgb(20 24 21 / 0.3)",
+        "tokenVar": "--color-line-strong (home)"
+      },
+      "away-surface": {
+        "role": "neutral",
+        "displayName": "Away Surface",
+        "canonical": "#0e5a45",
+        "oklch": "oklch(41.8% 0.078 168.9)",
+        "tonalRamp": [
+          "#001107",
+          "#00301e",
+          "#004f3b",
+          "#2a6f59",
+          "#4e927a",
+          "#71b59c",
+          "#95dac0",
+          "#baffe5"
+        ],
+        "tokenVar": "--color-surface (.theme-forest)"
+      },
+      "away-muted": {
+        "role": "neutral",
+        "displayName": "Away Muted",
+        "canonical": "#d3e2db",
+        "oklch": "oklch(90.0% 0.019 166.3)",
+        "tonalRamp": [
+          "#040e09",
+          "#1c2823",
+          "#394540",
+          "#58655f",
+          "#788680",
+          "#9ba9a2",
+          "#becdc6",
+          "#e4f3ec"
+        ],
+        "tokenVar": "--color-muted (.theme-forest)"
+      },
+      "away-subtle": {
+        "role": "neutral",
+        "displayName": "Away Subtle",
+        "canonical": "#b9cfc5",
+        "oklch": "oklch(83.5% 0.027 166.6)",
+        "tonalRamp": [
+          "#010f09",
+          "#182922",
+          "#34473f",
+          "#53665e",
+          "#73887f",
+          "#96aba1",
+          "#b9cfc5",
+          "#def5ea"
+        ],
+        "tokenVar": "--color-subtle (.theme-forest)"
+      },
+      "away-hairline": {
+        "role": "neutral",
+        "displayName": "Away Hairline",
+        "canonical": "rgb(251 251 248 / 0.16)",
+        "tokenVar": "--color-line (.theme-forest)"
+      },
+      "danger": {
+        "role": "status",
+        "displayName": "Danger",
+        "canonical": "#b42318",
+        "oklch": "oklch(50.0% 0.182 29.5)",
+        "tonalRamp": [
+          "#210000",
+          "#500000",
+          "#840000",
+          "#b12015",
+          "#da4a3b",
+          "#ff705e",
+          "#ffb2a4",
+          "#ffe5de"
+        ],
+        "tokenVar": "--color-danger"
+      },
+      "success": {
+        "role": "status",
+        "displayName": "Success",
+        "canonical": "#13704f",
+        "oklch": "oklch(48.5% 0.098 163.2)",
+        "tonalRamp": [
+          "#001204",
+          "#003019",
+          "#005133",
+          "#177251",
+          "#419572",
+          "#66b994",
+          "#8bdeb7",
+          "#b7ffde"
+        ],
+        "tokenVar": "--color-success"
+      }
+    },
+    "colourways": {
+      "home": {
+        "selector": ":root",
+        "note": "Default paper sheet."
+      },
+      "away": {
+        "selector": ".theme-forest",
+        "note": "Logo-green sheet; re-points ground, surface, line, fg, muted, subtle, brand and accent tokens."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (Archivo Condensed)",
+        "purpose": "Home hero line, closing call-to-action line, mobile menu items, /99 headline. Uppercase on the main site; width set with font-stretch: 64%."
+      },
+      "page-title": {
+        "displayName": "Page Title",
+        "purpose": "Inner-page H1 at 78% width; clamp(2.4rem, 5vw, 4.4rem) when an aside sits beside it."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings at 78% width; large variant clamp(2.4rem, 6vw, 5rem) at 0.95."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Service names, process step titles, definition terms (1.35 to 1.7rem)."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero subhead, held to 34ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, 56ch in the hero; headings balance, paragraphs wrap pretty."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Button labels; 0.9 / 0.95 / 1 / 1.1rem by size."
+      },
+      "label": {
+        "displayName": "Set Label",
+        "purpose": "Uppercase labels for columns, fields and metadata at 112% width. Never above a heading."
+      },
+      "caption": {
+        "displayName": "Point-size Caption",
+        "purpose": "Annotations of sizes, times, faces and terms; tabular figures; ink-subtle."
+      }
+    },
+    "fontAxes": {
+      "family": "Archivo (next/font/google, axes: wdth)",
+      "widths": {
+        "condensed": "64%",
+        "heading": "78%",
+        "text": "100%",
+        "label": "112%",
+        "expandedUtility": "118% (defined, unused)"
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-rest",
+        "value": "0 1px 0 rgb(20 24 21 / 0.04)",
+        "purpose": "Work-card frames at rest (token --shadow-card)."
+      },
+      {
+        "name": "lift",
+        "value": "0 18px 40px -22px rgb(11 79 60 / 0.38), 0 2px 6px -2px rgb(20 24 21 / 0.08)",
+        "purpose": "Hovered work cards and hero specimen tile (token --shadow-lift)."
+      },
+      {
+        "name": "card-rest-away",
+        "value": "0 1px 0 rgb(0 0 0 / 0.08)",
+        "purpose": "Card rest inside .theme-forest."
+      },
+      {
+        "name": "lift-away",
+        "value": "0 22px 44px -24px rgb(0 0 0 / 0.55)",
+        "purpose": "Lift inside .theme-forest."
+      },
+      {
+        "name": "header-scrolled",
+        "value": "0 8px 24px -20px rgb(20 24 21 / 0.45)",
+        "purpose": "Sticky header once the page has scrolled."
+      },
+      {
+        "name": "device",
+        "value": "0 28px 50px -30px rgb(20 24 21 / 0.7)",
+        "purpose": "CSS phone frames on /99 (depicts a physical object)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-quint",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Button states, button fill, nav and row underlines, accordion."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Reveals, rule draws, image clip reveals, specimen scale, arrow nudge, sheet-in."
+      },
+      {
+        "name": "ease-in-out-quart",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Defined token; available for symmetric moves."
+      },
+      {
+        "name": "dur-fast",
+        "value": "160ms",
+        "purpose": "Small colour changes."
+      },
+      {
+        "name": "dur-base",
+        "value": "240ms",
+        "purpose": "Standard state transitions."
+      },
+      {
+        "name": "dur-slow",
+        "value": "480ms",
+        "purpose": "Primary button marking-ink fill sliding in from the left."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity 640ms + translateY(18px) 760ms, ease-out-expo",
+        "purpose": "Below-the-fold blocks, once, 70ms stagger capped at 6."
+      },
+      {
+        "name": "reveal-words",
+        "value": "opacity 560ms + translateY(0.35em) 680ms, +40ms per word",
+        "purpose": "Section headings rise word by word when scrolled into view."
+      },
+      {
+        "name": "reveal-image",
+        "value": "clip-path inset(0 0 100% 0) to inset(0) over 900ms",
+        "purpose": "Frames open like a sheet slid out of a sleeve."
+      },
+      {
+        "name": "rule-draw",
+        "value": "scaleX 0 to 1 over 900ms, 120ms after its sheet; hero rules 70ms stagger",
+        "purpose": "Decorative hairline rules draw in."
+      },
+      {
+        "name": "specimen-step",
+        "value": "scale(1.06) over 420ms",
+        "purpose": "Hovered/focused specimen cell steps its mark up a size."
+      },
+      {
+        "name": "arrow-nudge",
+        "value": "translateX(3px) over 320ms",
+        "purpose": "Trailing arrows in buttons and links."
+      },
+      {
+        "name": "sheet-out",
+        "value": "140ms ease-in: opacity 0, translateY(-6px)",
+        "purpose": "Old page leaving on client navigation."
+      },
+      {
+        "name": "sheet-in",
+        "value": "300ms ease-out-expo, 60ms delay: from opacity 0, translateY(8px)",
+        "purpose": "New page settling in; header anchored."
+      },
+      {
+        "name": "scroll-progress",
+        "value": "scroll(root block) linear scaleX",
+        "purpose": "Header reading-progress hairline and process timeline fill (view timeline)."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "durations 1ms; reveals, rule draws, progress, phone pan, view transitions off",
+        "purpose": "prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "26rem (416px)"
+      },
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ],
+    "container": {
+      "maxWidth": "84rem",
+      "gutters": "16px / 32px from 640px / 48px from 1024px",
+      "offerColumn": "72rem"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Marking-orange action on the committed path (Request a quote, Get a quote). Deeper ink slides in from the left on hover.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Request a quote <svg aria-hidden=\"true\" class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ".ds-btn-primary { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 24px; border-radius: 4px; background: var(--color-orange-strong, #c2470e); color: #fff; font-family: var(--font-archivo, Archivo), ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 1rem; letter-spacing: -0.005em; text-decoration: none; transition: background-color 200ms cubic-bezier(0.22,1,0.36,1), transform 200ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary::before { content: \"\"; position: absolute; inset: 0; z-index: -1; background: var(--color-orange-deep, #a33a0a); transform: scaleX(0); transform-origin: right center; transition: transform 480ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover::before { transform: scaleX(1); transform-origin: left center; } .ds-btn-primary:hover { background: var(--color-orange-deep, #a33a0a); } .ds-btn-primary .ds-arrow { transition: transform 320ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary:hover .ds-arrow { transform: translateX(3px); } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-cyan, #b8430c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ink outline that fills with ink on hover. Browse and call actions.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Browse the portfolio <svg aria-hidden=\"true\" class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 20px; border-radius: 4px; border: 1.5px solid rgb(20 24 21 / 0.8); background: transparent; color: var(--color-fg, #141815); font-family: var(--font-archivo, Archivo), ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 0.95rem; letter-spacing: -0.005em; text-decoration: none; transition: background-color 200ms cubic-bezier(0.22,1,0.36,1), color 200ms cubic-bezier(0.22,1,0.36,1), transform 200ms; } .ds-btn-secondary:hover { background: var(--color-fg, #141815); color: var(--color-ink, #fbfbf8); } .ds-btn-secondary .ds-arrow { transition: transform 320ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-secondary:hover .ds-arrow { transform: translateX(3px); } .ds-btn-secondary:active { transform: scale(0.98); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--color-cyan, #b8430c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "button-text",
+      "description": "Ink link with a thick underline that takes the marking ink on hover.",
+      "html": "<a class=\"ds-link\" href=\"#\">See all 696 projects</a>",
+      "css": ".ds-link { font-family: var(--font-archivo, Archivo), ui-sans-serif, system-ui, sans-serif; font-weight: 600; color: var(--color-fg, #141815); text-decoration: underline; text-decoration-color: var(--color-line-strong, rgb(20 24 21 / 0.3)); text-decoration-thickness: 2px; text-underline-offset: 7px; transition: text-decoration-color 150ms; } .ds-link:hover { text-decoration-color: var(--color-orange, #f26a1b); } .ds-link:focus-visible { outline: 2px solid var(--color-cyan, #b8430c); outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Sheet-white control with a strong hairline border; focus turns the border logo green with a soft green ring.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-name\"><span>Your name<span class=\"ds-req\" aria-hidden=\"true\">*</span></span></label><input id=\"ds-name\" class=\"ds-input\" placeholder=\"Jane Rivera\" /></div>",
+      "css": ".ds-field { font-family: var(--font-archivo, Archivo), ui-sans-serif, system-ui, sans-serif; max-width: 360px; } .ds-field-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.875rem; font-weight: 500; color: var(--color-fg, #141815); } .ds-req { margin-left: 2px; color: var(--color-cyan, #b8430c); } .ds-input { width: 100%; height: 48px; padding: 0 16px; border-radius: 5px; border: 1px solid var(--color-line-strong, rgb(20 24 21 / 0.3)); background: var(--color-surface, #ffffff); color: var(--color-fg, #141815); font: inherit; font-size: 1rem; transition: border-color 150ms, box-shadow 150ms; } .ds-input::placeholder { color: rgb(91 98 93 / 0.8); } .ds-input:hover { border-color: rgb(20 24 21 / 0.35); } .ds-input:focus { outline: none; border-color: var(--color-brand, #0b4f3c); box-shadow: 0 0 0 4px rgb(11 79 60 / 0.15); }"
+    },
+    {
+      "name": "Main Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Running-head strip with the studio clock above a paper header; the current page carries a 2px marking-orange underline.",
+      "html": "<header class=\"ds-header\"><div class=\"ds-strip\"><p class=\"ds-clock\"><span class=\"ds-dot\"></span><span><b>Studio open</b> · 2:14 PM ET · 2-hr concept clock running</span></p><p class=\"ds-cap\">Hicksville, NY · (707) 564-6678</p></div><nav class=\"ds-nav\" aria-label=\"Main\"><a href=\"#\" aria-current=\"page\">Services</a><a href=\"#\">Portfolio</a><a href=\"#\">About</a><a href=\"#\">FAQ</a><a href=\"#\">Contact</a></nav><span class=\"ds-progress\"></span></header>",
+      "css": ".ds-header { position: relative; font-family: var(--font-archivo, Archivo), ui-sans-serif, system-ui, sans-serif; background: var(--color-ink, #fbfbf8); border-bottom: 1px solid var(--color-line, rgb(20 24 21 / 0.12)); } .ds-strip { display: flex; justify-content: space-between; align-items: center; height: 32px; padding: 0 24px; border-bottom: 1px solid var(--color-line, rgb(20 24 21 / 0.12)); } .ds-clock { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 0.78rem; font-variant-numeric: tabular-nums; color: var(--color-muted, #464d48); } .ds-clock b { color: var(--color-fg, #141815); font-weight: 600; } .ds-dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--color-success, #13704f); } .ds-cap { margin: 0; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.02em; color: var(--color-subtle, #5b625d); } .ds-nav { display: flex; gap: 28px; height: 68px; align-items: center; padding: 0 24px; } .ds-nav a { position: relative; padding: 8px 0; font-size: 0.95rem; font-weight: 500; color: var(--color-muted, #464d48); text-decoration: none; transition: color 150ms; } .ds-nav a::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: 2px; height: 2px; background: rgb(20 24 21 / 0.4); transform: scaleX(0); transform-origin: left; transition: transform 300ms cubic-bezier(0.22,1,0.36,1); } .ds-nav a:hover { color: var(--color-fg, #141815); } .ds-nav a:hover::after { transform: scaleX(1); } .ds-nav a[aria-current=\"page\"] { color: var(--color-fg, #141815); } .ds-nav a[aria-current=\"page\"]::after { background: var(--color-orange, #f26a1b); transform: scaleX(1); } .ds-nav a:focus-visible { outline: 2px solid var(--color-cyan, #b8430c); outline-offset: 3px; } .ds-progress { position: absolute; left: 0; bottom: -1px; height: 1px; width: 38%; background: var(--color-orange, #f26a1b); }"
+    },
+    {
+      "name": "Specimen Tile",
+      "kind": "custom",
+      "refersTo": "specimen-tile",
+      "description": "Signature hero figure: one mark at sign size on a construction grid, above size cells captioned in point sizes.",
+      "html": "<a class=\"ds-spec\" href=\"#\"><div class=\"ds-spec-well\"><span class=\"ds-spec-mark ds-size\" style=\"font-size:56px\">Laz</span></div><ul class=\"ds-spec-cells\"><li class=\"ds-cell\"><span class=\"ds-size\" style=\"font-size:28px\">Laz</span><span class=\"ds-cell-cap\">96px<span>Website header</span></span></li><li class=\"ds-cell\"><span class=\"ds-size\" style=\"font-size:18px\">Laz</span><span class=\"ds-cell-cap\">56px<span>Business card</span></span></li><li class=\"ds-cell\"><span class=\"ds-size\" style=\"font-size:12px\">Laz</span><span class=\"ds-cell-cap\">32px<span>App icon</span></span></li><li class=\"ds-cell\"><span class=\"ds-size\" style=\"font-size:8px\">Laz</span><span class=\"ds-cell-cap\">16px<span>Favicon</span></span></li></ul></a>",
+      "css": ".ds-spec { display: block; max-width: 480px; font-family: var(--font-archivo, Archivo), ui-sans-serif, system-ui, sans-serif; text-decoration: none; color: var(--color-fg, #141815); border: 1px solid var(--color-line-strong, rgb(20 24 21 / 0.3)); border-radius: 6px; background: var(--color-surface, #ffffff); transition: box-shadow 300ms; } .ds-spec:hover { box-shadow: 0 18px 40px -22px rgb(11 79 60 / 0.38), 0 2px 6px -2px rgb(20 24 21 / 0.08); } .ds-spec-well { display: grid; place-items: center; aspect-ratio: 16 / 9; border-bottom: 1px solid var(--color-line, rgb(20 24 21 / 0.12)); background-image: linear-gradient(to right, rgb(20 24 21 / 0.06) 1px, transparent 1px), linear-gradient(to bottom, rgb(20 24 21 / 0.06) 1px, transparent 1px); background-size: 24px 24px; } .ds-spec-mark { font-weight: 800; font-stretch: 64%; color: var(--color-forest, #0b4f3c); } .ds-spec-cells { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--color-line, rgb(20 24 21 / 0.12)); border-radius: 0 0 6px 6px; overflow: hidden; } .ds-cell { display: flex; flex-direction: column; justify-content: space-between; gap: 16px; padding: 16px; background: var(--color-surface, #ffffff); font-weight: 800; color: var(--color-forest, #0b4f3c); } .ds-size { display: inline-block; transition: transform 420ms cubic-bezier(0.16,1,0.3,1); } .ds-cell:hover .ds-size { transform: scale(1.06); } .ds-cell-cap { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.02em; line-height: 1.25; font-variant-numeric: tabular-nums; color: var(--color-subtle, #5b625d); transition: color 150ms; } .ds-cell-cap span { display: block; color: rgb(20 24 21 / 0.7); } .ds-cell:hover .ds-cell-cap { color: var(--color-cyan, #b8430c); } .ds-spec:focus-visible { outline: 2px solid var(--color-cyan, #b8430c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ruled Index Row",
+      "kind": "custom",
+      "refersTo": "service-row",
+      "description": "Service entry as a ruled list row under a 2px ink head: condensed title, one-line summary, arrow; hover draws a marking-orange rule from the left.",
+      "html": "<div class=\"ds-index\"><h3 class=\"ds-index-head\">Websites</h3><a class=\"ds-row\" href=\"#\"><span><span class=\"ds-row-title\">Business websites</span><span class=\"ds-row-sum\">Custom sites built to load fast and win calls.</span></span><svg aria-hidden=\"true\" class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a><a class=\"ds-row\" href=\"#\"><span><span class=\"ds-row-title\">E-commerce</span><span class=\"ds-row-sum\">Stores with checkout, inventory and shipping set up.</span></span><svg aria-hidden=\"true\" class=\"ds-arrow\" viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a></div>",
+      "css": ".ds-index { max-width: 420px; font-family: var(--font-archivo, Archivo), ui-sans-serif, system-ui, sans-serif; } .ds-index-head { margin: 0; padding-bottom: 12px; border-bottom: 2px solid var(--color-fg, #141815); font-size: 0.72rem; font-weight: 600; font-stretch: 112%; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-fg, #141815); } .ds-row { position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--color-line, rgb(20 24 21 / 0.12)); color: var(--color-fg, #141815); text-decoration: none; } .ds-row::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--color-orange, #f26a1b); transform: scaleX(0); transform-origin: left; transition: transform 500ms cubic-bezier(0.22,1,0.36,1); } .ds-row:hover::after, .ds-row:focus-visible::after { transform: scaleX(1); } .ds-row-title { display: block; font-size: 1.45rem; font-weight: 700; font-stretch: 78%; letter-spacing: -0.02em; line-height: 1.25; transition: color 150ms; } .ds-row-sum { display: block; margin-top: 4px; font-size: 0.875rem; color: var(--color-muted, #464d48); } .ds-row .ds-arrow { margin-top: 6px; flex-shrink: 0; color: var(--color-subtle, #5b625d); transition: transform 320ms cubic-bezier(0.16,1,0.3,1), color 150ms; } .ds-row:hover .ds-row-title, .ds-row:hover .ds-arrow { color: var(--color-cyan, #b8430c); } .ds-row:hover .ds-arrow { transform: translateX(3px); } .ds-row:focus-visible { outline: 2px solid var(--color-cyan, #b8430c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Accordion Row",
+      "kind": "custom",
+      "refersTo": "accordion",
+      "description": "Ruled question rows; the circular plus toggle rotates 45 degrees and fills marking-orange-strong when open.",
+      "html": "<div class=\"ds-acc\"><button class=\"ds-acc-btn\" aria-expanded=\"true\"><span>Is domain and hosting included?</span><span class=\"ds-acc-tog\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></span></button><p class=\"ds-acc-panel\">Not in the $99. We offer both separately, or connect a domain you already own.</p><button class=\"ds-acc-btn\" aria-expanded=\"false\"><span>What if I don't like the first concept?</span><span class=\"ds-acc-tog\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg></span></button></div>",
+      "css": ".ds-acc { max-width: 560px; font-family: var(--font-archivo, Archivo), ui-sans-serif, system-ui, sans-serif; border-top: 1px solid var(--color-line, rgb(20 24 21 / 0.12)); } .ds-acc-btn { display: flex; width: 100%; justify-content: space-between; align-items: flex-start; gap: 24px; padding: 24px 0; border: 0; border-bottom: 1px solid var(--color-line, rgb(20 24 21 / 0.12)); background: none; text-align: left; font: inherit; font-size: 1.05rem; font-weight: 500; line-height: 1.375; color: var(--color-fg, #141815); cursor: pointer; transition: color 150ms; } .ds-acc-btn:hover { color: var(--color-brand, #0b4f3c); } .ds-acc-tog { display: grid; place-items: center; flex-shrink: 0; width: 28px; height: 28px; margin-top: 2px; border-radius: 9999px; border: 1px solid var(--color-line-strong, rgb(20 24 21 / 0.3)); transition: transform 300ms cubic-bezier(0.22,1,0.36,1), background-color 300ms, color 300ms, border-color 300ms; } .ds-acc-btn:hover .ds-acc-tog { transform: scale(1.1); border-color: rgb(11 79 60 / 0.6); } .ds-acc-btn[aria-expanded=\"true\"] { border-bottom: 0; } .ds-acc-btn[aria-expanded=\"true\"] .ds-acc-tog { transform: rotate(45deg); background: var(--color-orange-strong, #c2470e); border-color: var(--color-orange-strong, #c2470e); color: #fff; } .ds-acc-panel { margin: 0; padding: 0 48px 24px 0; border-bottom: 1px solid var(--color-line, rgb(20 24 21 / 0.12)); line-height: 1.625; color: var(--color-muted, #464d48); } .ds-acc-btn:focus-visible { outline: 2px solid var(--color-cyan, #b8430c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Away Sheet",
+      "kind": "card",
+      "refersTo": "away-sheet",
+      "description": "The away colourway: a full logo-green section with paper ink, orange-on-green accent and a condensed display line. Used for featured work, the closing call to action, the guarantee and the footer.",
+      "html": "<section class=\"ds-away\"><h2 class=\"ds-away-title\">Tell us what you are building.</h2><p class=\"ds-away-text\">Send a short brief. You get questions back, then a written scope, timeline and price.</p><a class=\"ds-away-btn\" href=\"#\">Request a quote</a></section>",
+      "css": ".ds-away { padding: 56px 32px; font-family: var(--font-archivo, Archivo), ui-sans-serif, system-ui, sans-serif; background: #0b4f3c; color: #fbfbf8; border-top: 1px solid rgb(251 251 248 / 0.16); } .ds-away-title { margin: 0; font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700; font-stretch: 64%; letter-spacing: -0.015em; line-height: 0.9; text-transform: uppercase; } .ds-away-text { max-width: 36ch; margin: 24px 0 0; font-size: 1.125rem; line-height: 1.625; color: #d3e2db; } .ds-away-btn { display: inline-flex; align-items: center; height: 56px; margin-top: 32px; padding: 0 24px; border-radius: 4px; background: #c2470e; color: #fff; font-weight: 600; text-decoration: none; transition: background-color 200ms; } .ds-away-btn:hover { background: #a33a0a; } .ds-away-btn:focus-visible { outline: 2px solid #ffa36b; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Foundry Specimen Sheet",
+    "overview": "The studio's work is presented the way a type foundry presents a typeface: on bright specimen paper, in rich ink, at the sizes it has to survive. The home hero sets the offer as a size ladder (display, subhead, text), each rung annotated with a point-size caption and a short hairline rule, beside one real portfolio logo shown at sign, header, business-card, app-icon and favicon sizes. Everything else on the site borrows that sheet's grammar: condensed headings, ruled lists, tabular figures, small annotations that state facts.\n\nThe system is two inks and one marking pen. Ink (specimen-ink) on paper (specimen-paper) carries all reading. Logo green is the second ink: a word of emphasis on paper, or a whole sheet when a section turns to the away colourway. Orange is the marking pen a proofreader would use: it traces the action the visitor commits to and the place they are, and nothing else. Density is editorial rather than dashboard: generous section rhythm (80 to 112px), long measures held to 56ch, content separated by hairlines rather than boxes.\n\nOne variable family does all of it. Archivo's width axis swings from condensed (64%) for the biggest specimen lines, through a narrowed heading width (78%), to normal text, to a slightly expanded width (112%) for small set labels. Motion is a print metaphor too: hairline rules draw in, frames open like a sheet slid out of a sleeve, and a page change reads as one sheet replacing another. The first viewport is always static.",
+    "keyCharacteristics": [
+      "Bright specimen paper, rich green-black ink, logo green as second ink, one orange marking ink.",
+      "Home and away colourways: paper sheets and full logo-green sheets, switched by a single theme class.",
+      "One variable grotesk (Archivo) whose width axis carries the hierarchy.",
+      "Hairline rules and ruled lists instead of cards and boxes.",
+      "Point-size captions with tabular figures annotating real measurements, times and sizes.",
+      "Print-sharp corners (4 to 6px); circles only for small controls.",
+      "Flat at rest; lift appears only on hovered work."
+    ],
+    "rules": [
+      {
+        "name": "The Marking Ink Rule",
+        "body": "Orange marks only what the visitor commits to and where they are: the primary action, the active nav item, the open accordion item, progress through the page or the process. It never fills a section, never decorates an illustration, and is never a gradient.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Oranges Rule",
+        "body": "Each orange has one job. #f26a1b is a stroke and fill colour only; #c2470e is the button fill under white text; #b8430c is orange as text on paper; #ffa36b is orange on green. Never set #f26a1b as text on paper.",
+        "section": "colors"
+      },
+      {
+        "name": "The Colourway Rule",
+        "body": "Components use semantic tokens (ground, text, muted, line, accent) and never hard-code a colourway. A sheet turns away by adding the theme-forest class; the same component then reads paper-on-green with no class changes.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Archivo is the only typeface. Hierarchy moves along the width axis (64% display, 78% headings and titles, 100% text, 112% labels), never to a second family.",
+        "section": "typography"
+      },
+      {
+        "name": "The Headline Stands Alone Rule",
+        "body": "No label, kicker or eyebrow sits above a heading. Set labels name columns, fields and metadata; they never introduce a section title.",
+        "section": "typography"
+      },
+      {
+        "name": "The Caption Rule",
+        "body": "Captions annotate something measurable: a size, a time, a face, a source. They use tabular figures so numbers align, and they are never decoration.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Structure is drawn with 1px rules and 2px ink heads, not boxes. If a group needs separating, rule it; if a section needs separating, border it or change its ground.",
+        "section": "layout"
+      },
+      {
+        "name": "The Static First Viewport Rule",
+        "body": "Nothing above the fold is hidden, delayed or faded in. Scroll reveals apply only to elements that start below the viewport, once, with a 70ms stagger capped at six items.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Print Rule",
+        "body": "Surfaces are flat at rest. A shadow appears only when something genuinely lifts under the pointer, or when the header detaches from the page.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Print-Sharp Rule",
+        "body": "Rectangles stay at 4 to 6px. Pills and circles are for small controls only, never for primary buttons, cards or sections.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do keep the first viewport static: no opacity entrance, no delay on anything above the fold; reveal only what starts below it.",
+      "Do switch a whole section to the away colourway with the theme class (featured work, closing call to action, guarantee, footer) rather than recolouring components one by one.",
+      "Do set section headings in Archivo at 78% width, bold, with leading under 1, and the largest lines at 64% width uppercase.",
+      "Do annotate real values with captions: pixel sizes, times, faces, payment terms, in tabular figures.",
+      "Do separate groups with hairlines and open lists and columns with a 2px ink rule.",
+      "Do keep tap targets at 44px or more (icon buttons, menu toggle, inputs at 48px) and keep every motion behind the reduced-motion query, which removes reveals, rule draws, the progress bar, phone panning and sheet transitions.",
+      "Do keep button widths stable across states: loading spinners overlay the label instead of replacing it."
+    ],
+    "donts": [
+      "Don't use gradients anywhere; the legacy gradient utilities are flat marking-orange fills and flat accent text.",
+      "Don't set marking orange #f26a1b as text on paper, or use any orange outside the committed path and current-position markers.",
+      "Don't put a label, kicker or eyebrow above a heading.",
+      "Don't build card grids with icons for services, features or values; use ruled index rows and definition lists.",
+      "Don't introduce a second typeface; vary Archivo's width and weight instead.",
+      "Don't round primary buttons, cards or sections into pills; corners stay at 4 to 6px.",
+      "Don't add shadows to surfaces at rest, or noise and grain textures; print sheets are flat and clean."
+    ]
+  }
+}

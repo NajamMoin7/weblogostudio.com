@@ -19,6 +19,9 @@ export function useFormSubmission({ endpoint, initialValues, validate }) {
   const [focusTick, setFocusTick] = useState(0);
   const startedAt = useRef(0);
   const formRef = useRef(null);
+  // Latest values, so async updates (e.g. files finishing processing at different times)
+  // never overwrite each other with a stale snapshot.
+  const valuesRef = useRef(values);
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -37,7 +40,8 @@ export function useFormSubmission({ endpoint, initialValues, validate }) {
   }
 
   function setValue(name, value) {
-    const next = { ...values, [name]: value };
+    const next = { ...valuesRef.current, [name]: value };
+    valuesRef.current = next;
     setValues(next);
     if (attempted || touched[name]) revalidate(next);
   }
@@ -88,7 +92,8 @@ export function useFormSubmission({ endpoint, initialValues, validate }) {
   }
 
   function reset() {
-    setValues({ ...initialValues, [HONEYPOT_FIELD]: "" });
+    valuesRef.current = { ...initialValues, [HONEYPOT_FIELD]: "" };
+    setValues(valuesRef.current);
     setErrors({});
     setTouched({});
     setAttempted(false);
@@ -96,5 +101,7 @@ export function useFormSubmission({ endpoint, initialValues, validate }) {
     startedAt.current = Date.now();
   }
 
-  return { values, errors, status, serverMessage, setValue, onBlur, submit, reset, formRef };
+  const getValues = () => valuesRef.current;
+
+  return { values, errors, status, serverMessage, setValue, getValues, onBlur, submit, reset, formRef };
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import Logo from "@/components/ui/Logo";
 
 export const metadata = {
   title: "Page Not Found",
@@ -10,31 +11,30 @@ export const metadata = {
 const suggestions = [
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "Get a quote", href: "/get-a-quote" },
   { label: "Contact", href: "/contact" },
 ];
 
 export default function NotFound() {
   return (
-    <section className="grain relative overflow-hidden">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-[12%] hidden w-40 md:block">
-        <span className="absolute -top-10 left-0 h-[140%] w-8 -skew-x-[24deg] bg-forest/90" />
-        <span className="brand-gradient absolute -top-10 left-14 h-[140%] w-8 -skew-x-[24deg]" />
+    <main id="main" className="relative">
+      <div className="container-page border-b border-line py-5">
+        <Logo className="h-9 w-auto" />
       </div>
-      <div className="container-page relative flex min-h-[72vh] flex-col justify-center py-24">
-        <p className="eyebrow text-muted">Error 404</p>
-        <h1 className="font-display-wide mt-6 max-w-3xl text-[clamp(2.4rem,6vw,4.8rem)] font-bold leading-[1]">
-          This page took a <span className="text-gradient">wrong turn.</span>
+      <div className="container-page relative flex min-h-[72vh] flex-col justify-center py-20">
+        <p aria-hidden="true" className="font-condensed text-[clamp(6rem,22vw,16rem)] font-bold leading-[0.8] text-fg/10">404</p>
+        <h1 className="font-display-wide mt-4 max-w-3xl text-[clamp(2.4rem,6vw,4.8rem)] font-bold leading-[0.95]">
+          This page is not in the set.
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-          The page you are looking for does not exist or has moved. Try one of these instead.
+          The link is broken or the page has moved. Try one of these, or call (707) 564-6678.
         </p>
         <div className="mt-10 flex flex-col gap-3 xs:flex-row">
           <Button href="/" arrow>
-            Back to Home
+            Back to home
           </Button>
-          <Button href="/get-a-quote" variant="secondary">
-            Get a Quote
+          <Button href="/portfolio" variant="secondary">
+            See the work
           </Button>
         </div>
         <ul className="mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-8">
@@ -47,6 +47,6 @@ export default function NotFound() {
           ))}
         </ul>
       </div>
-    </section>
+    </main>
   );
 }

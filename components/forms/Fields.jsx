@@ -94,7 +94,7 @@ export function ConsentField({ id = "consent", checked, onChange, error }) {
           onChange={onChange}
           aria-invalid={Boolean(error)}
           aria-describedby={describedBy(id, { error })}
-          className="mt-0.5 size-5 shrink-0 cursor-pointer rounded accent-[#b4532a]"
+          className="mt-0.5 size-5 shrink-0 cursor-pointer rounded accent-[#0b4f3c]"
         />
         <label htmlFor={id} className="cursor-pointer text-sm leading-relaxed text-muted">
           I have read the{" "}

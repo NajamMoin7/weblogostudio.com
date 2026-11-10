@@ -35,11 +35,11 @@ export default function ServiceDetail({ service }) {
         intro={service.hero.intro}
         actions={
           <>
-            <Button href={`/get-a-quote?service=${service.slug}`} size="lg" arrow>
-              Start Your Project
+            <Button href={`/get-a-quote?service=${service.slug}`} size="lg" fill arrow>
+              Request a quote
             </Button>
-            <Button href="/pricing" size="lg" variant="secondary">
-              View Packages
+            <Button href="/portfolio" size="lg" variant="secondary">
+              See the work
             </Button>
           </>
         }
@@ -52,14 +52,13 @@ export default function ServiceDetail({ service }) {
           <SectionHeading
             id="problems-title"
             eyebrow="The challenge"
-            title="Problems we solve"
-            intro="Common reasons businesses come to us, and how we help."
+            title="Why clients book this"
+            intro="The problems that usually bring people to us for this service."
           />
-          <ol className="mt-14 grid gap-4 md:grid-cols-3">
-            {service.problems.map((p, i) => (
-              <li key={p.title} className="reveal rounded-xl border border-line bg-surface p-7">
-                <span className="font-mono text-xs text-subtle">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-4 text-lg font-semibold text-fg">{p.title}</h3>
+          <ol className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-3">
+            {service.problems.map((p) => (
+              <li key={p.title} className="reveal border-t-2 border-fg pt-5">
+                <h3 className="font-display-wide text-[1.45rem] font-bold leading-tight text-fg">{p.title}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{p.text}</p>
               </li>
             ))}
@@ -76,7 +75,7 @@ export default function ServiceDetail({ service }) {
                 id="features-title"
                 eyebrow={`${service.navTitle ?? service.title}`}
                 title="What is included"
-                intro="The exact mix is tailored to your project and confirmed in your proposal."
+                intro="Your proposal lists exactly which of these your project gets."
               />
             </div>
           </div>
@@ -84,7 +83,7 @@ export default function ServiceDetail({ service }) {
             {service.features.map((f) => (
               <li key={f.title} className="bg-surface p-7 sm:[&:last-child:nth-child(odd)]:col-span-2">
                 <h3 className="flex items-center gap-3 font-semibold text-fg">
-                  <span aria-hidden="true" className="brand-gradient h-px w-4" />
+                  <span aria-hidden="true" className="h-px w-4 bg-fg/60" />
                   {f.title}
                 </h3>
                 <p className="mt-2 pl-7 leading-relaxed text-muted">{f.text}</p>
@@ -101,12 +100,12 @@ export default function ServiceDetail({ service }) {
             id="benefits-title"
             className="lg:col-span-5"
             eyebrow="The benefit"
-            title="What it means for your business"
+            title="What changes for your business"
           />
           <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:col-span-7">
             {service.benefits.map((b) => (
               <li key={b} className="reveal flex gap-4 border-t border-line-strong pt-5 text-lg leading-snug text-fg">
-                <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-cyan" />
+                <span aria-hidden="true" className="mt-[0.7rem] h-px w-4 shrink-0 bg-fg/60" />
                 {b}
               </li>
             ))}
@@ -128,8 +127,8 @@ export default function ServiceDetail({ service }) {
       <Process
         steps={service.process}
         eyebrow={`${service.navTitle ?? service.title} process`}
-        title="From brief to delivery, step by step."
-        intro="A structured approach with clear milestones and review points."
+        title="From brief to delivery."
+        intro="Each stage ends with something you review and approve."
       />
 
       {projects.length > 0 && (
@@ -140,10 +139,10 @@ export default function ServiceDetail({ service }) {
                 id="examples-title"
                 eyebrow="Related work"
                 title="Examples from our portfolio"
-                intro="Real work from our portfolio in this discipline."
+                intro="Delivered projects in this discipline, shown as handed over."
               />
               <Button href="/portfolio" variant="secondary" arrow className="shrink-0 self-start md:self-auto">
-                View All Projects
+                See all work
               </Button>
             </div>
             <ul className="mt-14 columns-2 gap-5 md:columns-3 xl:columns-4">
@@ -158,13 +157,13 @@ export default function ServiceDetail({ service }) {
       )}
 
       {["logo-design", "brand-identity"].includes(service.slug) && (
-        <LogoShowcase eyebrow="From the portfolio" title="Logos we have designed" />
+        <LogoShowcase title="More logos from the studio" exclude={projects.map((p) => p.slug)} />
       )}
 
       <section aria-labelledby="related-title" className="border-t border-line bg-surface py-20 lg:py-28">
         <div className="container-page">
           <SectionHeading id="related-title" eyebrow="Related services" title="Often paired with" />
-          <ul className="mt-12 grid gap-4 md:grid-cols-3">
+          <ul className="mt-12 grid gap-x-8 gap-y-4 md:grid-cols-3">
             {related.map((r) => (
               <li key={r.slug}>
                 <ServiceCard service={r} />
@@ -183,9 +182,9 @@ export default function ServiceDetail({ service }) {
       />
 
       <CtaSection
-        title="Ready to start? Let's talk about your project."
-        text="Share a few details about your project and we will reply with questions, recommendations and a clear proposal."
-        primary={{ label: "Request a Quote", href: `/get-a-quote?service=${service.slug}` }}
+        title={`Get a quote for ${(service.navTitle ?? service.title).toLowerCase()}.`}
+        text="Share a few details. We reply with questions, then a written scope, timeline and fixed price."
+        primary={{ label: "Request a quote", href: `/get-a-quote?service=${service.slug}` }}
       />
 
       <JsonLd

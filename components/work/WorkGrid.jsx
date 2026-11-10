@@ -105,19 +105,19 @@ export default function WorkGrid({ items, categories }) {
                   aria-pressed={on}
                   onClick={() => chooseCategory(f.id)}
                   className={`relative inline-flex h-10 items-center gap-2 rounded-full px-4 text-sm font-medium transition-colors duration-200 active:scale-[0.97] ${
-                    on ? "text-cream" : "border border-line-strong bg-surface text-muted hover:border-brand/40 hover:text-brand"
+                    on ? "text-white" : "border border-line-strong bg-surface text-muted hover:border-fg hover:text-fg"
                   }`}
                 >
                   {on && (
                     <motion.span
                       layoutId="work-filter-pill"
                       aria-hidden="true"
-                      className="absolute inset-0 rounded-full bg-forest"
+                      className="absolute inset-0 rounded-full bg-orange-strong"
                       transition={{ type: "spring", duration: 0.4, bounce: 0.12 }}
                     />
                   )}
                   <span className="relative">{f.label}</span>
-                  <span className={`relative font-mono text-[0.7rem] ${on ? "text-cream/75" : "text-subtle"}`}>{counts[f.id] ?? 0}</span>
+                  <span className={`relative text-[0.72rem] tabular-nums ${on ? "text-white/80" : "text-subtle"}`}>{counts[f.id] ?? 0}</span>
                 </button>
               );
             })}

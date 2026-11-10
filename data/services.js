@@ -663,11 +663,11 @@ export const services = [
     faqs: [
       {
         q: "How many logo concepts will I see?",
-        a: "The number of initial concepts depends on the package you choose and is stated in your proposal.",
+        a: "Usually two to four distinct concepts, depending on the scope. The exact number is written into your proposal before work starts.",
       },
       {
         q: "How many revisions are included?",
-        a: "Each package includes a defined number of revision rounds, agreed before work begins. Additional rounds can be added if needed.",
+        a: "Your proposal states the number of revision rounds before work begins. Extra rounds can be added, and any cost is agreed first.",
       },
       {
         q: "Which file formats will I receive?",

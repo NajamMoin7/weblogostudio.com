@@ -1,7 +1,9 @@
 # Web Logo Studio website
 
 Marketing website for **Web Logo Studio**, covering website design, development, logo design and brand identity.
-Built with Next.js 16 (App Router, Cache Components), React 19, Tailwind CSS 4, Motion and Lucide icons. Components are written in JavaScript (JSX).
+Built with Next.js 16 (App Router, Cache Components), React 19, Tailwind CSS 4, Motion, Stripe and Lucide icons. Components are written in JavaScript (JSX).
+
+Web Logo Studio LLC · 9 Loretta Lane, Hicksville, NY 11801 · (707) 564-6678 · managed by Corebyte Media LLC.
 
 ## Getting started
 
@@ -18,10 +20,11 @@ npm run build && npm start
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Recommended | Production URL for canonical links, Open Graph, sitemap and JSON-LD. Defaults to `https://weblogostudio.com`. |
-| `NEXT_PUBLIC_CONTACT_EMAIL` | Optional | Public email shown in the footer, contact page and Organization schema. Hidden when empty. |
-| `NEXT_PUBLIC_CONTACT_PHONE` | Optional | Public phone number. Hidden when empty. |
-| `RESEND_API_KEY`, `FORMS_TO_EMAIL`, `FORMS_FROM_EMAIL` | Option A | Deliver form submissions by email through Resend. The sender domain must be verified in Resend. |
-| `FORMS_WEBHOOK_URL`, `FORMS_WEBHOOK_SECRET` | Option B | POST submissions as JSON to a webhook. The secret is sent as `X-Webhook-Secret`. |
+| `STRIPE_SECRET_KEY` | For `/99` | Server-only Stripe secret key. Creates the $50 deposit Checkout Session and verifies payment on `/99/start`. Without it, the pay button returns to `/99` with a "call us" message. |
+| `NEXT_PUBLIC_META_PIXEL_ID` | For ads | Meta Pixel ID. While empty, the Pixel is not loaded. |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | Optional | Public email shown in the footer and contact page. Hidden when empty. Phone and address live in `lib/site.js`. |
+| `RESEND_API_KEY`, `FORMS_TO_EMAIL`, `FORMS_FROM_EMAIL` | Option A | Deliver contact, quote and `/99` intake submissions by email through Resend (intake photos arrive as attachments). The sender domain must be verified in Resend. |
+| `FORMS_WEBHOOK_URL`, `FORMS_WEBHOOK_SECRET` | Option B | POST submissions as JSON to a webhook. Intake files arrive base64-encoded under `attachments`. The secret is sent as `X-Webhook-Secret`. |
 | `HF_API_KEY_ID`, `HF_API_KEY_SECRET` | Image generation only | Higgsfield API key used by `npm run images:generate` on your machine. Not needed in the deployed site. |
 
 Form delivery keys are read only on the server (`lib/delivery.js`) and are never sent to the browser.
@@ -76,33 +79,40 @@ npm run build
 
 Review every generated image before publishing. To reject one, delete its entry from `data/generated-assets.json` and its file. Check the Higgsfield terms for commercial use on your plan. Output URLs from Higgsfield expire after about seven days, which is why files are saved locally.
 
+## Design system: "Type Specimen"
+
+The site is set like a foundry specimen sheet: bright paper (`#FBFBF8`), ink (`#141815`), the logo green (`#0B4F3C`) as second ink and one orange marking ink (`#F26A1B`, `#C2470E` for text and buttons) used only on the path a visitor commits to. One variable font, Archivo, runs condensed for display lines and normal width for text. Sheets alternate between the paper colourway and the green colourway (`.theme-forest`). Tokens live in `app/globals.css`.
+
 ## Motion and interaction
 
 | Feature | Implementation |
 | --- | --- |
-| Animated headline | `components/motion/AnimatedHeadline.jsx`. Flow-inspired: words rise out of masks and sharpen from a blur, then the last phrase rotates character by character between "stand out.", "get remembered.", "inspire confidence." and "make an impact.". All phrases share one grid cell, so nothing below moves. Screen readers get one plain sentence. |
-| Pause control | `HeroPauseButton` in `components/motion/HeroMotion.jsx`. Pauses the rotating phrase and the ambient background. Motion also pauses when the hero is off screen or the tab is hidden, and is off entirely for reduced motion. |
-| Cursor highlight and parallax | `components/motion/HeroMotion.jsx`. One pointer listener writes CSS variables inside requestAnimationFrame: a brand-gradient copy of the headline is revealed under the cursor, and the stage mockups shift at different depths. No React renders, no letter movement, fine pointers only. |
-| Service showcase | `components/services/ServiceShowcase.jsx`. A large typographic service list; hover or focus cross-fades the matching photo. Rows show thumbnails on phones, so nothing depends on hover. |
-| Buttons | `components/ui/Button.jsx`. Variants primary, secondary, outline, text, icon, dark and outlineDark. `fill` adds a directional slide-in fill on selected primary CTAs. `loading` overlays the branded spinner without changing the button size and sets `aria-busy`. |
-| Motion tokens | Durations, easing and stagger live as CSS custom properties in `app/globals.css` and are mirrored for Motion in `lib/motion.js`. |
-| Magnetic CTAs | `components/ui/Magnetic.jsx`, used on the hero and final call-to-action buttons. Desktop only. Clicking and keyboard use are unchanged. |
-| Carousels | `components/ui/Carousel.jsx` (Embla), used for featured work on the home page and the logo showcase on the home, logo design and brand identity pages. It has buttons, a progress bar, arrow keys and swipe, with no autoplay. Focusing a link in an off-screen slide scrolls it into view. |
-| Statement section | `components/sections/Statement.jsx`. Large editorial text whose words brighten as it scrolls through the viewport, using CSS only. |
-| Before and after | `components/visuals/BeforeAfter.jsx` on the Website Redesign page. A native range input handles keyboard control, and dragging works with mouse or touch. |
-| Scroll reveals | `components/motion/RevealObserver.jsx` plus CSS in `app/globals.css`. One IntersectionObserver reveals elements once as they enter the viewport: `.reveal` fades up, `.reveal-card` lifts and scales in, `.reveal-words` headings sharpen word by word from a blur (all section headings do this automatically), and `.reveal-image` opens a rounded clip-path mask while the image settles from a slight zoom. Items entering together are staggered. Hidden states only apply under `html.reveal-on`, set by an inline script before first paint, so nothing is hidden without JavaScript. |
-| Logo marquee | `components/ui/Marquee.jsx`, used by `components/sections/ToolsMarquee.jsx`. Two identical copies translate by exactly -50% for a seamless loop, with edge-fade masking, pause on hover or focus, and a visible pause button. The duplicate is aria-hidden. Under reduced motion it becomes a static, scrollable row. Tool icons come from Simple Icons (CC0) in `data/tools.js`; the names are trademarks of their owners. |
-| Swap button | `swap` prop on `components/ui/Button.jsx`. On hover or keyboard focus, the arrow chip travels from the end to the start while the label shifts across. It uses two chips and transforms only. |
-| Other scroll effects | CSS scroll timelines still drive the hero parallax, the statement word highlight, the process timeline fill and the header reading progress. |
-| Reduced motion | All of the above are disabled or simplified under `prefers-reduced-motion`. |
+| First paint | Nothing above the fold is hidden or delayed. There is no loading screen and no opacity entrance on hero content. |
+| Scroll reveals | `components/motion/RevealObserver.jsx`. After hydration, only elements that start below the viewport are marked `data-reveal="pending"`, then fade and rise once as they enter. Content in the first viewport is never touched. |
+| Page transitions | `app/(site)/template.jsx` wraps each page in React's `<ViewTransition>`: the old sheet lifts away, the new one settles 8px into place. Client navigations only; the header stays anchored. |
+| Hero specimen | `components/sections/Hero.jsx`. A real portfolio logo shown at sign, header, card, app-icon and favicon size. Caption rules draw in; text is static. |
+| Live studio clock | `components/ui/StudioClock.jsx`. Eastern time, states whether the 2-hour concept clock is running (Mon–Fri, 9am–6pm ET). |
+| Phone mockups | `components/offer/PhoneMockup.jsx` on `/99`. Hover pans through the page; on touch the page pans as you scroll (CSS scroll timeline). |
+| Process rule, reading progress | CSS scroll timelines, no JavaScript. |
+| Reduced motion | Everything above is disabled or made static under `prefers-reduced-motion`. |
 
-## Loading behaviour
+## The $99 offer (`/99`, `/99/start`)
 
-- **Route loading:** `app/loading.jsx` shows a branded spinner with the W mark only when a route genuinely waits. It fades in after about 300ms, so prefetched static pages never flash it.
-- **Slow navigations:** each header link carries a small pending indicator via `useLinkStatus`. It only appears when a navigation was not prefetched and takes time.
-- **Forms:** submit buttons switch to a branded spinner and "Sending Request…" or "Sending Message…". Duplicate submits are blocked and values are preserved. Success only shows after the server confirms delivery.
-- **Images:** generated images reserve their aspect ratio, show a skeleton and blur placeholder, fade in on load, and fall back to the coded illustration on error.
-- **Unknown slugs:** `proxy.js` returns a real 404 for unknown `/services/*` and `/portfolio/*` URLs before rendering. Without it, the prerendered fallback shell would stream a 200 "soft 404".
+- `/99` is a static, `noindex` landing page for Meta ads, with no site navigation. It is not linked from the menu or the sitemap.
+- "Pay $50 & Start" is a form POST to `app/api/checkout/route.js`, which creates a Stripe Checkout Session ($50, "Website Deposit: $99 One-Page Site") and redirects to Stripe. Success returns to `/99/start?session_id={CHECKOUT_SESSION_ID}`; cancel returns to `/99`.
+- `/99/start` verifies the session on the server (`lib/stripe.js`: paid, $50, USD, this offer). Anything else redirects to `/99`.
+- The intake form (`components/forms/IntakeForm.jsx`) resizes photos in the browser and posts to `app/api/intake/route.js`, which re-verifies the Stripe session and delivers through the same pipeline as the contact form, with the session ID and files attached.
+- Reviews: add real reviews to `reviews99` in `data/offer99.js`. The section stays hidden while the list is empty.
+- Example sites: `exampleSites` in `data/offer99.js`.
+
+### Meta Pixel events
+
+| Event | When |
+| --- | --- |
+| `PageView` | Every page load and every client-side navigation (`components/analytics/MetaPixel.jsx`). |
+| `ViewContent` | On `/99`. |
+| `InitiateCheckout` | When "Pay $50 & Start" is clicked (`components/offer/PayButton.jsx`). |
+| `Purchase` `{ value: 50, currency: "USD" }` | On `/99/start`, only after the server confirms payment. `eventID` is the Stripe session ID, and a local guard stops a refresh from sending it twice. |
 
 ## Forms
 
@@ -124,11 +134,11 @@ All content lives in `data/`, separate from presentation.
 | `data/work.js` | Helpers over the portfolio: lookup, filtering, related and adjacent projects, and service-page examples. |
 | `data/work-featured.js` | Hand-picked projects for the home page carousel and service pages. |
 | `data/concepts.js` | Fictional concept businesses, used only for the decorative coded mockups in the hero and service illustrations (labelled "Concept work"). Not part of the portfolio. |
-| `data/pricing.js` | Package framework. `price` and `timeline` are `null` and display "Quote on request" until approved values are added. |
 | `data/content.js` | Value propositions, process, differentiators, expectations and general FAQs. |
 | `data/testimonials.js` | Verified testimonials only. Empty by default. While empty, the home page shows "What to expect" instead. |
 | `data/navigation.js` | Header and legal navigation. |
-| `lib/site.js` | Site name, URL, contact details, social links and the shared metadata helper. |
+| `data/offer99.js` | `/99` content: example sites, steps, inclusions, FAQs and (real) reviews. |
+| `lib/site.js` | Business name, address, phone, socials, LocalBusiness JSON-LD and the shared metadata helper. |
 
 ### Portfolio
 
@@ -148,7 +158,7 @@ npm run portfolio:verify    # compare the live source with the dataset and write
 
 ### Social links
 
-Add genuine profile URLs to `siteConfig.socials` in `lib/site.js`. They then appear in the footer and as `sameAs` in the Organization schema.
+Instagram and Facebook are set in `siteConfig.socials` in `lib/site.js`. They appear in the footer and as `sameAs` in the LocalBusiness schema.
 
 ## Brand assets
 
@@ -156,7 +166,8 @@ The source logo is `logo/logo.jpeg`. Derived assets were generated from it witho
 
 | Asset | Use |
 | --- | --- |
-| `public/brand/logo-lockup.png` | Full logo with tagline on a transparent background, for the footer and About page |
+| `public/brand/logo-lockup.png` | Full logo on a transparent background, for the About page |
+| `public/brand/logo-lockup-white.png` | One-colour white knockout of the supplied `WebLogo Studio.png`, for the green footer |
 | `public/brand/logo-wordmark.png` | "WEBLOGO STUDIO" without the tagline, for the header where the tagline would be illegible |
 | `app/icon.png`, `app/apple-icon.png` | Favicon and touch icon cropped from the W mark |
 | `app/opengraph-image.png`, `app/twitter-image.png` | Social sharing image |
@@ -179,11 +190,12 @@ The logo was supplied as a JPEG on black. A vector (SVG) master would allow cris
 ```
 app/                 Routes, metadata, sitemap.js, robots.js, API routes, not-found and error pages
 components/layout/   Header (client), Footer, MotionProvider
-components/ui/       Button, SectionHeading, Accordion, Breadcrumbs, Logo, JsonLd, ServiceIcon, Carousel, Magnetic, Spinner, PageLoader
+components/ui/       Button, SectionHeading, Accordion, Breadcrumbs, Logo, JsonLd, ServiceIcon, Carousel, Magnetic, Spinner, StudioClock
 components/sections/ Home and shared page sections, PageHero, LegalPage
 components/services/ ServiceCard, ServiceDetail template
 components/portfolio/ProjectCard, PortfolioGrid (client filter)
-components/pricing/  PackageCard
+components/offer/    /99 page: PayButton, PhoneMockup, CheckoutNotice, Reviews99
+components/analytics/ MetaPixel, PixelEvent
 components/forms/    ContactForm, QuoteForm, field primitives, useFormSubmission hook
 components/visuals/  Coded mockups, service illustrations, SmartImage, BeforeAfter
 scripts/             higgsfield-generate.mjs (offline image generation)
@@ -197,5 +209,6 @@ lib/                 Site config, validation, delivery
 - Cache Components is enabled. Pages are prerendered. The copyright year comes from a cached function.
 - `/services/[slug]` and `/portfolio/[slug]` set `instant = false`, so unknown slugs return a true 404 status.
 - Motion respects `prefers-reduced-motion`. Scroll reveals use CSS scroll-driven animations, with no JavaScript, and fall back to static content in browsers that lack support.
-- Structured data includes Organization, WebSite, Service, BreadcrumbList and FAQPage. No address, ratings or reviews are included.
+- Structured data includes LocalBusiness (with address, phone and socials), WebSite, Service, BreadcrumbList and FAQPage. No ratings or reviews are included.
+- `/pricing` was retired and permanently redirects to `/get-a-quote` (`next.config.ts`).
 - The privacy policy and terms are sensible starting points. Have them reviewed for your jurisdiction before launch.

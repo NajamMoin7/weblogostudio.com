@@ -3,44 +3,55 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-const SELECTOR = ".reveal, .reveal-card, .reveal-words, .reveal-image";
-const STAGGER_MS = 80;
+const SELECTOR = ".reveal, .reveal-card, .reveal-words, .reveal-image, [data-reveal-group]";
+const STAGGER_MS = 70;
 const MAX_STAGGER = 6;
 
 /**
- * One IntersectionObserver for every scroll reveal on the page.
- * - Marks elements with data-revealed once they enter the viewport (they stay revealed).
- * - Elements entering in the same batch are staggered via the --rd custom property.
- * - Re-scans after client-side navigation and when new nodes appear.
- * The matching CSS lives in app/globals.css; hidden states apply only under html.reveal-on,
- * which an inline script sets before first paint, so content never depends on JavaScript.
+ * One IntersectionObserver for every scroll reveal.
+ *
+ * Content is never hidden by CSS alone. After hydration, only elements that start BELOW the
+ * viewport are marked data-reveal="pending" (they are off screen, so nothing visibly
+ * disappears). Everything in the first viewport stays exactly as it painted, which keeps LCP
+ * and above-the-fold content untouched. Reduced motion skips the whole mechanism.
  */
 export default function RevealObserver() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (!root.classList.contains("reveal-on")) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window)) return;
 
     const io = new IntersectionObserver(
       (entries) => {
-        const entering = entries.filter((e) => e.isIntersecting).map((e) => e.target);
-        entering
+        entries
+          .filter((e) => e.isIntersecting)
+          .map((e) => e.target)
           .sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top || a.getBoundingClientRect().left - b.getBoundingClientRect().left)
           .forEach((el, i) => {
-            if (!reduced) el.style.setProperty("--rd", `${Math.min(i, MAX_STAGGER) * STAGGER_MS}ms`);
-            el.setAttribute("data-revealed", "");
+            el.style.setProperty("--rd", `${Math.min(i, MAX_STAGGER) * STAGGER_MS}ms`);
+            el.setAttribute("data-reveal", "in");
             io.unobserve(el);
           });
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+      { rootMargin: "0px 0px -6% 0px", threshold: 0.08 },
     );
 
-    const scan = () => document.querySelectorAll(SELECTOR).forEach((el) => !el.hasAttribute("data-revealed") && io.observe(el));
+    const scan = () => {
+      const fold = window.innerHeight;
+      document.querySelectorAll(SELECTOR).forEach((el) => {
+        if (el.hasAttribute("data-reveal")) return;
+        if (el.getBoundingClientRect().top < fold) {
+          el.setAttribute("data-reveal", "in");
+          return;
+        }
+        el.setAttribute("data-reveal", "pending");
+        io.observe(el);
+      });
+    };
     scan();
 
-    const mo = new MutationObserver(() => scan());
+    const mo = new MutationObserver(scan);
     mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {

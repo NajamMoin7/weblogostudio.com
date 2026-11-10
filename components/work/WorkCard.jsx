@@ -45,7 +45,7 @@ export default function WorkCard({ item, sizes = "(min-width: 1280px) 25vw, (min
         />
         <span
           aria-hidden="true"
-          className="absolute right-3 top-3 grid size-9 place-items-center rounded-full bg-orange-strong text-white shadow-card transition-[opacity,transform,background-color,color] duration-300 ease-out-quint [@media(hover:hover)]:translate-y-1 [@media(hover:hover)]:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
+          className="absolute right-3 top-3 grid size-9 place-items-center rounded-full bg-fg text-ink shadow-card transition-[opacity,transform,background-color,color] duration-300 ease-out-quint [@media(hover:hover)]:translate-y-1 [@media(hover:hover)]:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
         >
           <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:rotate-45" />
         </span>

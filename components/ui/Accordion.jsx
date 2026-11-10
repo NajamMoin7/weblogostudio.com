@@ -55,7 +55,7 @@ export default function Accordion({ items, tone = "dark", defaultOpen = -1 }) {
                   aria-hidden="true"
                   className={`mt-0.5 grid size-7 shrink-0 place-items-center rounded-full border transition-[transform,background-color,color,border-color] duration-300 ease-out-quint group-hover/acc:scale-110 group-active/acc:scale-95 ${
                     paper ? "border-paper-ink/20" : "border-line-strong group-hover/acc:border-brand/60"
-                  } ${isOpen ? "rotate-45 border-orange-strong bg-orange-strong text-white" : ""}`}
+                  } ${isOpen ? "rotate-45 border-fg bg-fg text-ink" : ""}`}
                 >
                   <Plus className="size-3.5" strokeWidth={2.2} />
                 </span>
