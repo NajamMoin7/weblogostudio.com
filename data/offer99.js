@@ -13,12 +13,6 @@ export const reviews99 = [];
  */
 export const pricing99 = { total: 99, deposit: 20, balance: 79 };
 
-/**
- * Domain and hosting, offered separately from the $99. Set the real prices here (strings as
- * they should read, e.g. "$15/year"). While a value is null the page says "priced separately".
- */
-export const domainHosting99 = { domain: null, hosting: null };
-
 /** Short, human order reference from a Stripe Checkout Session ID, e.g. "WLS-7F3K9QX2". */
 export function orderRef(sessionId = "") {
   return `WLS-${sessionId.replace(/^cs_(test|live)_/, "").slice(-8).toUpperCase()}`;
@@ -41,8 +35,11 @@ export const exampleSites = [
   { slug: "tieup-yacht-charters-web-design", industry: "Yacht charters" },
 ];
 
+/** `style` value for "Design something original for me": no reference site, designer's own direction. */
+export const ORIGINAL_STYLE = "original";
+
 /** The only values /api/checkout accepts for `style`. */
-export const styleSlugs99 = exampleSites.map((s) => s.slug);
+export const styleSlugs99 = [...exampleSites.map((s) => s.slug), ORIGINAL_STYLE];
 
 export const steps99 = [
   { stamp: "0:00", title: `Start for $${pricing99.deposit}`, text: "Secure checkout by Stripe. Takes about a minute." },
@@ -64,9 +61,7 @@ export const included99 = [
 export const faqs99 = [
   {
     q: "Are the domain and hosting included?",
-    a: `No. The $${pricing99.total} covers designing and building your one-page site. To go live it needs a domain (your web address) and hosting. We offer both separately${
-      domainHosting99.domain && domainHosting99.hosting ? ` (domain ${domainHosting99.domain}, hosting ${domainHosting99.hosting})` : ""
-    }, or we can connect a domain you already own.`,
+    a: `The $${pricing99.total} covers designing and building your one-page site. Domain and hosting are separate. We'll sort out the best option with you in chat, or connect a domain you already own.`,
   },
   {
     q: "What if I want changes?",

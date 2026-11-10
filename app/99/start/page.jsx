@@ -5,7 +5,7 @@ import PixelEvent from "@/components/analytics/PixelEvent";
 import Spinner from "@/components/ui/Spinner";
 import ContactOrder from "@/components/offer/ContactOrder";
 import { DEPOSIT, verifyDepositSession } from "@/lib/stripe";
-import { exampleSites, orderRef } from "@/data/offer99";
+import { ORIGINAL_STYLE, exampleSites, orderRef } from "@/data/offer99";
 import { getWork } from "@/data/work";
 import { siteConfig } from "@/lib/site";
 
@@ -69,6 +69,16 @@ async function PaidIntake({ searchParams }) {
       <p className="caption mt-1">
         Order reference <span className="font-semibold tabular-nums text-fg">{reference}</span>
       </p>
+      {styleSlug === ORIGINAL_STYLE && (
+        <div className="mt-8 rounded-xl border border-line-strong bg-surface p-5">
+          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-subtle">Style you picked</p>
+          <p className="mt-1 text-lg font-semibold">Something original</p>
+          <p className="mt-1 text-muted">
+            Our designers will create a new look just for you. Use the form below to tell us the feel you&rsquo;re after, and
+            mention any websites you like.
+          </p>
+        </div>
+      )}
       {styleTitle && (
         <div className="mt-8 rounded-xl border border-line-strong bg-surface p-5">
           <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-subtle">Style you picked</p>

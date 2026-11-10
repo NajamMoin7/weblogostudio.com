@@ -1,16 +1,17 @@
-import { Check, Minus, Phone, ShieldCheck } from "lucide-react";
+import { Check, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import PayButton from "@/components/offer/PayButton";
 import PhoneMockup from "@/components/offer/PhoneMockup";
+import StylePreview from "@/components/offer/StylePreview";
 import CheckoutNotice from "@/components/offer/CheckoutNotice";
 import Reviews99 from "@/components/offer/Reviews99";
 import Accordion from "@/components/ui/Accordion";
 import PixelEvent from "@/components/analytics/PixelEvent";
-import { domainHosting99, exampleSites, faqs99, heroSite, included99, pricing99, steps99 } from "@/data/offer99";
+import { ORIGINAL_STYLE, exampleSites, faqs99, heroSite, included99, pricing99, steps99 } from "@/data/offer99";
 import { getWork } from "@/data/work";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = {
-  title: { absolute: "$99 Business Website · First Concept in 2 Hours | Web Logo Studio" },
+  title: { absolute: "Your Business Website. Start for $20 · First Concept in 2 Hours | Web Logo Studio" },
   description: `Mobile-ready one-page website with call button, map, hours & reviews. Start for $${pricing99.deposit}, first concept in 2 hours, full $${pricing99.deposit} refund within 24 hours if you don't love it.`,
   robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
   alternates: { canonical: null },
@@ -48,16 +49,16 @@ export default function OfferPage() {
             <CheckoutNotice />
             {/* One text block (inline lines + <br>) so the whole headline is the LCP element. */}
             <h1 id="offer-title" className="font-condensed text-[clamp(2rem,6vw,3.4rem)] font-bold leading-[1] text-fg">
-              Your Business Website:
+              Your Business Website.
               <br />
-              <span className="text-[2.75em] leading-[0.9] tracking-[-0.03em] text-brand">$99.</span>
-              <br />
-              Start for ${pricing99.deposit}.
+              Start for{" "}
+              <span className="text-[2.75em] leading-[0.9] tracking-[-0.03em] text-brand">${pricing99.deposit}.</span>
               <br />
               First Concept in 2&nbsp;Hours.
             </h1>
-            <p className="mt-6 max-w-[30ch] text-[clamp(1.15rem,2.4vw,1.4rem)] leading-snug text-muted">
-              Mobile-ready one-page website with call button, map, hours &amp; reviews.
+            <p className="mt-6 max-w-[34ch] text-[clamp(1.15rem,2.4vw,1.4rem)] leading-snug text-muted">
+              Mobile-ready one-page website with call button, map, hours &amp; reviews.{" "}
+              <span className="text-fg">${pricing99.total} total, the rest only after you approve.</span>
             </p>
             <PayButton className="mt-8" id="pay-top" />
           </div>
@@ -78,12 +79,11 @@ export default function OfferPage() {
           <p className="mt-3 max-w-2xl text-muted">
             These are sites we designed for other businesses. Like one? Tap <strong className="text-fg">Build mine like this</strong>{" "}
             and we design <em>your</em> site in that style, with your own name, photos, services and colours. It&rsquo;s built new
-            for you; nobody else&rsquo;s site or content is reused.{" "}
-            <span className="hidden sm:inline">Hover a phone to scroll the page.</span>
-            <span className="sm:hidden">Swipe through, and keep scrolling to see each page move.</span>
+            for you; nobody else&rsquo;s site or content is reused. Tap <strong className="text-fg">View full design</strong> to see
+            the whole page on a desktop screen.
           </p>
         </div>
-        <ul className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-4 [scrollbar-width:thin] sm:mx-auto sm:grid sm:max-w-6xl sm:grid-cols-3 sm:gap-x-8 sm:gap-y-12 sm:overflow-visible sm:px-8 lg:grid-cols-6 lg:gap-x-5">
+        <ul className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-4 [scrollbar-width:thin] sm:mx-auto sm:grid sm:max-w-6xl sm:grid-cols-3 sm:gap-x-8 sm:gap-y-12 sm:overflow-visible sm:px-8 lg:gap-x-12 lg:gap-y-16">
           {sites.map((s) => (
             <li key={s.slug} className="flex w-[62%] shrink-0 snap-center flex-col sm:w-auto">
               <PhoneMockup
@@ -92,18 +92,45 @@ export default function OfferPage() {
                 height={s.img.height}
                 title={s.title}
                 industry={s.industry}
-                sizes="(min-width: 1024px) 180px, (min-width: 640px) 30vw, 62vw"
+                sizes="(min-width: 1024px) 256px, (min-width: 640px) 30vw, 62vw"
               />
-              <PayButton
-                variant="compact"
-                style={s.slug}
-                label="Build mine like this"
-                ariaLabel={`Build my site in the style of ${s.title} (${s.industry}). Start for $${pricing99.deposit}`}
-                className="mx-auto mt-4 w-full max-w-[16rem]"
-              />
+              {/* mt-auto: buttons line up across cards even when a title wraps to two lines. */}
+              <div className="mt-auto flex flex-col">
+                <StylePreview slug={s.slug} title={s.title} industry={s.industry} img={s.img} />
+                <PayButton
+                  variant="compact"
+                  style={s.slug}
+                  label="Build mine like this"
+                  ariaLabel={`Build my site in the style of ${s.title} (${s.industry}). Start for $${pricing99.deposit}`}
+                  className="mx-auto mt-2 w-full max-w-[16rem]"
+                />
+              </div>
             </li>
           ))}
         </ul>
+
+        {/* Not into any of them: the designers pick the direction. Sent as style="original". */}
+        <div className={`${wrap} mt-12`}>
+          <div className="flex flex-col gap-6 rounded-xl border-2 border-fg p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+            <div className="max-w-2xl">
+              <h3 className="flex items-center gap-3 font-display-wide text-[clamp(1.6rem,3.6vw,2.2rem)] font-bold leading-tight">
+                <Sparkles aria-hidden="true" className="size-7 shrink-0 text-brand" strokeWidth={2} />
+                Want something more creative?
+              </h3>
+              <p className="mt-3 text-lg leading-relaxed text-muted">
+                Skip the styles. Our designers create an original look just for your business, from your logo, colours and the
+                feel you&rsquo;re after. Same ${pricing99.deposit} to start, same 2&#8209;hour first concept.
+              </p>
+            </div>
+            <PayButton
+              variant="compact"
+              style={ORIGINAL_STYLE}
+              label="Design something original for me"
+              ariaLabel={`Design an original website for my business. Start for $${pricing99.deposit}`}
+              className="w-full shrink-0 lg:w-[22rem]"
+            />
+          </div>
+        </div>
       </section>
 
       {/* 5: how it works, with time stamps */}
@@ -151,8 +178,8 @@ export default function OfferPage() {
           <h2 id="included-title" className="font-display-wide text-[clamp(2rem,5vw,3.2rem)] font-bold leading-none lg:col-span-4">
             What&rsquo;s included
           </h2>
-          <div className="grid gap-8 sm:grid-cols-2 lg:col-span-8">
-            <ul className="border-t-2 border-fg">
+          <div className="lg:col-span-8">
+            <ul className="grid border-t-2 border-fg sm:grid-cols-2 sm:gap-x-8">
               {included99.map((item) => (
                 <li key={item} className="flex items-center gap-3 border-b border-line py-3.5 text-lg">
                   <Check aria-hidden="true" className="size-5 shrink-0 text-success" strokeWidth={2.4} />
@@ -160,23 +187,6 @@ export default function OfferPage() {
                 </li>
               ))}
             </ul>
-            <div>
-              <ul className="border-t-2 border-fg">
-                {[
-                  ["Domain name", domainHosting99.domain],
-                  ["Hosting", domainHosting99.hosting],
-                ].map(([item, price]) => (
-                  <li key={item} className="flex items-center gap-3 border-b border-line py-3.5 text-lg text-muted">
-                    <Minus aria-hidden="true" className="size-5 shrink-0" />
-                    <span className="flex-1">{item}</span>
-                    <span className="font-semibold tabular-nums text-fg">{price ?? "Priced separately"}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 leading-relaxed text-muted">
-                Domain and hosting aren&rsquo;t part of the ${pricing99.total}. Add them from us, or connect a domain you already own.
-              </p>
-            </div>
           </div>
         </div>
       </section>

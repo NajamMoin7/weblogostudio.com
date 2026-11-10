@@ -1,7 +1,7 @@
 import { validateIntake, INTAKE_LIMITS } from "@/lib/forms";
 import { handleSubmission } from "@/lib/submission";
 import { verifyDepositSession } from "@/lib/stripe";
-import { orderRef } from "@/data/offer99";
+import { ORIGINAL_STYLE, orderRef } from "@/data/offer99";
 
 /**
  * Intake for paid $99 site orders (/99/start). Reuses the contact-form pipeline
@@ -47,7 +47,10 @@ export async function POST(request) {
         fields: [
           ["Order reference", ctx.reference],
           ["Stripe session ID", d.sessionId],
-          ["Style picked", ctx.style || "None (no style chosen)"],
+          [
+            "Style picked",
+            ctx.style === ORIGINAL_STYLE ? "Original design (designer's own direction)" : ctx.style || "None (no style chosen)",
+          ],
           ["Deposit paid", ctx.amount],
           ["Stripe customer", [ctx.stripeName, ctx.stripeEmail].filter(Boolean).join(" · ")],
           ["Business name", d.businessName],
