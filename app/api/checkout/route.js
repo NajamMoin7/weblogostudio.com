@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site";
 /**
  * The origin to send the buyer back to. Hosts like Netlify hand the function an internal
  * deploy URL in `request.url`, so prefer the browser's Origin header, but only when it is
- * this site, a local dev server or a Netlify preview; anything else gets the canonical URL.
+ * this site, a local dev server or a Netlify/Vercel preview; anything else gets the canonical URL.
  */
 function returnOrigin(request) {
   const header = request.headers.get("origin");
@@ -18,7 +18,8 @@ function returnOrigin(request) {
         hostname === `www.${canonical}` ||
         hostname === "localhost" ||
         hostname === "127.0.0.1" ||
-        hostname.endsWith(".netlify.app")
+        hostname.endsWith(".netlify.app") ||
+        hostname.endsWith(".vercel.app")
       ) {
         return origin;
       }

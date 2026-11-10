@@ -5,21 +5,12 @@ import { work } from "@/data/work";
 
 /**
  * Home hero, set as a type specimen sheet.
- * Left: the offer as a size ladder (display, subhead, text), each rung captioned with its
- * size at desktop width. Right: one real logo from the portfolio and the size scrubber, over the banner construction
+ * Left: the offer as a size ladder (display, subhead, text). Right: one real logo from the portfolio and the size scrubber, over the banner construction
  * drawing. The band is the logo green.
- * Everything is static at first paint; only the decorative caption rules draw in.
+ * Everything is static at first paint.
  */
-function Rung({ caption, i, children, className = "" }) {
-  return (
-    <div className={`relative ${className}`}>
-      {children}
-      <p aria-hidden="true" className="caption mt-3 flex items-center gap-3">
-        <span className="spec-rule h-px w-10 bg-orange" style={{ "--i": i }} />
-        {caption}
-      </p>
-    </div>
-  );
+function Rung({ children, className = "" }) {
+  return <div className={`relative ${className}`}>{children}</div>;
 }
 
 export default function Hero() {
@@ -28,7 +19,7 @@ export default function Hero() {
     <section aria-labelledby="hero-title" className="theme-forest relative overflow-hidden">
       <div className="container-page grid gap-12 pb-14 pt-8 sm:pt-12 lg:grid-cols-12 lg:gap-10 lg:pb-20 lg:pt-16">
         <div className="lg:col-span-7">
-          <Rung caption="96 / Archivo Condensed Bold" i={0}>
+          <Rung>
             <h1
               id="hero-title"
               className="font-condensed text-[clamp(3.1rem,8.6vw,6rem)] font-bold uppercase leading-[0.9] text-fg"
@@ -37,13 +28,13 @@ export default function Hero() {
             </h1>
           </Rung>
 
-          <Rung caption="28 / Archivo Regular" i={1} className="mt-8">
+          <Rung className="mt-8">
             <p className="max-w-[34ch] text-[clamp(1.3rem,2.2vw,1.75rem)] leading-[1.25] text-fg">
               Designed and built in one studio, so your sign, site and social posts finally look like the same business.
             </p>
           </Rung>
 
-          <Rung caption="16 / Archivo Regular" i={2} className="mt-7">
+          <Rung className="mt-7">
             <p className="max-w-[56ch] leading-relaxed text-muted">
               {total} projects delivered for contractors, clinics, lenders, schools and software teams. Every custom project
               starts with a written scope and price, before you pay anything.
