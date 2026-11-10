@@ -57,7 +57,13 @@ async function PaidIntake({ searchParams }) {
         Payment received <span aria-hidden="true">✅</span>
       </h1>
       <p className="mt-5 max-w-2xl text-[clamp(1.1rem,2.4vw,1.3rem)] leading-snug text-fg">
-        Send your details below and your first concept arrives within 2 hours (business hours ET).
+        Message us below to get started. Your first concept arrives within 2 hours of getting your info (business hours ET).
+        {defaults.phone && (
+          <>
+            {" "}
+            We&rsquo;ll also text you at <span className="font-semibold tabular-nums">{defaults.phone}</span>.
+          </>
+        )}
       </p>
       <p className="caption mt-3">
         Mon–Fri, 9am–6pm ET. Stuck? Call{" "}
@@ -74,8 +80,8 @@ async function PaidIntake({ searchParams }) {
           <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-subtle">Style you picked</p>
           <p className="mt-1 text-lg font-semibold">Something original</p>
           <p className="mt-1 text-muted">
-            Our designers will create a new look just for you. Use the form below to tell us the feel you&rsquo;re after, and
-            mention any websites you like.
+            Our designers will create a new look just for you. In your message, tell us the feel you&rsquo;re after and any
+            websites you like.
           </p>
         </div>
       )}
@@ -90,10 +96,17 @@ async function PaidIntake({ searchParams }) {
           </p>
         </div>
       )}
-      <div className="mt-10">
-        <IntakeForm sessionId={session.id} defaults={defaults} />
+      <ContactOrder
+        reference={reference}
+        styleLabel={styleSlug === ORIGINAL_STYLE ? "something original" : styleTitle}
+      />
+      <div className="mt-12 border-t border-line pt-8">
+        <h2 className="font-display-wide text-2xl font-bold">Prefer a form?</h2>
+        <p className="mt-2 text-muted">Optional. Fill this in instead of messaging, or as well. It reaches us the same way.</p>
+        <div className="mt-6">
+          <IntakeForm sessionId={session.id} defaults={defaults} />
+        </div>
       </div>
-      <ContactOrder reference={reference} />
     </>
   );
 }

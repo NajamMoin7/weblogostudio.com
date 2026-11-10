@@ -43,7 +43,7 @@ export const styleSlugs99 = [...exampleSites.map((s) => s.slug), ORIGINAL_STYLE]
 
 export const steps99 = [
   { stamp: "0:00", title: `Start for $${pricing99.deposit}`, text: "Secure checkout by Stripe. Takes about a minute." },
-  { stamp: "0:05", title: "Send your info", text: "Business name, hours, address, logo and a few photos, on one short form." },
+  { stamp: "0:05", title: "Send your info", text: "Text or message us your business name, logo and a few photos. We also text you right after you pay." },
   { stamp: "2:00", title: "First concept in 2 hrs", text: "Your one-page site, designed and ready to review on your phone." },
   { stamp: "Done", title: `Approve, go live, pay the remaining $${pricing99.balance}`, text: "Two rounds of changes are included. Your site goes live within 1 hour of approval." },
 ];
