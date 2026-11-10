@@ -39,6 +39,20 @@ const sections = [
     ],
   },
   {
+    id: "one-page-offer",
+    title: "The $99 one-page website offer",
+    body: [
+      "This section applies to orders placed through our $99 one-page website offer. The total price is $99: a $20 deposit when you order, and the remaining $79 after you approve your design.",
+      "Deposit and refund window. The $20 deposit is taken by card through Stripe when you order. If you don't love your first concept, tell us within 24 hours of receiving it and we will refund the full $20 deposit. After that 24-hour window the deposit is non-refundable, because design work has been carried out.",
+      "Saved card and consent to charge the balance. When you pay the deposit, you authorise us to save your card securely with Stripe and to charge the remaining $79 to it once you approve your design. We will not charge the balance before you approve. You can ask us to use a different payment method instead by contacting us before you approve.",
+      "Preview hold. Your concept is published as a preview on our website and held for 7 days from when we send it. If we have not heard from you within those 7 days, we may take the preview down; the deposit is not refundable at that point, but you can contact us to restart the project.",
+      "Going live. Once you approve the design and the balance is paid, your site goes live within 1 hour, provided the domain and hosting are ready.",
+      "Files and domain. Website files, and any domain registered by us on your behalf, are handed over to you only after the full $99 (and any separately agreed domain or hosting fees) has been paid. Until then they remain ours, and the preview may not be copied or published elsewhere.",
+      "Choosing a style. If you choose a style from our portfolio, we design a new site for you in a similar style using your own business details, text and images. We do not transfer or copy another client's website, content or branding.",
+      "Concept timing. The 2-hour first-concept time applies to complete information received Monday to Friday, 9am to 6pm Eastern Time. Orders can be placed at any time; the clock starts once we have your information within those hours.",
+    ],
+  },
+  {
     id: "revisions",
     title: "Revisions and changes",
     body: [
@@ -110,7 +124,7 @@ export default function TermsPage() {
       title="Terms and Conditions"
       path="/terms-and-conditions"
       intro="The terms that apply to this website and to the projects we deliver."
-      updated="18 October 2026"
+      updated="11 November 2026"
       sections={sections}
     />
   );

@@ -3,7 +3,10 @@ import { redirect } from "next/navigation";
 import IntakeForm from "@/components/forms/IntakeForm";
 import PixelEvent from "@/components/analytics/PixelEvent";
 import Spinner from "@/components/ui/Spinner";
-import { verifyDepositSession } from "@/lib/stripe";
+import ContactOrder from "@/components/offer/ContactOrder";
+import { DEPOSIT, verifyDepositSession } from "@/lib/stripe";
+import { exampleSites, orderRef } from "@/data/offer99";
+import { getWork } from "@/data/work";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = {
@@ -31,6 +34,10 @@ async function PaidIntake({ searchParams }) {
   if (!result.paid) redirect("/99");
 
   const { session } = result;
+  const reference = orderRef(session.id);
+  const styleSlug = session.metadata?.style;
+  const styleSite = styleSlug ? exampleSites.find((s) => s.slug === styleSlug) : null;
+  const styleTitle = styleSite ? getWork(styleSite.slug)?.displayTitle : null;
   const defaults = {
     name: session.customer_details?.name ?? "",
     email: session.customer_details?.email ?? "",
@@ -42,7 +49,7 @@ async function PaidIntake({ searchParams }) {
       {/* Once per Stripe session: eventID lets Meta deduplicate, and a local guard ignores refreshes. */}
       <PixelEvent
         name="Purchase"
-        params={{ value: 50, currency: "USD", content_name: "Website Deposit: $99 One-Page Site" }}
+        params={{ value: DEPOSIT.amount / 100, currency: "USD", content_name: DEPOSIT.productName }}
         eventID={session.id}
         onceKey={`purchase:${session.id}`}
       />
@@ -59,9 +66,24 @@ async function PaidIntake({ searchParams }) {
         </a>
         .
       </p>
+      <p className="caption mt-1">
+        Order reference <span className="font-semibold tabular-nums text-fg">{reference}</span>
+      </p>
+      {styleTitle && (
+        <div className="mt-8 rounded-xl border border-line-strong bg-surface p-5">
+          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-subtle">Style you picked</p>
+          <p className="mt-1 text-lg font-semibold">
+            {styleTitle} <span className="font-normal text-muted">· {styleSite.industry}</span>
+          </p>
+          <p className="mt-1 text-muted">
+            We&rsquo;ll design your site in this style, with your own name, photos, services and colours.
+          </p>
+        </div>
+      )}
       <div className="mt-10">
         <IntakeForm sessionId={session.id} defaults={defaults} />
       </div>
+      <ContactOrder reference={reference} />
     </>
   );
 }

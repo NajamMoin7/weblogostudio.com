@@ -53,7 +53,8 @@ export default function ContactDetails({ className = "", showName = false }) {
         </Row>
       )}
       <Row icon={Clock} label="Hours">
-        Open 24 hours, 7 days a week
+        <span className="block">Orders 24/7</span>
+        <span className="block text-muted">Concepts Mon–Fri, 9am–6pm ET</span>
       </Row>
     </ul>
   );

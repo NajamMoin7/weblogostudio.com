@@ -20,7 +20,7 @@ npm run build && npm start
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Recommended | Production URL for canonical links, Open Graph, sitemap and JSON-LD. Defaults to `https://weblogostudio.com`. |
-| `STRIPE_SECRET_KEY` | For `/99` | Server-only Stripe secret key. Creates the $50 deposit Checkout Session and verifies payment on `/99/start`. Without it, the pay button returns to `/99` with a "call us" message. |
+| `STRIPE_SECRET_KEY` | For `/99` | Server-only Stripe secret key. Creates the $20 deposit Checkout Session and verifies payment on `/99/start`. Without it, the pay button returns to `/99` with a "call us" message. |
 | `NEXT_PUBLIC_META_PIXEL_ID` | For ads | Meta Pixel ID. While empty, the Pixel is not loaded. |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | Optional | Public email shown in the footer and contact page. Hidden when empty. Phone and address live in `lib/site.js`. |
 | `RESEND_API_KEY`, `FORMS_TO_EMAIL`, `FORMS_FROM_EMAIL` | Option A | Deliver contact, quote and `/99` intake submissions by email through Resend (intake photos arrive as attachments). The sender domain must be verified in Resend. |
@@ -99,8 +99,8 @@ The site is set like a foundry specimen sheet: bright paper (`#FBFBF8`), ink (`#
 ## The $99 offer (`/99`, `/99/start`)
 
 - `/99` is a static, `noindex` landing page for Meta ads, with no site navigation. It is not linked from the menu or the sitemap.
-- "Pay $50 & Start" is a form POST to `app/api/checkout/route.js`, which creates a Stripe Checkout Session ($50, "Website Deposit: $99 One-Page Site") and redirects to Stripe. Success returns to `/99/start?session_id={CHECKOUT_SESSION_ID}`; cancel returns to `/99`.
-- `/99/start` verifies the session on the server (`lib/stripe.js`: paid, $50, USD, this offer). Anything else redirects to `/99`.
+- "Start for $20" (and each "Build mine like this" button under "Pick a style") is a form POST to `app/api/checkout/route.js`, which creates a Stripe Checkout Session ($20, "Website Deposit ($20): $99 One-Page Site") and redirects to Stripe. An optional `style` field (one of the six portfolio slugs in `data/offer99.js`) is stored as `metadata.style`. The card is saved (`customer_creation: "always"`, `setup_future_usage: "off_session"`) so the $79 balance can be charged in Stripe after the customer approves. All amounts come from `pricing99` in `data/offer99.js`. Success returns to `/99/start?session_id={CHECKOUT_SESSION_ID}`; cancel returns to `/99`.
+- `/99/start` verifies the session on the server (`lib/stripe.js`: paid, $20, USD, this offer). Anything else redirects to `/99`.
 - The intake form (`components/forms/IntakeForm.jsx`) resizes photos in the browser and posts to `app/api/intake/route.js`, which re-verifies the Stripe session and delivers through the same pipeline as the contact form, with the session ID and files attached.
 - Reviews: add real reviews to `reviews99` in `data/offer99.js`. The section stays hidden while the list is empty.
 - Example sites: `exampleSites` in `data/offer99.js`.
@@ -111,8 +111,8 @@ The site is set like a foundry specimen sheet: bright paper (`#FBFBF8`), ink (`#
 | --- | --- |
 | `PageView` | Every page load and every client-side navigation (`components/analytics/MetaPixel.jsx`). |
 | `ViewContent` | On `/99`. |
-| `InitiateCheckout` | When "Pay $50 & Start" is clicked (`components/offer/PayButton.jsx`). |
-| `Purchase` `{ value: 50, currency: "USD" }` | On `/99/start`, only after the server confirms payment. `eventID` is the Stripe session ID, and a local guard stops a refresh from sending it twice. |
+| `InitiateCheckout` `{ value: 20 }` | When "Start for $20" or "Build mine like this" is clicked (`components/offer/PayButton.jsx`). |
+| `Purchase` `{ value: 20, currency: "USD" }` (from `DEPOSIT.amount`) | On `/99/start`, only after the server confirms payment. `eventID` is the Stripe session ID, and a local guard stops a refresh from sending it twice. |
 
 ## Forms
 

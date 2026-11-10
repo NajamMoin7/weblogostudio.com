@@ -1,6 +1,7 @@
 import { validateIntake, INTAKE_LIMITS } from "@/lib/forms";
 import { handleSubmission } from "@/lib/submission";
 import { verifyDepositSession } from "@/lib/stripe";
+import { orderRef } from "@/data/offer99";
 
 /**
  * Intake for paid $99 site orders (/99/start). Reuses the contact-form pipeline
@@ -30,6 +31,8 @@ export async function POST(request) {
           stripeEmail: s.customer_details?.email ?? "",
           stripeName: s.customer_details?.name ?? "",
           amount: `$${(s.amount_total / 100).toFixed(2)} ${s.currency.toUpperCase()}`,
+          style: s.metadata?.style ?? "",
+          reference: orderRef(s.id),
         },
       };
     },
@@ -42,7 +45,9 @@ export async function POST(request) {
         subject: `Paid $99 site: ${d.businessName} (${d.businessType})`,
         replyTo: d.email,
         fields: [
+          ["Order reference", ctx.reference],
           ["Stripe session ID", d.sessionId],
+          ["Style picked", ctx.style || "None (no style chosen)"],
           ["Deposit paid", ctx.amount],
           ["Stripe customer", [ctx.stripeName, ctx.stripeEmail].filter(Boolean).join(" · ")],
           ["Business name", d.businessName],

@@ -1,6 +1,7 @@
 import { DEPOSIT, getStripe } from "@/lib/stripe";
 import { rateLimited } from "@/lib/delivery";
 import { siteConfig } from "@/lib/site";
+import { pricing99, styleSlugs99 } from "@/data/offer99";
 
 /**
  * The origin to send the buyer back to. Hosts like Netlify hand the function an internal
@@ -31,9 +32,14 @@ function returnOrigin(request) {
 }
 
 /**
- * Creates a Stripe Checkout Session for the $50 deposit on the $99 one-page site and
- * redirects the browser to Stripe (303). Works as a plain HTML form POST, so the pay button
- * still works if JavaScript fails. Keys come only from STRIPE_SECRET_KEY.
+ * Creates a Stripe Checkout Session for the deposit on the $99 one-page site and redirects the
+ * browser to Stripe (303). Works as a plain HTML form POST, so the pay button still works if
+ * JavaScript fails. Keys come only from STRIPE_SECRET_KEY.
+ *
+ * Optional form field `style`: a portfolio slug from the "Pick a style" section, accepted only if
+ * it is in the whitelist (styleSlugs99) and stored as metadata.style.
+ * The card is saved (customer + setup_future_usage "off_session") so the balance can be charged
+ * after the customer approves their design; the Terms explain this consent.
  */
 export async function POST(request) {
   const origin = returnOrigin(request);
@@ -44,6 +50,16 @@ export async function POST(request) {
     console.error("[checkout] STRIPE_SECRET_KEY is not set");
     return back("unavailable");
   }
+
+  let style = null;
+  try {
+    const form = await request.formData();
+    const value = form.get("style");
+    if (typeof value === "string" && styleSlugs99.includes(value)) style = value;
+  } catch {
+    // No form body (or not form-encoded): checkout without a style.
+  }
+  const metadata = { offer: "99-one-page", ...(style ? { style } : {}) };
 
   const ip = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
   if (rateLimited(`checkout:${ip}`, { limit: 10, windowMs: 10 * 60 * 1000 })) return back("busy");
@@ -59,13 +75,23 @@ export async function POST(request) {
             unit_amount: DEPOSIT.amount,
             product_data: {
               name: DEPOSIT.productName,
-              description: "Deposit toward a $99 mobile-ready one-page website. Remaining $49 due on approval.",
+              description: `Deposit toward a $${pricing99.total} one-page website. Remaining $${pricing99.balance} due when you approve your design.`,
             },
           },
         },
       ],
-      metadata: { offer: "99-one-page" },
-      payment_intent_data: { description: DEPOSIT.productName, metadata: { offer: "99-one-page" } },
+      metadata,
+      customer_creation: "always",
+      payment_intent_data: {
+        description: DEPOSIT.productName,
+        metadata,
+        setup_future_usage: "off_session",
+      },
+      custom_text: {
+        submit: {
+          message: `$${pricing99.deposit} today. The remaining $${pricing99.balance} is charged only after you approve your design.`,
+        },
+      },
       phone_number_collection: { enabled: true },
       success_url: `${origin}/99/start?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/99`,

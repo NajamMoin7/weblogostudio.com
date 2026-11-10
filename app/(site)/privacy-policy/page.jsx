@@ -60,7 +60,7 @@ const sections = [
     title: "Sharing, service providers and payments",
     body: [
       "We share personal information only with service providers that help us operate, such as our website hosting provider and the email or automation service that delivers form submissions to us. These providers process data on our behalf and only for that purpose.",
-      "Payments are processed by Stripe, Inc. When you pay a deposit, you enter your card details on Stripe's secure checkout page; we never see or store your full card number. Stripe shares with us your name, email, phone number, the amount paid and a payment reference (the checkout session ID), which we use to confirm and fulfil your order. Stripe's own use of your data is described in the Stripe Privacy Policy at stripe.com/privacy.",
+      "Payments are processed by Stripe, Inc. When you pay a deposit, you enter your card details on Stripe's secure checkout page; we never see or store your full card number. Stripe shares with us your name, email, phone number, the amount paid and a payment reference (the checkout session ID), which we use to confirm and fulfil your order. For the $99 one-page website, Stripe also saves your card so the remaining balance can be charged after you approve your design; the card stays with Stripe, and we only see its brand and last four digits. Stripe's own use of your data is described in the Stripe Privacy Policy at stripe.com/privacy.",
       "We may disclose information where required by law or to protect our legal rights.",
     ],
   },

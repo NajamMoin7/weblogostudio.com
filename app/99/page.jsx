@@ -5,13 +5,13 @@ import CheckoutNotice from "@/components/offer/CheckoutNotice";
 import Reviews99 from "@/components/offer/Reviews99";
 import Accordion from "@/components/ui/Accordion";
 import PixelEvent from "@/components/analytics/PixelEvent";
-import { exampleSites, faqs99, heroSite, included99, steps99 } from "@/data/offer99";
+import { domainHosting99, exampleSites, faqs99, heroSite, included99, pricing99, steps99 } from "@/data/offer99";
 import { getWork } from "@/data/work";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = {
   title: { absolute: "$99 Business Website · First Concept in 2 Hours | Web Logo Studio" },
-  description: "Mobile-ready one-page website with call button, map, hours & reviews. $50 upfront, first concept in 2 hours, full refund if you don't love it.",
+  description: `Mobile-ready one-page website with call button, map, hours & reviews. Start for $${pricing99.deposit}, first concept in 2 hours, full $${pricing99.deposit} refund within 24 hours if you don't love it.`,
   robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
   alternates: { canonical: null },
 };
@@ -36,7 +36,10 @@ export default function OfferPage() {
 
   return (
     <>
-      <PixelEvent name="ViewContent" params={{ content_name: "$99 One-Page Website", content_category: "Website", value: 50, currency: "USD" }} />
+      <PixelEvent
+        name="ViewContent"
+        params={{ content_name: "$99 One-Page Website", content_category: "Website", value: pricing99.deposit, currency: "USD" }}
+      />
 
       {/* 1-3: headline, sub, pay. Static at first paint: the headline is the LCP element. */}
       <section aria-labelledby="offer-title" className="border-b border-line">
@@ -49,7 +52,7 @@ export default function OfferPage() {
               <br />
               <span className="text-[2.75em] leading-[0.9] tracking-[-0.03em] text-brand">$99.</span>
               <br />
-              $50 Upfront.
+              Start for ${pricing99.deposit}.
               <br />
               First Concept in 2&nbsp;Hours.
             </h1>
@@ -66,21 +69,23 @@ export default function OfferPage() {
         </div>
       </section>
 
-      {/* 4: six example sites from the portfolio */}
+      {/* 4: pick a style. Six real sites we built; the visitor starts THEIR site in that style. */}
       <section aria-labelledby="examples-title" className="border-b border-line py-14 lg:py-20">
         <div className={wrap}>
           <h2 id="examples-title" className="font-display-wide text-[clamp(2rem,5vw,3.2rem)] font-bold leading-none">
-            Six sites from our portfolio.
+            Pick a style.
           </h2>
-          <p className="mt-3 max-w-xl text-muted">
+          <p className="mt-3 max-w-2xl text-muted">
+            These are sites we designed for other businesses. Like one? Tap <strong className="text-fg">Build mine like this</strong>{" "}
+            and we design <em>your</em> site in that style, with your own name, photos, services and colours. It&rsquo;s built new
+            for you; nobody else&rsquo;s site or content is reused.{" "}
             <span className="hidden sm:inline">Hover a phone to scroll the page.</span>
-            <span className="sm:hidden">Swipe through, and keep scrolling to see each page move.</span> Your page gets the same
-            designers.
+            <span className="sm:hidden">Swipe through, and keep scrolling to see each page move.</span>
           </p>
         </div>
         <ul className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-4 [scrollbar-width:thin] sm:mx-auto sm:grid sm:max-w-6xl sm:grid-cols-3 sm:gap-x-8 sm:gap-y-12 sm:overflow-visible sm:px-8 lg:grid-cols-6 lg:gap-x-5">
           {sites.map((s) => (
-            <li key={s.slug} className="w-[62%] shrink-0 snap-center sm:w-auto">
+            <li key={s.slug} className="flex w-[62%] shrink-0 snap-center flex-col sm:w-auto">
               <PhoneMockup
                 src={s.img.src}
                 width={s.img.width}
@@ -88,6 +93,13 @@ export default function OfferPage() {
                 title={s.title}
                 industry={s.industry}
                 sizes="(min-width: 1024px) 180px, (min-width: 640px) 30vw, 62vw"
+              />
+              <PayButton
+                variant="compact"
+                style={s.slug}
+                label="Build mine like this"
+                ariaLabel={`Build my site in the style of ${s.title} (${s.industry}). Start for $${pricing99.deposit}`}
+                className="mx-auto mt-4 w-full max-w-[16rem]"
               />
             </li>
           ))}
@@ -120,11 +132,14 @@ export default function OfferPage() {
         <div className={`${wrap} py-14 lg:py-20`}>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-10">
             <ShieldCheck aria-hidden="true" className="size-14 shrink-0 text-cyan sm:size-20" strokeWidth={1.5} />
-            <h2 id="guarantee-title" className="font-condensed text-[clamp(2.4rem,7vw,4.6rem)] font-bold leading-[0.95]">
-              Don&rsquo;t love your first concept? Full $50 refund.
+            <h2 id="guarantee-title" className="font-condensed text-[clamp(2.1rem,5.6vw,3.9rem)] font-bold leading-[0.98]">
+              Don&rsquo;t love your first concept? Tell us within 24&nbsp;hours for a full ${pricing99.deposit} refund.
             </h2>
           </div>
-          <p className="mt-8 max-w-2xl border-t border-line pt-5 text-sm leading-relaxed text-muted">
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-fg">
+            Your preview is hosted on our site and held for 7 days. Your site goes live within 1 hour of approval.
+          </p>
+          <p className="mt-6 max-w-2xl border-t border-line pt-5 text-sm leading-relaxed text-muted">
             2-hour concept applies to info received Mon–Fri, 9am–6pm ET. The clock starts once we receive your info.
           </p>
         </div>
@@ -147,17 +162,19 @@ export default function OfferPage() {
             </ul>
             <div>
               <ul className="border-t-2 border-fg">
-                <li className="flex items-center gap-3 border-b border-line py-3.5 text-lg text-muted">
-                  <Minus aria-hidden="true" className="size-5 shrink-0" />
-                  Domain name
-                </li>
-                <li className="flex items-center gap-3 border-b border-line py-3.5 text-lg text-muted">
-                  <Minus aria-hidden="true" className="size-5 shrink-0" />
-                  Hosting
-                </li>
+                {[
+                  ["Domain name", domainHosting99.domain],
+                  ["Hosting", domainHosting99.hosting],
+                ].map(([item, price]) => (
+                  <li key={item} className="flex items-center gap-3 border-b border-line py-3.5 text-lg text-muted">
+                    <Minus aria-hidden="true" className="size-5 shrink-0" />
+                    <span className="flex-1">{item}</span>
+                    <span className="font-semibold tabular-nums text-fg">{price ?? "Priced separately"}</span>
+                  </li>
+                ))}
               </ul>
               <p className="mt-4 leading-relaxed text-muted">
-                Domain and hosting are not included in the $99. We offer both separately, or connect a domain you already own.
+                Domain and hosting aren&rsquo;t part of the ${pricing99.total}. Add them from us, or connect a domain you already own.
               </p>
             </div>
           </div>
@@ -185,7 +202,10 @@ export default function OfferPage() {
           <h2 id="final-title" className="font-condensed text-[clamp(2.4rem,7vw,4.4rem)] font-bold leading-[0.95]">
             See your first concept in 2&nbsp;hours.
           </h2>
-          <p className="mx-auto mt-4 max-w-md text-muted">$50 now. $49 when you approve. Full refund if you don&rsquo;t love the first concept.</p>
+          <p className="mx-auto mt-4 max-w-md text-muted">
+            ${pricing99.deposit} now. ${pricing99.balance} when you approve. Full ${pricing99.deposit} refund within 24&nbsp;hours if you
+            don&rsquo;t love the first concept.
+          </p>
           <div className="mt-8 flex justify-center">
             <PayButton id="pay-bottom" className="w-full sm:w-auto" />
           </div>
