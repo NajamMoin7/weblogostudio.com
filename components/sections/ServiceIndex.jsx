@@ -9,7 +9,7 @@ import { getServicesByGroup, serviceGroups } from "@/data/services";
  */
 export default function ServiceIndex() {
   return (
-    <section aria-labelledby="services-title" className="py-20 lg:py-28">
+    <section aria-labelledby="services-title" className="theme-mint py-20 lg:py-28">
       <div className="container-page">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading

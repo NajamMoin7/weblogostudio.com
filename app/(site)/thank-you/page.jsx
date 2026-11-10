@@ -1,5 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 import Button from "@/components/ui/Button";
+import HeroMotif from "@/components/motion/HeroMotif";
 import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata({
@@ -17,10 +18,10 @@ const steps = [
 
 export default function ThankYouPage() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="container-page flex min-h-[70vh] flex-col justify-center py-24">
-        <div className="max-w-3xl">
-          <CheckCircle2 aria-hidden="true" className="rise-in size-10 text-success" style={{ "--i": 0 }} />
+    <section className="theme-forest relative overflow-hidden">
+      <div className="container-page grid min-h-[70vh] items-center gap-12 py-24 lg:grid-cols-12">
+        <div className="max-w-3xl lg:col-span-7">
+          <CheckCircle2 aria-hidden="true" className="rise-in size-10 text-cyan" style={{ "--i": 0 }} />
           <h1
             className="font-display-wide mt-8 text-[clamp(2.6rem,6vw,5rem)] font-bold leading-[0.95]"
             style={{ "--i": 1 }}
@@ -46,6 +47,9 @@ export default function ThankYouPage() {
               Back to home
             </Button>
           </div>
+        </div>
+        <div className="hidden lg:col-span-5 lg:block">
+          <HeroMotif seed={3} />
         </div>
       </div>
     </section>

@@ -55,7 +55,7 @@ export default function ServicesPage() {
             key={group.id}
             id={group.id}
             aria-labelledby={`${group.id}-title`}
-            className={`py-20 lg:py-24 ${gi % 2 ? "border-y border-line bg-surface" : ""}`}
+            className={`py-20 lg:py-24 ${gi % 2 ? "theme-mint" : ""}`}
           >
             <div className="container-page">
               <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
@@ -81,7 +81,7 @@ export default function ServicesPage() {
         );
       })}
 
-      <section aria-labelledby="unsure-title" className="py-20 lg:py-24">
+      <section aria-labelledby="unsure-title" className="theme-mint py-20 lg:py-24">
         <div className="container-page">
           <div className="grid gap-8 border-y-2 border-fg py-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-8">

@@ -8,7 +8,7 @@ import { Menu, Phone, X } from "lucide-react";
 import { mainNav } from "@/data/navigation";
 import { buttonClasses } from "@/components/ui/Button";
 import Spinner from "@/components/ui/Spinner";
-import StudioClock from "@/components/ui/StudioClock";
+import OpenBadge from "@/components/ui/OpenBadge";
 import { siteConfig } from "@/lib/site";
 
 const EASE_OUT = [0.16, 1, 0.3, 1];
@@ -79,7 +79,7 @@ export default function Header({ logo }) {
       {/* Sheet strip: live studio clock and the studio's address, like a specimen's running head. */}
       <div className="hidden border-b border-line md:block">
         <div className="container-page flex h-8 items-center justify-between gap-6">
-          <StudioClock />
+          <OpenBadge />
           <p className="caption flex items-center gap-4">
             <span>Hicksville, NY</span>
             <a href={phoneHref} className="text-muted transition-colors hover:text-fg">
@@ -205,7 +205,7 @@ export default function Header({ logo }) {
                 <a href={phoneHref} className={buttonClasses({ size: "lg", variant: "secondary", className: "w-full" })}>
                   <Phone className="size-4" aria-hidden="true" /> Call {phone}
                 </a>
-                <StudioClock className="mt-3 justify-center" tone="quiet" />
+                <OpenBadge className="mt-3 justify-center" tone="quiet" />
               </motion.div>
             </nav>
           </motion.div>

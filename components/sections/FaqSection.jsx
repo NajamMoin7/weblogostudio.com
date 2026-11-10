@@ -13,9 +13,10 @@ export default function FaqSection({
   intro = "Straight answers. If yours is not here, call or send a message.",
   showAllLink = true,
   withSchema = false,
+  tone = "mint",
 }) {
   return (
-    <section aria-labelledby="faq-title" className="border-t border-line py-20 lg:py-28">
+    <section aria-labelledby="faq-title" className={`py-20 lg:py-28 ${tone === "mint" ? "theme-mint" : "border-t border-line"}`}>
       <div className="container-page grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">

@@ -22,13 +22,14 @@ export default function FaqPage() {
         intro="Timelines, revisions, ownership, maintenance and how quotes work. If your question is not here, call (707) 564-6678."
       />
       <FaqSection
+        tone="light"
         faqs={generalFaqs}
         title="Working with the studio"
         intro="How quotes, revisions and ownership work."
         showAllLink={false}
         withSchema
       />
-      <section aria-labelledby="service-faq-title" className="border-t border-line bg-surface py-20 lg:py-24">
+      <section aria-labelledby="service-faq-title" className="theme-mint py-20 lg:py-24">
         <div className="container-page">
           <h2 id="service-faq-title" className="font-display-wide text-[clamp(2rem,4.2vw,3.2rem)] font-bold leading-none">
             Questions about a specific service?

@@ -6,7 +6,8 @@ import { work } from "@/data/work";
 /**
  * Home hero, set as a type specimen sheet.
  * Left: the offer as a size ladder (display, subhead, text), each rung captioned with its
- * size at desktop width. Right: one real logo from the portfolio and the size scrubber.
+ * size at desktop width. Right: one real logo from the portfolio and the size scrubber, over the banner construction
+ * drawing. The band is the logo green.
  * Everything is static at first paint; only the decorative caption rules draw in.
  */
 function Rung({ caption, i, children, className = "" }) {
@@ -14,7 +15,7 @@ function Rung({ caption, i, children, className = "" }) {
     <div className={`relative ${className}`}>
       {children}
       <p aria-hidden="true" className="caption mt-3 flex items-center gap-3">
-        <span className="spec-rule h-px w-10 bg-line-strong" style={{ "--i": i }} />
+        <span className="spec-rule h-px w-10 bg-orange" style={{ "--i": i }} />
         {caption}
       </p>
     </div>
@@ -24,7 +25,7 @@ function Rung({ caption, i, children, className = "" }) {
 export default function Hero() {
   const total = work.length;
   return (
-    <section aria-labelledby="hero-title" className="border-b border-line">
+    <section aria-labelledby="hero-title" className="theme-forest relative overflow-hidden">
       <div className="container-page grid gap-12 pb-14 pt-8 sm:pt-12 lg:grid-cols-12 lg:gap-10 lg:pb-20 lg:pt-16">
         <div className="lg:col-span-7">
           <Rung caption="96 / Archivo Condensed Bold" i={0}>
@@ -32,7 +33,7 @@ export default function Hero() {
               id="hero-title"
               className="font-condensed text-[clamp(3.1rem,8.6vw,6rem)] font-bold uppercase leading-[0.9] text-fg"
             >
-              Websites, logos <span className="text-brand">&amp;&nbsp;brand systems</span>
+              Websites, logos <span className="text-cyan">&amp;&nbsp;brand systems</span>
             </h1>
           </Rung>
 

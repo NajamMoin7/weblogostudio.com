@@ -4,7 +4,6 @@ import PhoneMockup from "@/components/offer/PhoneMockup";
 import CheckoutNotice from "@/components/offer/CheckoutNotice";
 import Reviews99 from "@/components/offer/Reviews99";
 import Accordion from "@/components/ui/Accordion";
-import StudioClock from "@/components/ui/StudioClock";
 import PixelEvent from "@/components/analytics/PixelEvent";
 import { exampleSites, faqs99, heroSite, included99, steps99 } from "@/data/offer99";
 import { getWork } from "@/data/work";
@@ -58,7 +57,6 @@ export default function OfferPage() {
               Mobile-ready one-page website with call button, map, hours &amp; reviews.
             </p>
             <PayButton className="mt-8" id="pay-top" />
-            <StudioClock className="mt-5 min-w-0 justify-center sm:justify-start" tone="quiet" />
           </div>
           {lead && (
             <div className="hidden lg:col-span-5 lg:block">

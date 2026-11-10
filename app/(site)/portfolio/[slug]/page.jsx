@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import HeroMotif from "@/components/motion/HeroMotif";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import SectionHeading, { RevealWords } from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
@@ -64,8 +65,12 @@ export default async function WorkPage({ params }) {
 
   return (
     <>
-      <section className="border-b border-line">
-        <div className="container-page pb-12 pt-10 lg:pt-14">
+      <section className="theme-forest relative overflow-hidden">
+        <HeroMotif
+          seed={slug.length}
+          className="pointer-events-none absolute -right-24 top-1/2 hidden w-[40rem] -translate-y-1/2 opacity-30 lg:block"
+        />
+        <div className="container-page relative pb-12 pt-10 lg:pt-14">
           <Breadcrumbs
             items={[
               { label: "Portfolio", href: "/portfolio" },
@@ -144,7 +149,7 @@ export default async function WorkPage({ params }) {
       </section>
 
       {related.length > 0 && (
-        <section aria-labelledby="related-title" className="border-t border-line py-20 lg:py-24">
+        <section aria-labelledby="related-title" className="theme-mint py-20 lg:py-24">
           <div className="container-page">
             <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <SectionHeading

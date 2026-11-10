@@ -22,6 +22,7 @@ const variants = {
   text: "h-auto! px-0! text-fg underline decoration-orange decoration-2 underline-offset-[6px] hover:decoration-fg rounded-sm",
   icon: "size-11 rounded-full! border-[1.5px] border-line-strong p-0! text-fg hover:border-fg hover:bg-fg hover:text-ink",
   dark: "bg-forest text-cream hover:bg-forest-deep",
+  light: "bg-cream text-charcoal hover:bg-white",
   outlineDark: "border-[1.5px] border-forest/40 text-forest hover:border-forest",
 };
 

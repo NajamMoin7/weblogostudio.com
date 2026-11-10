@@ -80,7 +80,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="identity-title" className="border-y border-line bg-surface py-20 lg:py-28">
+      <section aria-labelledby="identity-title" className="theme-mint py-20 lg:py-28">
         <div className="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
           <div className="relative grid aspect-[16/10] place-items-center rounded-xl border border-line-strong bg-ink p-10 lg:col-span-7">
             <Logo variant="lockup" link={false} className="h-auto w-[58%] max-w-md" />
@@ -122,7 +122,7 @@ export default function AboutPage() {
 
       <Process />
 
-      <section aria-labelledby="capabilities-title" className="py-20 lg:py-28">
+      <section aria-labelledby="capabilities-title" className="theme-charcoal py-20 lg:py-28">
         <div className="container-page">
           <SectionHeading id="capabilities-title" title="What you can hire us for." />
           <div className="mt-12 grid gap-10 md:grid-cols-3">

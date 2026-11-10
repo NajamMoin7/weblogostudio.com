@@ -67,7 +67,7 @@ export default function ServiceDetail({ service }) {
       </section>
 
       {/* Features */}
-      <section aria-labelledby="features-title" className="border-y border-line bg-surface py-20 lg:py-28">
+      <section aria-labelledby="features-title" className="theme-mint py-20 lg:py-28">
         <div className="container-page grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-28">
@@ -160,7 +160,7 @@ export default function ServiceDetail({ service }) {
         <LogoShowcase title="More logos from the studio" exclude={projects.map((p) => p.slug)} />
       )}
 
-      <section aria-labelledby="related-title" className="border-t border-line bg-surface py-20 lg:py-28">
+      <section aria-labelledby="related-title" className="theme-mint py-20 lg:py-28">
         <div className="container-page">
           <SectionHeading id="related-title" eyebrow="Related services" title="Often paired with" />
           <ul className="mt-12 grid gap-x-8 gap-y-4 md:grid-cols-3">
@@ -174,6 +174,7 @@ export default function ServiceDetail({ service }) {
       </section>
 
       <FaqSection
+        tone="light"
         faqs={service.faqs}
         eyebrow={`${service.navTitle ?? service.title} FAQ`}
         title="Common questions"

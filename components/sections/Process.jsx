@@ -11,7 +11,7 @@ export default function Process({
   intro = "Four stages, each ending with something you approve before the next one starts.",
 }) {
   return (
-    <section aria-labelledby="process-title" className="border-t border-line bg-surface">
+    <section aria-labelledby="process-title" className="theme-charcoal">
       <div className="container-page py-20 lg:py-28">
         <SectionHeading id="process-title" title={title} intro={intro} />
         <ol className="relative mt-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">

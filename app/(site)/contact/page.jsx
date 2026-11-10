@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { ArrowRight, MapPin, Phone } from "lucide-react";
+import ContactDetails from "@/components/ui/ContactDetails";
+import { ArrowRight } from "lucide-react";
 import PageHero from "@/components/sections/PageHero";
 import ContactForm from "@/components/forms/ContactForm";
-import { addressLines, mapsUrl, pageMetadata, siteConfig } from "@/lib/site";
+import { addressLines, pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Contact Us",
@@ -27,7 +28,6 @@ const routes = [
 ];
 
 export default function ContactPage() {
-  const { email, phone, phoneHref } = siteConfig.contact;
   const mapQuery = encodeURIComponent(addressLines.join(", "));
   return (
     <>
@@ -39,45 +39,8 @@ export default function ContactPage() {
       <section className="py-14 lg:py-20">
         <div className="container-page grid gap-14 lg:grid-cols-12">
           <aside className="lg:col-span-4">
-            <div className="space-y-8">
-              <div>
-                <h2 className="eyebrow text-subtle">Phone</h2>
-                <a
-                  href={phoneHref}
-                  className="font-display-wide mt-3 flex items-center gap-3 text-[2.2rem] font-bold leading-none transition-colors hover:text-cyan"
-                >
-                  <Phone aria-hidden="true" className="size-6 shrink-0" />
-                  {phone}
-                </a>
-                <p className="caption mt-2">Mon–Fri, 9 AM–6 PM Eastern</p>
-              </div>
-              <div>
-                <h2 className="eyebrow text-subtle">Studio</h2>
-                <address className="mt-3 not-italic">
-                  <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="group flex gap-3 text-lg leading-snug">
-                    <MapPin aria-hidden="true" className="mt-1 size-5 shrink-0" />
-                    <span>
-                      <span className="block font-semibold">{siteConfig.legalName}</span>
-                      {addressLines.map((l) => (
-                        <span key={l} className="block">
-                          {l}
-                        </span>
-                      ))}
-                      <span className="mt-1 block text-sm font-semibold text-cyan underline-offset-4 group-hover:underline">
-                        Open in Google Maps
-                      </span>
-                    </span>
-                  </a>
-                </address>
-              </div>
-              {email && (
-                <div>
-                  <h2 className="eyebrow text-subtle">Email</h2>
-                  <a href={`mailto:${email}`} className="mt-3 block break-all text-lg hover:text-cyan">
-                    {email}
-                  </a>
-                </div>
-              )}
+            <div className="space-y-10">
+              <ContactDetails showName />
               <ul className="border-t border-line">
                 {routes.map((r) => (
                   <li key={r.href} className="border-b border-line">
