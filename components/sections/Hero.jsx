@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Button from "@/components/ui/Button";
-import HeroSpecimen from "@/components/sections/HeroSpecimen";
+import HeroLogo3D from "@/components/sections/HeroLogo3D";
 import { work } from "@/data/work";
 
 /**
  * Home hero, set as a type specimen sheet.
- * Left: the offer as a size ladder (display, subhead, text). Right: one real logo from the portfolio and the size scrubber, over the banner construction
- * drawing. The band is the logo green.
+ * Left: the offer as a size ladder (display, subhead, text). Right: the studio's WL mark in 3D, looping.
+ * The band is the logo green.
  * Everything is static at first paint.
  */
 function Rung({ children, className = "" }) {
@@ -54,7 +54,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <HeroSpecimen />
+        <HeroLogo3D />
       </div>
     </section>
   );
