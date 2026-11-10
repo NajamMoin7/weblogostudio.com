@@ -1,5 +1,7 @@
 import Hero from "@/components/sections/Hero";
 import FeaturedWork from "@/components/sections/FeaturedWork";
+import SiteShowcase from "@/components/sections/SiteShowcase";
+import NameStudio from "@/components/sections/NameStudio";
 import ServiceIndex from "@/components/sections/ServiceIndex";
 import LogoShowcase from "@/components/portfolio/LogoShowcase";
 import Process from "@/components/sections/Process";
@@ -23,6 +25,8 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <SiteShowcase />
+      <NameStudio />
       <FeaturedWork />
       <ServiceIndex />
       <LogoShowcase />

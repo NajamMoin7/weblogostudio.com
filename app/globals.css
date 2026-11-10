@@ -533,6 +533,81 @@ a {
   to { opacity: 1; }
 }
 
+/* "See your name on it" (components/sections/NameStudio.jsx): a new type style settles in with
+   a short blur-to-sharp, and surfaces repaint smoothly when the palette changes. */
+.ns-lockup {
+  animation: ns-settle 0.55s var(--ease-out-expo) both;
+}
+@keyframes ns-settle {
+  from { opacity: 0; filter: blur(6px); transform: translateY(0.12em) scale(0.97); }
+}
+.ns-surface {
+  transition: background-color 0.5s var(--ease-out-quint), color 0.5s var(--ease-out-quint);
+}
+
+/*
+  Website showcase (components/sections/SiteShowcase.jsx). Each project is a tall stage whose
+  inner frame sticks while the visitor scrolls; the full-page screenshot inside the browser frame
+  scrolls from header to footer over that stretch, and the progress rule fills with it.
+  Pure CSS scroll-driven animation; without support (or with reduced motion) the stages collapse
+  to normal height and show the top of each page.
+*/
+.showcase-stage {
+  view-timeline-name: --stage;
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .showcase-stage {
+      height: 230vh;
+    }
+    /* Sticks just under the header: 4rem on phones, 6rem with the strip, 6.25rem on desktop. */
+    .showcase-sticky {
+      position: sticky;
+      top: 4rem;
+      min-height: calc(100svh - 4rem);
+    }
+    @media (min-width: 768px) {
+      .showcase-sticky {
+        top: 6rem;
+        min-height: calc(100svh - 6rem);
+      }
+    }
+    @media (min-width: 1024px) {
+      .showcase-sticky {
+        top: 6.25rem;
+        min-height: calc(100svh - 6.25rem);
+      }
+    }
+    .showcase-page {
+      animation: showcase-scroll linear both;
+      animation-timeline: --stage;
+      animation-range: contain 4% contain 96%;
+    }
+    .showcase-progress {
+      transform-origin: left;
+      animation: showcase-progress linear both;
+      animation-timeline: --stage;
+      animation-range: contain 4% contain 96%;
+    }
+    .showcase-caption {
+      animation: showcase-caption linear both;
+      animation-timeline: --stage;
+      animation-range: entry 30% contain 10%;
+    }
+  }
+}
+@keyframes showcase-scroll {
+  to { translate: 0 calc(-100% + 100cqh); }
+}
+@keyframes showcase-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes showcase-caption {
+  from { opacity: 0; translate: 0 2rem; }
+  to { opacity: 1; translate: 0 0; }
+}
+
 /* Legacy class kept as a no-op; print sheets carry no noise texture. */
 .grain {
   position: relative;
