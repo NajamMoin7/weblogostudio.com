@@ -40,7 +40,10 @@ export default function RevealObserver() {
     const scan = () => {
       const fold = window.innerHeight;
       document.querySelectorAll(SELECTOR).forEach((el) => {
-        if (el.hasAttribute("data-reveal")) return;
+        // Already shown: leave it. Still "pending" from an earlier observer (a route Next.js kept
+        // alive and restored on back/forward, or a cleanup mid-scroll): pick it up again, or it
+        // would stay hidden forever.
+        if (el.getAttribute("data-reveal") === "in") return;
         if (el.getBoundingClientRect().top < fold) {
           el.setAttribute("data-reveal", "in");
           return;
