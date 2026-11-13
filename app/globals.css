@@ -699,3 +699,230 @@ a {
     animation: none !important;
   }
 }
+
+/*
+  Spotlight (home): a stage lamp swings to the picked service. The lamp angle, beam length and
+  the pool of light on the floor are registered properties set once on the stage, so a single
+  transition drives all three with the same slightly-overshooting swing.
+*/
+@property --spot-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@property --spot-len {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 120px;
+}
+@property --spot-x {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+@property --spot-y {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+.spot-stage {
+  --spot-swing: cubic-bezier(0.34, 1.38, 0.5, 1);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: 1.5rem;
+  border-radius: 1.25rem;
+  background: radial-gradient(120% 75% at 50% 0%, #171b19 0%, #0a0c0b 62%) #0a0c0b;
+  box-shadow: inset 0 0 0 1px rgb(251 251 248 / 0.07);
+  transition:
+    --spot-angle 1050ms var(--spot-swing),
+    --spot-len 1050ms var(--spot-swing),
+    --spot-x 1050ms var(--spot-swing),
+    --spot-y 1050ms var(--spot-swing);
+}
+.spot-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(42% 40% at var(--spot-x) 72%, rgb(255 150 70 / 0.11), transparent 72%);
+}
+.spot-neck {
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 4px;
+  height: 36px;
+  background: linear-gradient(90deg, #4a514d, #191c1a);
+}
+.spot-neck::before {
+  content: "";
+  position: absolute;
+  left: -11px;
+  top: 0;
+  width: 26px;
+  height: 5px;
+  border-radius: 0 0 3px 3px;
+  background: #2a2f2c;
+}
+.spot-head {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform: rotate(var(--spot-angle));
+  transform-origin: 0 0;
+}
+.spot-beam {
+  position: absolute;
+  left: -100px;
+  width: 200px;
+  height: var(--spot-len);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.spot-glow {
+  position: absolute;
+  inset: 0;
+  filter: blur(6px);
+}
+.spot-cone,
+.spot-motes {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%);
+}
+.spot-cone {
+  background: linear-gradient(
+    to bottom,
+    rgb(255 226 178 / 0.85),
+    rgb(255 180 104 / 0.36) 62%,
+    rgb(255 160 80 / 0.2) 86%,
+    rgb(255 150 70 / 0)
+  );
+}
+.spot-mote {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #ffeed6;
+  opacity: 0;
+  animation: spot-mote 7s linear var(--md, 0s) infinite;
+}
+@keyframes spot-mote {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(12px, -30px);
+    opacity: 0;
+  }
+}
+.spot-pool {
+  position: absolute;
+  z-index: 1;
+  left: var(--spot-x);
+  top: var(--spot-y);
+  width: 260px;
+  height: 120px;
+  translate: -50% -50%;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgb(255 178 104 / 0.3), rgb(255 150 70 / 0.1) 55%, transparent);
+}
+/* Off until it first scrolls into view, then it flickers on. */
+.spot-stage[data-on="false"] :is(.spot-beam, .spot-pool, .spot-ambient, .spot-light) {
+  opacity: 0;
+}
+.spot-stage[data-on="true"] :is(.spot-beam, .spot-pool, .spot-ambient, .spot-light) {
+  animation: spot-flicker 1.2s linear both;
+}
+@keyframes spot-flicker {
+  0% {
+    opacity: 0;
+  }
+  6% {
+    opacity: 0.85;
+  }
+  10% {
+    opacity: 0.08;
+  }
+  17% {
+    opacity: 0.95;
+  }
+  21% {
+    opacity: 0.25;
+  }
+  30% {
+    opacity: 1;
+  }
+  36% {
+    opacity: 0.55;
+  }
+  44%,
+  100% {
+    opacity: 1;
+  }
+}
+.spot-bar {
+  display: flex;
+  gap: 2px;
+  padding: 5px;
+  border-radius: 999px;
+  background: rgb(251 251 248 / 0.035);
+  box-shadow: inset 0 0 0 1px rgb(251 251 248 / 0.09);
+}
+.spot-pill {
+  min-height: 2.75rem;
+  border-radius: 999px;
+  padding: 0 0.85rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: rgb(251 251 248 / 0.5);
+  transition:
+    color 450ms var(--ease-out-quint),
+    background-color 450ms var(--ease-out-quint),
+    text-shadow 450ms var(--ease-out-quint);
+}
+.spot-pill:hover {
+  color: rgb(251 251 248 / 0.82);
+}
+.spot-pill[aria-selected="true"] {
+  color: #fff4e4;
+  background-color: rgb(255 170 96 / 0.14);
+  text-shadow: 0 0 14px rgb(255 190 120 / 0.8);
+}
+.spot-pill:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+@media (min-width: 640px) {
+  .spot-pill {
+    padding: 0 1.35rem;
+    font-size: 0.95rem;
+  }
+}
+.spot-panel {
+  transition:
+    opacity 520ms var(--ease-out-expo),
+    transform 640ms var(--ease-out-expo),
+    filter 520ms var(--ease-out-expo);
+}
+.spot-panel[data-active="false"] {
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(6px);
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .spot-motes {
+    display: none !important;
+  }
+  .spot-stage[data-on="true"] :is(.spot-beam, .spot-pool, .spot-ambient, .spot-light) {
+    animation: none !important;
+    opacity: 1;
+  }
+}
