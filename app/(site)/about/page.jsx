@@ -4,7 +4,7 @@ import PageHero from "@/components/sections/PageHero";
 import Process from "@/components/sections/Process";
 import CtaSection from "@/components/sections/CtaSection";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Logo from "@/components/ui/Logo";
+import MarkTest from "@/components/motion/MarkTest";
 import { serviceGroups, getServicesByGroup } from "@/data/services";
 import { work } from "@/data/work";
 import { addressLines, pageMetadata, siteConfig } from "@/lib/site";
@@ -82,8 +82,8 @@ export default function AboutPage() {
 
       <section aria-labelledby="identity-title" className="theme-mint py-20 lg:py-28">
         <div className="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
-          <div className="relative grid aspect-[16/10] place-items-center rounded-xl border border-line-strong bg-ink p-10 lg:col-span-7">
-            <Logo variant="lockup" link={false} className="h-auto w-[58%] max-w-md" />
+          <div className="lg:col-span-7">
+            <MarkTest />
           </div>
           <div className="lg:col-span-5">
             <SectionHeading

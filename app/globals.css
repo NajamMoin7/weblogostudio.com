@@ -1123,54 +1123,8 @@ a {
   mix-blend-mode: screen;
 }
 
-/* Footer: outlined studio name that fills with orange under the cursor (FooterWordmark.jsx). */
-@property --wx {
-  syntax: "<length-percentage>";
-  inherits: true;
-  initial-value: 0%;
-}
-@property --wr {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 0px;
-}
-.wordmark {
-  --wr: 0px;
-  transition: --wr 500ms var(--ease-out-expo);
-}
-.wordmark[data-lit="true"] {
-  --wr: 230px;
-}
-.wordmark-outline text {
-  fill: none;
-  stroke: rgb(251 251 248 / 0.2);
-  stroke-width: 1.4;
-}
-.wordmark-fill text {
-  fill: #ff6a1a;
-}
-.wordmark-fill {
-  mask-image: radial-gradient(circle var(--wr) at var(--wx, 50%) var(--wy, 50%), #000 25%, transparent 100%);
-}
-@media (hover: none) {
-  .wordmark {
-    --wr: 150px;
-    --wy: 50%;
-    animation: wordmark-drift 9s ease-in-out infinite alternate;
-  }
-}
-@keyframes wordmark-drift {
-  from {
-    --wx: 5%;
-  }
-  to {
-    --wx: 95%;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .neon-buzz,
-  .wordmark {
+  .neon-buzz {
     animation: none !important;
   }
   .neon-lit,
@@ -1185,5 +1139,105 @@ a {
   [data-reveal="in"] .process-num {
     background-color: var(--color-brand);
     color: var(--color-on-brand);
+  }
+}
+
+/* About: mark size test (MarkTest.jsx). */
+.mark-test {
+  transition:
+    background-color 600ms var(--ease-out-expo),
+    color 600ms var(--ease-out-expo);
+}
+.mark-test-svg {
+  transition: width 750ms cubic-bezier(0.34, 1.3, 0.5, 1);
+}
+.mark-test-svg polygon {
+  transition: fill 600ms var(--ease-out-expo);
+}
+.mark-test-rule {
+  transition: width 750ms cubic-bezier(0.34, 1.3, 0.5, 1);
+}
+.mark-test-swatch {
+  transition:
+    transform 250ms var(--ease-out-quint),
+    box-shadow 250ms var(--ease-out-quint);
+}
+.mark-test-swatch[aria-checked="true"] {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 2px var(--color-ink),
+    0 0 0 4px var(--color-fg);
+}
+
+/* Thank-you: brief into envelope, flap shuts, postmark lands (Postmark.jsx). */
+.post-letter {
+  animation: post-letter 1s cubic-bezier(0.6, 0, 0.3, 1) 300ms both;
+}
+@keyframes post-letter {
+  from {
+    transform: translateY(-150px);
+  }
+  to {
+    transform: translateY(95px);
+  }
+}
+.post-flap-open,
+.post-flap-shut {
+  transform-box: view-box;
+  transform-origin: 240px 172px;
+}
+.post-flap-open {
+  animation: post-flap-open 260ms ease-in 1.3s both;
+}
+.post-flap-shut {
+  animation: post-flap-shut 300ms ease-out 1.56s both;
+}
+@keyframes post-flap-open {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+@keyframes post-flap-shut {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+.post-stamp {
+  transform-box: fill-box;
+  transform-origin: 70% 50%;
+  rotate: -12deg;
+  animation: stamp-slam 560ms cubic-bezier(0.2, 0.9, 0.3, 1.1) 2.1s both;
+}
+.post-float {
+  animation: post-float 6s ease-in-out 3s infinite;
+}
+@keyframes post-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .post-float,
+  .post-letter,
+  .post-flap-open,
+  .post-flap-shut,
+  .post-stamp {
+    animation: none !important;
+  }
+  .post-letter {
+    transform: translateY(95px);
+  }
+  .post-flap-open {
+    transform: scaleY(0);
   }
 }

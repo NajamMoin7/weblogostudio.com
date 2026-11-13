@@ -1,6 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 import Button from "@/components/ui/Button";
-import HeroMotif from "@/components/motion/HeroMotif";
+import Postmark from "@/components/motion/Postmark";
 import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata({
@@ -48,8 +48,8 @@ export default function ThankYouPage() {
             </Button>
           </div>
         </div>
-        <div className="hidden lg:col-span-5 lg:block">
-          <HeroMotif seed={3} />
+        <div className="order-first mx-auto w-full max-w-[18rem] sm:max-w-sm lg:order-none lg:col-span-5 lg:max-w-none">
+          <Postmark />
         </div>
       </div>
     </section>
