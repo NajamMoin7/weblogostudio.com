@@ -2,6 +2,7 @@ import Link from "next/link";
 import ContactDetails from "@/components/ui/ContactDetails";
 import { ArrowRight } from "lucide-react";
 import PageHero from "@/components/sections/PageHero";
+import NeonSign from "@/components/motion/NeonSign";
 import ContactForm from "@/components/forms/ContactForm";
 import { addressLines, pageMetadata } from "@/lib/site";
 
@@ -35,6 +36,7 @@ export default function ContactPage() {
         breadcrumbs={[{ label: "Contact", href: "/contact" }]}
         title="Call, write or come by the studio."
         intro="Questions, a brief or a half-formed idea: the person who replies is the person who will work on it."
+        art={<NeonSign className="mx-auto max-w-[26rem]" />}
       />
       <section className="py-14 lg:py-20">
         <div className="container-page grid gap-14 lg:grid-cols-12">

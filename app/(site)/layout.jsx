@@ -1,6 +1,7 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Logo from "@/components/ui/Logo";
+import TiltGlare from "@/components/motion/TiltGlare";
 
 /** Main marketing site: header, page, footer. The /99 ad page lives outside this group. */
 export default function SiteLayout({ children }) {
@@ -12,6 +13,7 @@ export default function SiteLayout({ children }) {
         {children}
       </main>
       <Footer />
+      <TiltGlare />
     </>
   );
 }

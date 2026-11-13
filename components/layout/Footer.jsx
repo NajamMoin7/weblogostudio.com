@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FooterWordmark from "@/components/layout/FooterWordmark";
 import { cacheLife } from "next/cache";
 import Logo from "@/components/ui/Logo";
 import ContactDetails from "@/components/ui/ContactDetails";
@@ -130,6 +131,8 @@ export default function Footer() {
             ))}
           </ul>
         </div>
+
+        <FooterWordmark />
       </div>
     </footer>
   );

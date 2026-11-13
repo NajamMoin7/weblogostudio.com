@@ -45,3 +45,11 @@ next-env.d.ts
 
 # untouched portfolio originals (large, archived locally; web versions live in public/images/portfolio)
 /portfolio-source/
+
+# local tool output and reference files (never part of the site)
+/.playwright-mcp/
+/.codex/
+/.impeccable/review/
+/.impeccable/questions/
+/.impeccable/hook.cache.json
+/_reference/

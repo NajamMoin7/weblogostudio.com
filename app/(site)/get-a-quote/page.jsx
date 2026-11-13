@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import PageHero from "@/components/sections/PageHero";
 import QuoteForm from "@/components/forms/QuoteForm";
+import BriefBuild from "@/components/forms/BriefBuild";
 import { serviceGroups, getServicesByGroup } from "@/data/services";
 import { pageMetadata } from "@/lib/site";
 
@@ -62,6 +63,9 @@ export default function GetAQuotePage() {
           </div>
           <aside className="lg:col-span-4">
             <div className="lg:sticky lg:top-28">
+              <div className="mb-10 hidden lg:block">
+                <BriefBuild />
+              </div>
               <h2 className="font-display-wide text-[1.8rem] font-bold leading-none">What happens next</h2>
               <ol className="mt-6 space-y-6">
                 {nextSteps.map((s, i) => (

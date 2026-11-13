@@ -15,7 +15,7 @@ function seedFrom(value) {
  * keeps moving. With an `aside` (service illustrations) the drawing sits behind it instead.
  * (`eyebrow` is accepted for compatibility and ignored: no kickers above headings.)
  */
-export default function PageHero({ breadcrumbs, title, intro, actions, aside, children, seed }) {
+export default function PageHero({ breadcrumbs, title, intro, actions, aside, art, children, seed }) {
   const key = seed ?? seedFrom(breadcrumbs?.at(-1)?.href ?? (typeof title === "string" ? title : ""));
   return (
     <section className="theme-forest relative overflow-hidden">
@@ -46,7 +46,7 @@ export default function PageHero({ breadcrumbs, title, intro, actions, aside, ch
             </div>
           ) : (
             <div className="mx-auto w-full max-w-md sm:max-w-lg lg:col-span-5 lg:max-w-none">
-              <HeroMotif seed={key} />
+              {art ?? <HeroMotif seed={key} />}
             </div>
           )}
         </div>

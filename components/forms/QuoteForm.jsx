@@ -56,6 +56,7 @@ export default function QuoteForm({ serviceOptions }) {
   return (
     <form
       ref={formRef}
+      id="quote-form"
       noValidate
       onSubmit={(e) => submit(e, () => router.push("/thank-you"))}
       className="relative grid gap-12"

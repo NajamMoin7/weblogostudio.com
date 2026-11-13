@@ -926,3 +926,264 @@ a {
     opacity: 1;
   }
 }
+
+/* Process: an ink stamp slams onto each step as the steps reveal; the number turns orange. */
+.process-stamp {
+  position: absolute;
+  right: 0;
+  top: -0.2rem;
+  padding: 0.32rem 0.6rem 0.26rem;
+  border: 2.5px solid currentColor;
+  border-radius: 6px;
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+  color: var(--color-brand);
+  font-family: var(--font-display);
+  font-stretch: 64%;
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  rotate: -9deg;
+  opacity: 0.9;
+  pointer-events: none;
+  /* Worn rubber: speckled gaps in the ink. */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='60'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -3.4 2.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mask-size: 150px 60px;
+}
+[data-reveal="pending"] .process-stamp {
+  opacity: 0;
+}
+[data-reveal="in"] .process-stamp {
+  animation: stamp-slam 560ms cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
+  animation-delay: calc(500ms + var(--i, 0) * 280ms);
+}
+[data-reveal="in"] .process-num {
+  animation: stamp-num 400ms ease-out both;
+  animation-delay: calc(760ms + var(--i, 0) * 280ms);
+}
+@keyframes stamp-slam {
+  0% {
+    opacity: 0;
+    scale: 2.3;
+    rotate: -1deg;
+    filter: blur(3px);
+  }
+  50% {
+    opacity: 0.95;
+    scale: 0.94;
+    rotate: -10deg;
+    filter: blur(0);
+  }
+  72% {
+    scale: 1.03;
+  }
+  100% {
+    opacity: 0.9;
+    scale: 1;
+    rotate: -9deg;
+  }
+}
+@keyframes stamp-num {
+  0% {
+    scale: 1;
+  }
+  40% {
+    scale: 0.86;
+  }
+  100% {
+    scale: 1;
+    background-color: var(--color-brand);
+    color: var(--color-on-brand);
+  }
+}
+
+/* Work cards lean toward the cursor and catch a moving highlight (TiltGlare.jsx). */
+[data-tilt] {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition:
+    transform 600ms var(--ease-out-expo),
+    border-color 300ms var(--ease-out-quint),
+    box-shadow 300ms var(--ease-out-quint);
+}
+[data-tilt][data-tilting] {
+  transition:
+    transform 140ms ease-out,
+    border-color 300ms var(--ease-out-quint),
+    box-shadow 300ms var(--ease-out-quint);
+}
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgb(255 255 255 / 0.42), rgb(255 255 255 / 0) 55%);
+  mix-blend-mode: soft-light;
+  transition: opacity 400ms var(--ease-out-quint);
+}
+[data-tilting] > .tilt-glare {
+  opacity: 1;
+}
+
+/* Contact: neon sign (NeonSign.jsx). Tubes buzz on in turn; the N stutters now and then. */
+.neon-lit {
+  animation: neon-on 1.3s linear both;
+  animation-delay: calc(350ms + var(--n, 0) * 190ms);
+}
+.neon-wash {
+  animation: neon-on 1.3s linear 1.2s both;
+}
+@keyframes neon-on {
+  0% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.9;
+  }
+  12% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 0.3;
+  }
+  34%,
+  100% {
+    opacity: 1;
+  }
+}
+.neon-buzz {
+  animation: neon-buzz 7s linear 4s infinite;
+}
+@keyframes neon-buzz {
+  0%,
+  88%,
+  100% {
+    opacity: 1;
+  }
+  89% {
+    opacity: 0.25;
+  }
+  90% {
+    opacity: 1;
+  }
+  91.5% {
+    opacity: 0.4;
+  }
+  93% {
+    opacity: 1;
+  }
+}
+
+/* Quote: the mark assembles as the brief fills in (BriefBuild.jsx). */
+.brief-shard {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: translate(var(--fx), var(--fy)) rotate(var(--fr));
+  opacity: 0;
+  transition:
+    transform 900ms cubic-bezier(0.34, 1.4, 0.5, 1),
+    opacity 350ms ease-out;
+}
+.brief-shard[data-in="true"] {
+  transform: none;
+  opacity: 1;
+}
+.brief-ring {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transform: rotate(-90deg);
+  transform-origin: 368px 240px;
+  transition: stroke-dashoffset 1.1s var(--ease-out-expo) 300ms;
+}
+.brief-build[data-complete="true"] .brief-ring {
+  stroke-dashoffset: 0;
+}
+
+/* 404: torch on a dark wall (Flashlight.jsx). */
+.torch {
+  --lx: 70%;
+  --ly: 50%;
+}
+.torch-wall {
+  mask-image: radial-gradient(circle 210px at var(--lx) var(--ly), #000 35%, rgb(0 0 0 / 0.35) 62%, transparent 100%);
+}
+@media (max-width: 639px) {
+  .torch-wall {
+    opacity: 0.6;
+  }
+}
+.torch-beam {
+  pointer-events: none;
+  background: radial-gradient(circle 260px at var(--lx) var(--ly), rgb(255 232 196 / 0.14), transparent 70%);
+  mix-blend-mode: screen;
+}
+
+/* Footer: outlined studio name that fills with orange under the cursor (FooterWordmark.jsx). */
+@property --wx {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+@property --wr {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+.wordmark {
+  --wr: 0px;
+  transition: --wr 500ms var(--ease-out-expo);
+}
+.wordmark[data-lit="true"] {
+  --wr: 230px;
+}
+.wordmark-outline text {
+  fill: none;
+  stroke: rgb(251 251 248 / 0.2);
+  stroke-width: 1.4;
+}
+.wordmark-fill text {
+  fill: #ff6a1a;
+}
+.wordmark-fill {
+  mask-image: radial-gradient(circle var(--wr) at var(--wx, 50%) var(--wy, 50%), #000 25%, transparent 100%);
+}
+@media (hover: none) {
+  .wordmark {
+    --wr: 150px;
+    --wy: 50%;
+    animation: wordmark-drift 9s ease-in-out infinite alternate;
+  }
+}
+@keyframes wordmark-drift {
+  from {
+    --wx: 5%;
+  }
+  to {
+    --wx: 95%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-buzz,
+  .wordmark {
+    animation: none !important;
+  }
+  .neon-lit,
+  .neon-wash {
+    animation: none !important;
+    opacity: 1;
+  }
+  [data-reveal="in"] .process-stamp,
+  [data-reveal="in"] .process-num {
+    animation: none !important;
+  }
+  [data-reveal="in"] .process-num {
+    background-color: var(--color-brand);
+    color: var(--color-on-brand);
+  }
+}

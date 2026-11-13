@@ -32,6 +32,7 @@ export default function WorkCard({ item, sizes = "(min-width: 1280px) 25vw, (min
       className="group block rounded-xl transition-transform duration-300 ease-out-quint hover:-translate-y-1 focus-visible:-translate-y-1"
     >
       <div
+        data-tilt
         className="relative overflow-hidden rounded-xl border border-line bg-surface shadow-card transition-[border-color,box-shadow] duration-300 ease-out-quint group-hover:border-line-strong group-hover:shadow-lift"
         style={{ aspectRatio: frame.aspectRatio, background: item.bg ?? undefined }}
       >
@@ -43,6 +44,7 @@ export default function WorkCard({ item, sizes = "(min-width: 1280px) 25vw, (min
           priority={priority}
           className={`${frame.fit} transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]`}
         />
+        <span aria-hidden="true" className="tilt-glare" />
         <span
           aria-hidden="true"
           className="absolute right-3 top-3 grid size-9 place-items-center rounded-full bg-fg text-ink shadow-card transition-[opacity,transform,background-color,color] duration-300 ease-out-quint [@media(hover:hover)]:translate-y-1 [@media(hover:hover)]:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
