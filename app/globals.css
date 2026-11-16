@@ -545,6 +545,172 @@ a {
   transition: background-color 0.5s var(--ease-out-quint), color 0.5s var(--ease-out-quint);
 }
 
+/* Instant sketch on /99 (components/offer/InstantSketch.jsx). The phone screen scrolls like a real
+   phone, without a desktop scrollbar; a new trade's scene develops in from a soft blur. */
+.sk-screen {
+  scrollbar-width: none;
+}
+.sk-screen::-webkit-scrollbar {
+  display: none;
+}
+.sk-photo {
+  animation: sk-develop 0.7s var(--ease-out-expo) both;
+}
+@keyframes sk-develop {
+  from { opacity: 0; filter: blur(10px); scale: 1.06; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sk-photo,
+  .ns-lockup {
+    animation: none;
+  }
+}
+
+/*
+  Scroll story (components/motion/LogoStory.jsx). The track is tall; the stage pins under the
+  header and fills the rest of the screen. JavaScript only writes five numbers on the stage:
+  --open (the page opening out of the mark), --cart (the cart coming in), --pay (the order
+  confirmed), --phone (the page folding into a phone) and --end (the mark locking back together).
+  Everything below is derived from them with transforms, opacity and one clip, so the scene moves
+  exactly with the scroll. The plain panels are visually hidden here (still read by assistive
+  tech) and shown instead of the stage under reduced motion.
+*/
+.story-track {
+  height: calc(var(--story-acts, 6) * 82svh + 100svh);
+}
+.story-stage {
+  --open: 0;
+  --cart: 0;
+  --pay: 0;
+  --phone: 0;
+  --end: 0;
+  --plate-shift: 0%;
+  --plate-lift: -7%;
+  height: calc(100svh - 4rem);
+}
+@media (min-width: 48rem) {
+  .story-stage {
+    height: calc(100svh - 6rem);
+  }
+}
+@media (min-width: 64rem) {
+  .story-stage {
+    --plate-shift: -3%;
+    --plate-lift: 0%;
+    height: calc(100svh - 6.25rem);
+  }
+}
+/* The mark: the camera pushes through it as the page opens, and it returns for the last act. */
+.story-logo {
+  opacity: max(calc(1 - var(--open) * 1.7), calc(var(--end) * 1.6 - 0.6));
+  transform: scale(calc(1 + (var(--open) - var(--end)) * 1.9));
+}
+/* The render sits on its own paper tone: feather the tile so no edge shows on the stage. */
+.story-scene {
+  container-type: size;
+}
+.story-logo-tile {
+  width: min(100cqw, 100cqh, 34rem);
+  aspect-ratio: 1;
+  mask-image: radial-gradient(closest-side, #000 78%, transparent 100%);
+}
+/* The page: tilted and small inside the mark, then square to the viewer; later it narrows
+   toward the phone that replaces it. */
+.story-plate {
+  opacity: min(calc(var(--open) * 1.5), calc(1 - var(--phone) * 1.5));
+  transform: perspective(1400px)
+    translate(calc(var(--cart) * var(--plate-shift)), calc(var(--cart) * var(--plate-lift)))
+    rotateX(calc((1 - var(--open)) * 16deg))
+    rotateY(calc((1 - var(--open)) * -12deg + var(--cart) * 3deg))
+    scale(calc(0.3 + var(--open) * 0.7 - var(--cart) * 0.05 - var(--phone) * 0.12));
+}
+.story-frame {
+  aspect-ratio: 100 / 108;
+  background: #f7f3ea;
+  box-shadow: 0 40px 70px -40px rgb(20 24 21 / 0.55);
+  clip-path: inset(0 calc(var(--phone) * 30%) round 0.375rem);
+}
+/* The cart: a sheet from below on phones, a panel from the right on wide screens. */
+.story-cart {
+  inset: 0% 5% auto 5%;
+  opacity: calc(var(--cart) * 1.6);
+  transform: translateY(calc((1 - var(--cart)) * 60%));
+  box-shadow: 0 30px 60px -30px rgb(20 24 21 / 0.6);
+}
+@media (min-width: 64rem) {
+  .story-frame {
+    aspect-ratio: 16 / 10;
+  }
+  .story-cart {
+    inset: 7% -3% 7% auto;
+    width: 36%;
+    transform: translateX(calc((1 - var(--cart)) * 55%));
+  }
+}
+.story-pay-list {
+  opacity: calc(1 - var(--pay) * 1.4);
+}
+.story-pay-done {
+  opacity: var(--pay);
+  transform: translateY(calc((1 - var(--pay)) * 8%));
+}
+/* The phone: turns in as the page narrows, then steps back for the closing mark. */
+.story-phone {
+  opacity: min(calc(var(--phone) * 1.8 - 0.5), calc(1 - var(--end) * 1.8));
+  transform: perspective(1400px) rotateY(calc((1 - var(--phone)) * 26deg)) scale(calc(0.78 + var(--phone) * 0.22 - var(--end) * 0.3));
+}
+.story-line {
+  opacity: 0;
+  transform: translateY(35%);
+  transition: opacity 0.45s var(--ease-out-expo), transform 0.45s var(--ease-out-expo);
+}
+.story-line[data-in="true"] {
+  opacity: 1;
+  transform: none;
+}
+.story-pop {
+  animation: story-pop 0.45s var(--ease-out-expo) both;
+}
+@keyframes story-pop {
+  from { transform: scale(1.4); }
+}
+/* A new act's title rises out of a clip, like a slate dropping in. */
+.story-cut {
+  animation: story-cut 0.7s var(--ease-out-expo) both;
+}
+.story-cut-late {
+  animation-delay: 0.09s;
+}
+@keyframes story-cut {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(0.45em); }
+  to { clip-path: inset(-0.2em -0.5em -0.4em -0.5em); transform: none; }
+}
+.story-stills {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-track {
+    display: none;
+  }
+  .story-stills {
+    position: static;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+    display: grid;
+    gap: 2.5rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    padding-block: 4rem;
+  }
+}
+
 /*
   Website showcase (components/sections/SiteShowcase.jsx). Each project is a tall stage whose
   inner frame sticks while the visitor scrolls; the full-page screenshot inside the browser frame

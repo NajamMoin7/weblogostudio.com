@@ -2,6 +2,7 @@ import { validateIntake, INTAKE_LIMITS } from "@/lib/forms";
 import { handleSubmission } from "@/lib/submission";
 import { verifyDepositSession } from "@/lib/stripe";
 import { ORIGINAL_STYLE, orderRef } from "@/data/offer99";
+import { readSketch } from "@/data/sketch99";
 
 /**
  * Intake for paid $99 site orders (/99/start). Reuses the contact-form pipeline
@@ -32,6 +33,7 @@ export async function POST(request) {
           stripeName: s.customer_details?.name ?? "",
           amount: `$${(s.amount_total / 100).toFixed(2)} ${s.currency.toUpperCase()}`,
           style: s.metadata?.style ?? "",
+          sketch: readSketch(s.metadata)?.summary ?? "",
           reference: orderRef(s.id),
         },
       };
@@ -51,6 +53,7 @@ export async function POST(request) {
             "Style picked",
             ctx.style === ORIGINAL_STYLE ? "Original design (designer's own direction)" : ctx.style || "None (no style chosen)",
           ],
+          ["Instant sketch", ctx.sketch || "Not used"],
           ["Deposit paid", ctx.amount],
           ["Stripe customer", [ctx.stripeName, ctx.stripeEmail].filter(Boolean).join(" · ")],
           ["Business name", d.businessName],

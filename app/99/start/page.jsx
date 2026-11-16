@@ -1,11 +1,13 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
+import { CircleCheck } from "lucide-react";
 import IntakeForm from "@/components/forms/IntakeForm";
 import PixelEvent from "@/components/analytics/PixelEvent";
 import Spinner from "@/components/ui/Spinner";
 import ContactOrder from "@/components/offer/ContactOrder";
 import { DEPOSIT, verifyDepositSession } from "@/lib/stripe";
 import { ORIGINAL_STYLE, exampleSites, orderRef } from "@/data/offer99";
+import { readSketch } from "@/data/sketch99";
 import { getWork } from "@/data/work";
 import { siteConfig } from "@/lib/site";
 
@@ -38,7 +40,9 @@ async function PaidIntake({ searchParams }) {
   const styleSlug = session.metadata?.style;
   const styleSite = styleSlug ? exampleSites.find((s) => s.slug === styleSlug) : null;
   const styleTitle = styleSite ? getWork(styleSite.slug)?.displayTitle : null;
+  const sketch = readSketch(session.metadata);
   const defaults = {
+    businessName: sketch?.biz ?? "",
     name: session.customer_details?.name ?? "",
     email: session.customer_details?.email ?? "",
     phone: session.customer_details?.phone ?? "",
@@ -53,8 +57,9 @@ async function PaidIntake({ searchParams }) {
         eventID={session.id}
         onceKey={`purchase:${session.id}`}
       />
-      <h1 className="font-condensed text-[clamp(2.6rem,9vw,4.6rem)] font-bold leading-[0.92]">
-        Payment received <span aria-hidden="true">✅</span>
+      <h1 className="flex items-center gap-[0.3em] font-condensed text-[clamp(2.6rem,9vw,4.6rem)] font-bold leading-[0.92]">
+        Payment received
+        <CircleCheck aria-hidden="true" className="size-[0.72em] shrink-0 text-success" strokeWidth={2.2} />
       </h1>
       <p className="mt-5 max-w-2xl text-[clamp(1.1rem,2.4vw,1.3rem)] leading-snug text-fg">
         Message us below to get started. Your first concept arrives within 2 hours of getting your info (business hours ET).
@@ -96,9 +101,24 @@ async function PaidIntake({ searchParams }) {
           </p>
         </div>
       )}
+      {sketch && (
+        <div className="mt-8 rounded-xl border border-line-strong bg-surface p-5">
+          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-subtle">Your sketch</p>
+          <p className="mt-1 text-lg font-semibold">
+            {sketch.biz || sketch.trade}{" "}
+            <span className="font-normal text-muted">
+              · {[sketch.biz ? sketch.trade : null, `${sketch.look} look`, sketch.palette].filter(Boolean).join(" · ")}
+            </span>
+          </p>
+          <p className="mt-1 text-muted">
+            We&rsquo;ll start from this direction and design the real thing with your own logo, photos and services.
+          </p>
+        </div>
+      )}
       <ContactOrder
         reference={reference}
-        styleLabel={styleSlug === ORIGINAL_STYLE ? "something original" : styleTitle}
+        styleLabel={styleSlug === ORIGINAL_STYLE ? "something original" : (styleTitle ?? (sketch ? `${sketch.look} sketch` : null))}
+        businessName={sketch?.biz}
       />
       <div className="mt-12 border-t border-line pt-8">
         <h2 className="font-display-wide text-2xl font-bold">Prefer a form?</h2>

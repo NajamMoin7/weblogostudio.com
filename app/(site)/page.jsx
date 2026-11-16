@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import LogoStory from "@/components/motion/LogoStory";
 import FeaturedWork from "@/components/sections/FeaturedWork";
 import SiteShowcase from "@/components/sections/SiteShowcase";
 import NameStudio from "@/components/sections/NameStudio";
@@ -26,6 +27,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <LogoStory />
       <SiteShowcase />
       <NameStudio />
       <FeaturedWork />

@@ -62,15 +62,6 @@ export default function SiteShowcase() {
 
               <figure className="lg:col-span-8">
                 <div className="overflow-hidden rounded-xl bg-[#2a302c] shadow-lift ring-1 ring-white/10">
-                  <div aria-hidden="true" className="flex items-center gap-3 border-b border-white/10 px-4 py-3">
-                    <span className="flex gap-1.5">
-                      <span className="size-2.5 rounded-full bg-[#ff5f57]" />
-                      <span className="size-2.5 rounded-full bg-[#febc2e]" />
-                      <span className="size-2.5 rounded-full bg-[#28c840]" />
-                    </span>
-                    <span className="mx-auto truncate rounded-md bg-white/8 px-6 py-1 text-xs text-white/60">{work.displayTitle}</span>
-                    <span className="w-[3.25rem]" />
-                  </div>
                   <div className="relative aspect-[4/5] overflow-hidden bg-white [container-type:size] sm:aspect-[16/10]">
                     <Image
                       src={full.src}

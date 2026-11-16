@@ -16,6 +16,9 @@ const CONTENT_NAME = `Website Deposit ($${pricing99.deposit}): $${pricing99.tota
  * - `style`: a portfolio slug from "Pick a style"; sent as a hidden field (the API whitelists it).
  * - `variant`: "hero" (the big orange button with the Stripe note) or "compact" (one per phone).
  * - `label` / `ariaLabel`: the visible text and, for compact buttons, a fuller accessible name.
+ * - `fields`: extra hidden fields for the checkout (the instant sketch sends biz, trade, look and
+ *   palette); empty values are left out, and the API validates every one.
+ * - `category`: Pixel content_category when there is no `style`.
  */
 export default function PayButton({
   className = "",
@@ -24,6 +27,8 @@ export default function PayButton({
   variant = "hero",
   label = `Start for $${pricing99.deposit}`,
   ariaLabel,
+  fields,
+  category,
 }) {
   const [pending, setPending] = useState(false);
 
@@ -44,7 +49,7 @@ export default function PayButton({
       currency: "USD",
       content_name: CONTENT_NAME,
       num_items: 1,
-      ...(style ? { content_category: `style:${style}` } : {}),
+      ...(style ? { content_category: `style:${style}` } : category ? { content_category: category } : {}),
     });
     const form = e.currentTarget;
     // Give the Pixel request a moment to leave before the page navigates to Stripe.
@@ -59,6 +64,8 @@ export default function PayButton({
   return (
     <form action="/api/checkout" method="post" onSubmit={onSubmit} className={className}>
       {style && <input type="hidden" name="style" value={style} />}
+      {fields &&
+        Object.entries(fields).map(([name, value]) => (value ? <input key={name} type="hidden" name={name} value={value} /> : null))}
       <button
         id={id}
         type="submit"
@@ -66,7 +73,7 @@ export default function PayButton({
         aria-label={ariaLabel}
         className={`btn-fill group/btn relative isolate flex items-center justify-center gap-3 overflow-hidden rounded-md bg-orange-strong text-white transition-[background-color,transform] duration-200 ease-out-quint hover:bg-orange-deep active:scale-[0.98] ${buttonCls}`}
       >
-        <span className={`inline-flex items-center gap-2.5 transition-opacity ${pending ? "opacity-0" : ""}`}>
+        <span className={`inline-flex items-center gap-2.5 whitespace-nowrap transition-opacity ${pending ? "opacity-0" : ""}`}>
           {label}
           <ArrowRight aria-hidden="true" className={`arrow-nudge ${hero ? "size-5" : "size-4"}`} strokeWidth={2.4} />
         </span>

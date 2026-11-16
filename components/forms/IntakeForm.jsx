@@ -49,7 +49,7 @@ export default function IntakeForm({ sessionId, defaults = {} }) {
     endpoint: "/api/intake",
     initialValues: {
       sessionId,
-      businessName: "",
+      businessName: defaults.businessName ?? "",
       businessType: "",
       contactName: defaults.name ?? "",
       phone: defaults.phone ?? "",

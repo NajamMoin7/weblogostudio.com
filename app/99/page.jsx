@@ -2,6 +2,7 @@ import { Check, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import PayButton from "@/components/offer/PayButton";
 import PhoneMockup from "@/components/offer/PhoneMockup";
 import StylePreview from "@/components/offer/StylePreview";
+import InstantSketch from "@/components/offer/InstantSketch";
 import CheckoutNotice from "@/components/offer/CheckoutNotice";
 import Reviews99 from "@/components/offer/Reviews99";
 import Accordion from "@/components/ui/Accordion";
@@ -70,6 +71,9 @@ export default function OfferPage() {
         </div>
       </section>
 
+      {/* 3b: instant sketch. The visitor sees a template site with their own name before paying. */}
+      <InstantSketch />
+
       {/* 4: pick a style. Six real sites we built; the visitor starts THEIR site in that style. */}
       <section aria-labelledby="examples-title" className="border-b border-line py-14 lg:py-20">
         <div className={wrap}>
@@ -85,7 +89,7 @@ export default function OfferPage() {
         </div>
         <ul className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-4 [scrollbar-width:thin] sm:mx-auto sm:grid sm:max-w-6xl sm:grid-cols-3 sm:gap-x-8 sm:gap-y-12 sm:overflow-visible sm:px-8 lg:gap-x-12 lg:gap-y-16">
           {sites.map((s) => (
-            <li key={s.slug} className="flex w-[62%] shrink-0 snap-center flex-col sm:w-auto">
+            <li key={s.slug} className="flex w-[62%] min-w-[14rem] shrink-0 snap-center flex-col sm:w-auto sm:min-w-0">
               <PhoneMockup
                 src={s.img.src}
                 width={s.img.width}
@@ -125,7 +129,7 @@ export default function OfferPage() {
             <PayButton
               variant="compact"
               style={ORIGINAL_STYLE}
-              label="Design something original for me"
+              label="Make mine original"
               ariaLabel={`Design an original website for my business. Start for $${pricing99.deposit}`}
               className="w-full shrink-0 lg:w-[22rem]"
             />

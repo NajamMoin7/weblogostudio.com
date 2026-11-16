@@ -11,12 +11,12 @@ import { siteConfig } from "@/lib/site";
  *   Instagram may ignore it, so the reference is also shown on screen.
  * - On a computer `sms:` often does nothing, so the number is printed for texting from a phone.
  */
-export default function ContactOrder({ reference, styleLabel }) {
+export default function ContactOrder({ reference, styleLabel, businessName }) {
   const { messengerPage, instagram } = siteConfig.messaging;
   const { phone, phoneHref } = siteConfig.contact;
   const text = `Hi Web Logo Studio, I just paid for my website. Order ${reference}${
     styleLabel ? ` (style: ${styleLabel})` : ""
-  }. My business name is: `;
+  }. My business name is: ${businessName ?? ""}`;
   const t = encodeURIComponent(text);
   const smsHref = `${phoneHref.replace(/^tel:/, "sms:")}?&body=${t}`; // `?&body=` works on iOS and Android
 

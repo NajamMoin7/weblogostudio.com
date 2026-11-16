@@ -2,6 +2,7 @@ import { DEPOSIT, getStripe } from "@/lib/stripe";
 import { rateLimited } from "@/lib/delivery";
 import { siteConfig } from "@/lib/site";
 import { pricing99, styleSlugs99 } from "@/data/offer99";
+import { cleanBizName, lookIds99, paletteIds99, tradeIds99 } from "@/data/sketch99";
 
 /**
  * The origin to send the buyer back to. Hosts like Netlify hand the function an internal
@@ -38,6 +39,8 @@ function returnOrigin(request) {
  *
  * Optional form field `style`: a portfolio slug from the "Pick a style" section, accepted only if
  * it is in the whitelist (styleSlugs99) and stored as metadata.style.
+ * Optional fields from the instant sketch: `biz` (the business name the visitor typed, cleaned
+ * and capped) and `trade`, `look`, `palette` (each accepted only from its whitelist).
  * The card is saved (customer + setup_future_usage "off_session") so the balance can be charged
  * after the customer approves their design; the Terms explain this consent.
  */
@@ -52,14 +55,25 @@ export async function POST(request) {
   }
 
   let style = null;
+  const sketch = {};
   try {
     const form = await request.formData();
     const value = form.get("style");
     if (typeof value === "string" && styleSlugs99.includes(value)) style = value;
+
+    const pick = (name, allowed) => {
+      const v = form.get(name);
+      if (typeof v === "string" && allowed.includes(v)) sketch[name] = v;
+    };
+    pick("trade", tradeIds99);
+    pick("look", lookIds99);
+    pick("palette", paletteIds99);
+    const biz = cleanBizName(form.get("biz"));
+    if (biz) sketch.biz = biz;
   } catch {
     // No form body (or not form-encoded): checkout without a style.
   }
-  const metadata = { offer: "99-one-page", ...(style ? { style } : {}) };
+  const metadata = { offer: "99-one-page", ...(style ? { style } : {}), ...sketch };
 
   const ip = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
   if (rateLimited(`checkout:${ip}`, { limit: 10, windowMs: 10 * 60 * 1000 })) return back("busy");

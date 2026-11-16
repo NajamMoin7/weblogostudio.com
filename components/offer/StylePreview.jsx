@@ -8,8 +8,8 @@ import Spinner from "@/components/ui/Spinner";
 import { pricing99 } from "@/data/offer99";
 
 /**
- * "View full design": opens the full desktop screenshot of a "Pick a style" site inside a
- * browser frame, scrollable top to bottom, with the "Build mine like this" checkout button
+ * "View full design": opens the full desktop screenshot of a "Pick a style" site in a plain
+ * hairline frame (no drawn browser chrome), scrollable top to bottom, with the "Build mine like this" checkout button
  * pinned at the bottom. Native <dialog>: focus trap, Escape to close, focus restored.
  */
 export default function StylePreview({ slug, title, industry, img }) {
@@ -60,17 +60,6 @@ export default function StylePreview({ slug, title, industry, img }) {
 
           <div className="min-h-0 flex-1 px-3 sm:px-8">
             <div className="mx-auto flex h-full max-w-5xl flex-col overflow-hidden rounded-t-xl border border-line-strong bg-surface-2">
-              {/* Browser chrome, so it reads as a desktop website, not a phone. */}
-              <div aria-hidden="true" className="flex items-center gap-3 border-b border-line bg-charcoal px-4 py-2.5">
-                <span className="flex gap-1.5">
-                  <span className="size-2.5 rounded-full bg-white/25" />
-                  <span className="size-2.5 rounded-full bg-white/25" />
-                  <span className="size-2.5 rounded-full bg-white/25" />
-                </span>
-                <span className="flex-1 truncate rounded-md bg-white/10 px-3 py-1 text-center text-xs text-white/70">
-                  yourbusiness.com
-                </span>
-              </div>
               <div className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain">
                 {mounted && (
                   <>
